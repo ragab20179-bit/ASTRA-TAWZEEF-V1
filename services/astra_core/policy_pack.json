@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "domains": {
+    "interview": {
+      "actions": {
+        "start": {
+          "allow_roles": ["recruiter", "system"],
+          "requires": ["consent"]
+        },
+        "terminate": {
+          "allow_roles": ["recruiter", "system", "astra"],
+          "requires": ["consent"]
+        }
+      }
+    },
+    "watcher": {
+      "actions": {
+        "submit": {
+          "allow_roles": ["watcher"],
+          "requires": ["delegation_token"]
+        }
+      }
+    }
+  }
+}

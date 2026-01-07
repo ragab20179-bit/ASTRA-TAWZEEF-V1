@@ -1,0 +1,27 @@
+name: ci-guardrails
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  guardrails:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Static Guardrails Scan (no async, no retries)
+        run: |
+          set -e
+          FORBIDDEN_REGEX="\basync\b|\bawait\b|\btenacity\b|\bretry\b|\bbackoff\b|\bthreading\b|\bmultiprocessing\b|\bcelery\b|\brq\b"
+          if grep -RInE "$FORBIDDEN_REGEX" services shared; then
+            echo "Forbidden construct detected."
+            exit 1
+          fi
+          echo "Static scan passed."
+
+      - name: Build Docker images
+        run: |
+          docker build -f services/astra_core/Dockerfile -t astra-core .
+          docker build -f services/execution_orchestrator/Dockerfile -t orchestrator .
+          docker build -f services/watcher_chair/Dockerfile -t watcher .

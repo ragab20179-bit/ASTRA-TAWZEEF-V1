@@ -1,0 +1,77 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: astra
+      POSTGRES_USER: astra
+      POSTGRES_PASSWORD: astra
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./migrations:/docker-entrypoint-initdb.d:ro
+
+  astra-core:
+    build:
+      context: .
+      dockerfile: services/astra_core/Dockerfile
+    environment:
+      PG_HOST: postgres
+      PG_PORT: "5432"
+      PG_DB: astra
+      PG_USER: astra
+      PG_PASSWORD: astra
+      PG_CONNECT_TIMEOUT: "2"
+      ASTRA_POLICY_PACK_PATH: "/app/services/astra_core/policy_pack.json"
+      STATSD_HOST: ""
+      STATSD_PORT: "8125"
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000"
+
+  orchestrator:
+    build:
+      context: .
+      dockerfile: services/execution_orchestrator/Dockerfile
+    environment:
+      PG_HOST: postgres
+      PG_PORT: "5432"
+      PG_DB: astra
+      PG_USER: astra
+      PG_PASSWORD: astra
+      PG_CONNECT_TIMEOUT: "2"
+      ASTRA_URL: "http://astra-core:8000/v1/astra/authority/check"
+      ASTRA_TIMEOUT_S: "0.3"
+      STATSD_HOST: ""
+      STATSD_PORT: "8125"
+    depends_on:
+      - postgres
+      - astra-core
+    ports:
+      - "8001:8001"
+
+  watcher:
+    build:
+      context: .
+      dockerfile: services/watcher_chair/Dockerfile
+    environment:
+      PG_HOST: postgres
+      PG_PORT: "5432"
+      PG_DB: astra
+      PG_USER: astra
+      PG_PASSWORD: astra
+      PG_CONNECT_TIMEOUT: "2"
+      ASTRA_URL: "http://astra-core:8000/v1/astra/authority/check"
+      ASTRA_TIMEOUT_S: "0.3"
+      WATCHER_ENABLED: "false"
+      STATSD_HOST: ""
+      STATSD_PORT: "8125"
+    depends_on:
+      - postgres
+      - astra-core
+    ports:
+      - "8002:8002"
+
+volumes:
+  pgdata:

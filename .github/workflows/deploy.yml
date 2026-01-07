@@ -1,0 +1,247 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+      - production
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  test:
+    name: Test & Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Validate Python syntax
+        run: |
+          python -m py_compile services/astra_core/*.py
+          python -m py_compile services/execution_orchestrator/*.py
+          python -m py_compile services/watcher_chair/*.py
+          python -m py_compile shared/*.py
+
+      - name: Validate JSON files
+        run: |
+          python -c "import json; json.load(open('services/astra_core/policy_pack.json'))"
+
+      - name: Validate SQL schema
+        run: |
+          python << 'EOF'
+          with open('migrations/001_ddl_v2.sql', 'r') as f:
+              sql = f.read()
+          required = ['CREATE TABLE', 'astra_decision_artifacts', 'tawzeef_execution_artifacts', 'tawzeef_watcher_artifacts']
+          for keyword in required:
+              assert keyword in sql, f"Missing: {keyword}"
+          print("✓ SQL schema valid")
+          EOF
+
+      - name: Check guardrails (no forbidden constructs)
+        run: |
+          python << 'EOF'
+          import os
+          import re
+          FORBIDDEN_REGEX = r"\basync\b|\bawait\b|\btenacity\b|\bretry\b|\bbackoff\b|\bthreading\b|\bmultiprocessing\b|\bcelery\b|\brq\b"
+          found_issues = False
+          for root, dirs, files in os.walk('.'):
+              dirs[:] = [d for d in dirs if d not in ['.git', '__pycache__', '.github']]
+              for file in files:
+                  if file.endswith('.py'):
+                      filepath = os.path.join(root, file)
+                      with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+                          for line_num, line in enumerate(f, 1):
+                              if re.search(FORBIDDEN_REGEX, line, re.IGNORECASE):
+                                  print(f"✗ {filepath}:{line_num}: {line.strip()}")
+                                  found_issues = True
+          if not found_issues:
+              print("✓ No forbidden constructs found")
+          else:
+              exit(1)
+          EOF
+
+      - name: Test decision engine logic
+        run: |
+          python << 'EOF'
+          import sys
+          import os
+          sys.path.insert(0, '.')
+          os.environ['ASTRA_POLICY_PACK_PATH'] = './services/astra_core/policy_pack.json'
+          
+          from services.astra_core.policy_pack import load_policy_pack
+          from services.astra_core.decision import evaluate
+          
+          pack = load_policy_pack()
+          print(f"✓ Policy pack loaded (version: {pack.version})")
+          
+          # Test ALLOW
+          payload1 = {
+              "request_id": "11111111-1111-1111-1111-111111111111",
+              "actor": {"id": "recruiter-1", "role": "recruiter"},
+              "context": {"domain": "interview", "action": "start", "consent": True}
+          }
+          outcome1, reason1 = evaluate(pack, payload1)
+          assert outcome1 == "ALLOW" and reason1 == "RULE_PASS", f"Test 1 failed: {outcome1} {reason1}"
+          print("✓ Test 1 passed: ALLOW case")
+          
+          # Test DENY (missing consent)
+          payload2 = {
+              "request_id": "22222222-2222-2222-2222-222222222222",
+              "actor": {"id": "recruiter-1", "role": "recruiter"},
+              "context": {"domain": "interview", "action": "start"}
+          }
+          outcome2, reason2 = evaluate(pack, payload2)
+          assert outcome2 == "DENY" and "REQUIREMENT_MISSING" in reason2, f"Test 2 failed: {outcome2} {reason2}"
+          print("✓ Test 2 passed: DENY case (missing consent)")
+          
+          # Test DENY (unauthorized role)
+          payload3 = {
+              "request_id": "33333333-3333-3333-3333-333333333333",
+              "actor": {"id": "candidate-1", "role": "candidate"},
+              "context": {"domain": "interview", "action": "start", "consent": True}
+          }
+          outcome3, reason3 = evaluate(pack, payload3)
+          assert outcome3 == "DENY" and reason3 == "ROLE_NOT_ALLOWED", f"Test 3 failed: {outcome3} {reason3}"
+          print("✓ Test 3 passed: DENY case (unauthorized role)")
+          
+          print("\n✓ All decision engine tests passed!")
+          EOF
+
+  build:
+    name: Build Docker Images
+    runs-on: ubuntu-latest
+    needs: test
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha
+
+      - name: Build and push ASTRA Core
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./services/astra_core/Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/astra-core:${{ github.sha }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Build and push Orchestrator
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./services/execution_orchestrator/Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/orchestrator:${{ github.sha }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Build and push Watcher
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./services/watcher_chair/Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/watcher:${{ github.sha }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+  deploy:
+    name: Deploy to ${{ github.event.inputs.environment || 'staging' }}
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/production' || github.event_name == 'workflow_dispatch'
+    environment:
+      name: ${{ github.event.inputs.environment || 'staging' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to server
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$DEPLOY_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
+          
+          # Deploy
+          ssh -i ~/.ssh/deploy_key $DEPLOY_USER@$DEPLOY_HOST << 'DEPLOY_SCRIPT'
+          cd $DEPLOY_PATH
+          git pull origin main
+          docker compose -f docker-compose.prod.yml --env-file .env pull
+          docker compose -f docker-compose.prod.yml --env-file .env up -d
+          sleep 10
+          docker compose -f docker-compose.prod.yml --env-file .env ps
+          DEPLOY_SCRIPT
+
+      - name: Verify deployment
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+        run: |
+          sleep 5
+          curl -f http://$DEPLOY_HOST:8000/health || exit 1
+          curl -f http://$DEPLOY_HOST:8001/health || exit 1
+          curl -f http://$DEPLOY_HOST:8002/health || exit 1
+          echo "✓ Deployment verified"
+
+      - name: Notify deployment
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const status = '${{ job.status }}';
+            const environment = '${{ github.event.inputs.environment || 'staging' }}';
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `🚀 Deployment to ${environment}: ${status.toUpperCase()}`
+            });

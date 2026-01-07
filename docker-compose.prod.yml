@@ -1,0 +1,176 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: astra-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: ${PG_DB:-astra}
+      POSTGRES_USER: ${PG_USER:-astra}
+      POSTGRES_PASSWORD: ${PG_PASSWORD:-CHANGE_ME_SECURE_PASSWORD}
+      POSTGRES_INITDB_ARGS: "-c shared_buffers=256MB -c max_connections=200"
+    ports:
+      - "${PG_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./migrations:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${PG_USER:-astra}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - astra-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  astra-core:
+    build:
+      context: .
+      dockerfile: services/astra_core/Dockerfile
+    container_name: astra-core
+    restart: always
+    environment:
+      PG_HOST: ${PG_HOST:-postgres}
+      PG_PORT: ${PG_PORT:-5432}
+      PG_DB: ${PG_DB:-astra}
+      PG_USER: ${PG_USER:-astra}
+      PG_PASSWORD: ${PG_PASSWORD:-CHANGE_ME_SECURE_PASSWORD}
+      PG_CONNECT_TIMEOUT: ${PG_CONNECT_TIMEOUT:-2}
+      ASTRA_POLICY_PACK_PATH: ${ASTRA_POLICY_PACK_PATH:-/app/services/astra_core/policy_pack.json}
+      STATSD_HOST: ${STATSD_HOST:-}
+      STATSD_PORT: ${STATSD_PORT:-8125}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+    ports:
+      - "${ASTRA_PORT:-8000}:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - astra-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+  orchestrator:
+    build:
+      context: .
+      dockerfile: services/execution_orchestrator/Dockerfile
+    container_name: astra-orchestrator
+    restart: always
+    environment:
+      PG_HOST: ${PG_HOST:-postgres}
+      PG_PORT: ${PG_PORT:-5432}
+      PG_DB: ${PG_DB:-astra}
+      PG_USER: ${PG_USER:-astra}
+      PG_PASSWORD: ${PG_PASSWORD:-CHANGE_ME_SECURE_PASSWORD}
+      PG_CONNECT_TIMEOUT: ${PG_CONNECT_TIMEOUT:-2}
+      ASTRA_URL: ${ASTRA_URL:-http://astra-core:8000/v1/astra/authority/check}
+      ASTRA_TIMEOUT_S: ${ASTRA_TIMEOUT_S:-0.3}
+      STATSD_HOST: ${STATSD_HOST:-}
+      STATSD_PORT: ${STATSD_PORT:-8125}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+    ports:
+      - "${ORCHESTRATOR_PORT:-8001}:8001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      astra-core:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - astra-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+  watcher:
+    build:
+      context: .
+      dockerfile: services/watcher_chair/Dockerfile
+    container_name: astra-watcher
+    restart: always
+    environment:
+      PG_HOST: ${PG_HOST:-postgres}
+      PG_PORT: ${PG_PORT:-5432}
+      PG_DB: ${PG_DB:-astra}
+      PG_USER: ${PG_USER:-astra}
+      PG_PASSWORD: ${PG_PASSWORD:-CHANGE_ME_SECURE_PASSWORD}
+      PG_CONNECT_TIMEOUT: ${PG_CONNECT_TIMEOUT:-2}
+      ASTRA_URL: ${ASTRA_URL:-http://astra-core:8000/v1/astra/authority/check}
+      ASTRA_TIMEOUT_S: ${ASTRA_TIMEOUT_S:-0.3}
+      WATCHER_ENABLED: ${WATCHER_ENABLED:-false}
+      STATSD_HOST: ${STATSD_HOST:-}
+      STATSD_PORT: ${STATSD_PORT:-8125}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+    ports:
+      - "${WATCHER_PORT:-8002}:8002"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      astra-core:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - astra-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+volumes:
+  pgdata:
+    driver: local
+
+networks:
+  astra-network:
+    driver: bridge
