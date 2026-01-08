@@ -12,10 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Docker Buildx (disable for standard build)
-        run: |
-          docker buildx create --use --driver docker-container || true
-
       - name: Static Guardrails Scan
         run: |
           FORBIDDEN_REGEX="[async|io|timeout|s|threading|b|\\multiprocessing|b|\\celery|b|\\redis|*"
@@ -25,18 +21,12 @@ jobs:
           fi
           echo "✓ Static scan passed"
 
-      - name: Build Docker images
-        run: |
-          DOCKER_BUILDKIT=0 docker build -f services/astra_core/Dockerfile -t astra-core:latest .
-          DOCKER_BUILDKIT=0 docker build -f services/execution_orchestrator/Dockerfile -t orchestrator:latest .
-          DOCKER_BUILDKIT=0 docker build -f services/watcher_chair/Dockerfile -t watcher:latest .
-
       - name: Install Docker Compose
         run: |
           sudo apt-get update
           sudo apt-get install -y docker-compose
 
-      - name: Start services
+      - name: Build and start services
         run: docker-compose up -d
 
       - name: Wait for services
