@@ -5,11 +5,14 @@ from services.astra_core.policy_pack import PolicyPack
 def _has_requirement(payload: dict, req: str) -> bool:
     # Requirements are looked up ONLY from payload; no remote calls.
     if req == "consent":
-        # Allow consent in either "consent": true or "context": {"consent": true}
+        # Check consent in context (primary location)
+        ctx = payload.get("context", {})
+        if isinstance(ctx, dict) and ctx.get("consent") is True:
+            return True
+        # Fallback to top-level consent
         if payload.get("consent") is True:
             return True
-        ctx = payload.get("context", {})
-        return isinstance(ctx, dict) and ctx.get("consent") is True
+        return False
 
     if req == "delegation_token":
         # Allow in "watcher": {"delegation_token": "..."} or top-level "delegation_token"
