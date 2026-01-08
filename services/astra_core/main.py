@@ -35,8 +35,5 @@ def authority_check(payload: dict):
     incr("astra_requests_total", 1)
     incr("astra_outcome_total", 1, tags={"outcome": outcome})
 
-    # Return outcome (Orchestrator will stop on non-ALLOW)
-    if outcome != "ALLOW":
-        raise HTTPException(status_code=403, detail=outcome)
-
+    # Return outcome with 200 status (Orchestrator will interpret)
     return {"decision_id": decision_id, "outcome": outcome, "reason_code": reason_code}
