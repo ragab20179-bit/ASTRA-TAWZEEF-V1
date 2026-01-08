@@ -83,7 +83,7 @@ jobs:
           }
           K6SCRIPT
           k6 run /tmp/latency-test.js 2>&1 | tee /tmp/k6-output.txt
-          P95=$(grep "p(95)" /tmp/k6-output.txt | grep "http_req_duration" | awk '{print $NF}' | sed 's/ms//' )
+          P95=$(grep "http_req_duration" /tmp/k6-output.txt | grep "p(95 )" | sed 's/.*p(95)=//' | sed 's/ms.*//')
           echo "P95=$P95"
           echo "P95_LATENCY=$P95" >> $GITHUB_OUTPUT
           if (( $(echo "$P95 > 100" | bc -l) )); then
