@@ -65,6 +65,11 @@ jobs:
             ],
           };
           
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
           export default function () {
             const res = http.post('http://localhost:8001/v2/orchestrator/execute', JSON.stringify({
               request_id: generateUUID( ),
