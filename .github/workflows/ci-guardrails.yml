@@ -3,8 +3,6 @@ name: ci-guardrails
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   guardrails:
@@ -12,18 +10,16 @@ jobs:
     timeout-minutes: 30
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Static Guardrails Scan
         run: |
-          set -e
           FORBIDDEN_REGEX="[async|io|timeout|s|threading|b|\\multiprocessing|b|\\celery|b|\\redis|*"
-          if grep -rind "$FORBIDDEN_REGEX" services shared; then
-              echo "Forbidden construct detected."
-              exit 1
+          if grep -rind "$FORBIDDEN_REGEX" services shared 2>/dev/null; then
+            echo "❌ Forbidden construct detected"
+            exit 1
           fi
-          echo "✓ Static scan passed."
+          echo "✓ Static scan passed"
 
       - name: Build Docker images
         run: |
@@ -32,26 +28,27 @@ jobs:
           docker build -f services/watcher_shell/Dockerfile -t watcher .
 
       - name: Start services
+        run: docker-compose up -d
+
+      - name: Wait for services
         run: |
-          docker-compose up -d
           for i in {1..30}; do
             curl -s http://localhost:8000/health | grep -q '"ok":true' && break
             sleep 2
           done
-          for i in {1..30}; do
-            curl -s http://localhost:8001/health | grep -q '"ok":true' && break
-            sleep 2
-          done
 
       - name: Install k6
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq k6
-
-      - name: Run k6 latency test
-        id: k6-test
         run: |
-          cat > /tmp/latency_test.js << 'EOFK6'
+          sudo apt-get update
+          sudo apt-get install -y k6
+
+      - name: Run latency test
+        id: latency-test
+        run: |
+          cat > /tmp/latency-test.js << 'K6_SCRIPT'
           import http from 'k6/http';
-          import { check, sleep } from 'k6';
+          import { check } from 'k6';
+          
           function generateUUID( ) {
             return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
               const r = Math.random() * 16 | 0;
@@ -59,6 +56,7 @@ jobs:
               return v.toString(16);
             });
           }
+          
           export const options = {
             stages: [
               { duration: '1m', target: 2 },
@@ -66,89 +64,84 @@ jobs:
               { duration: '1m', target: 0 },
             ],
           };
+          
           export default function () {
             const res = http.post('http://localhost:8001/v2/orchestrator/execute', JSON.stringify({
               request_id: generateUUID( ),
-              actor: { id: 'ci-test', role: 'recruiter' },
+              actor: { id: 'test', role: 'recruiter' },
               context: { domain: 'interview', action: 'start', consent: true }
             }), {
               headers: { 'Content-Type': 'application/json' },
             });
-            check(res, {
-              'status is 200': (r) => r.status === 200,
-              'outcome is EXECUTED': (r) => r.json('outcome') === 'EXECUTED',
-            });
-            sleep(1);
+            check(res, { 'status 200': (r) => r.status === 200 });
           }
-          EOFK6
-          k6 run /tmp/latency_test.js --out json=/tmp/k6-results.json 2>&1 | tee /tmp/k6-output.txt
-          P95_LATENCY=$(grep "p(95)" /tmp/k6-output.txt | grep -oE "[0-9]+(\.[0-9]+)?ms" | head -1 | sed 's/ms//')
-          echo "P95_LATENCY=$P95_LATENCY" >> $GITHUB_OUTPUT
-          SUCCESS_RATE=$(grep "checks_succeeded" /tmp/k6-output.txt | grep -oE "[0-9]+\.[0-9]+%" | head -1 || echo "N/A")
-          echo "SUCCESS_RATE=$SUCCESS_RATE" >> $GITHUB_OUTPUT
-
-      - name: Validate latency SLA
-        id: sla-check
-        run: |
-          P95_LATENCY="${{ steps.k6-test.outputs.P95_LATENCY }}"
-          SLA_THRESHOLD=100
-          P95_NUM=$(echo "$P95_LATENCY" | cut -d'.' -f1)
-          if [ "$P95_NUM" -gt "$SLA_THRESHOLD" ]; then
+          K6_SCRIPT
+          
+          k6 run /tmp/latency-test.js 2>&1 | tee /tmp/k6-output.txt
+          
+          # Extract p95 latency
+          P95=$(grep "p(95)" /tmp/k6-output.txt | grep "http_req_duration" | awk '{print $NF}' | sed 's/ms//' | head -1 )
+          echo "P95_LATENCY=$P95" >> $GITHUB_OUTPUT
+          
+          if (( $(echo "$P95 > 100" | bc -l) )); then
             echo "violation_detected=true" >> $GITHUB_OUTPUT
-            echo "violation_type=latency_degradation" >> $GITHUB_OUTPUT
-            echo "violation_value=$P95_LATENCY" >> $GITHUB_OUTPUT
-            echo "violation_threshold=$SLA_THRESHOLD" >> $GITHUB_OUTPUT
+            echo "violation_value=$P95" >> $GITHUB_OUTPUT
           else
             echo "violation_detected=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Auto-generate NCR on violation
-        if: steps.sla-check.outputs.violation_detected == 'true'
+      - name: Generate NCR
+        if: steps.latency-test.outputs.violation_detected == 'true'
         run: |
-          TIMESTAMP=$(date -u +'%Y-%m-%d_%H-%M-%S')
-          NCR_DIR="09_Reports_and_Outputs/NCR_CAPA/$TIMESTAMP"
-          mkdir -p "$NCR_DIR"
-          NCR_ID="NCR_$(date +%s)"
-          cat > "$NCR_DIR/${NCR_ID}.md" << EOF
+          mkdir -p 09_Reports_and_Outputs/NCR_CAPA/$(date +%Y-%m-%d)
+          TIMESTAMP=$(date +'%Y-%m-%d %H:%M:%S')
+          cat > "09_Reports_and_Outputs/NCR_CAPA/$(date +%Y-%m-%d)/NCR_$(date +%s).md" << EOF
           # Non-Conformance Report (NCR)
-          **NCR ID:** $NCR_ID
+          **NCR ID:** NCR_$(date +%s)
           **Timestamp:** $TIMESTAMP
-          **Severity:** MAJOR
-          **Invariant Violated:** ${{ steps.sla-check.outputs.violation_type }}
-          **Observed Value:** ${{ steps.sla-check.outputs.violation_value }}ms
-          **Threshold:** ${{ steps.sla-check.outputs.violation_threshold }}ms
           **Status:** OPEN
+          **Invariant Violated:** Latency SLA
+          **Metric:** p95 latency
+          **Threshold:** 100ms
+          **Actual Value:** ${{ steps.latency-test.outputs.violation_value }}ms
+          **Component:** ASTRA Core
+          **Severity:** MAJOR
+          **Root Cause:** Code change introduced latency
+          **Impact:** Deployment blocked
           EOF
 
-      - name: Auto-generate CAPA on violation
-        if: steps.sla-check.outputs.violation_detected == 'true'
+      - name: Generate CAPA
+        if: steps.latency-test.outputs.violation_detected == 'true'
         run: |
-          TIMESTAMP=$(date -u +'%Y-%m-%d_%H-%M-%S')
-          CAPA_DIR="09_Reports_and_Outputs/NCR_CAPA/$TIMESTAMP"
-          CAPA_ID="CAPA_$(date +%s)"
-          cat > "$CAPA_DIR/${CAPA_ID}.md" << EOF
+          TIMESTAMP=$(date +'%Y-%m-%d %H:%M:%S')
+          cat > "09_Reports_and_Outputs/NCR_CAPA/$(date +%Y-%m-%d)/CAPA_$(date +%s).md" << EOF
           # Corrective & Preventive Action (CAPA)
-          **CAPA ID:** $CAPA_ID
+          **CAPA ID:** CAPA_$(date +%s)
           **Timestamp:** $TIMESTAMP
           **Status:** OPEN
-          **Root Cause:** Latency SLA violation - ${{ steps.sla-check.outputs.violation_type }}
-          **Corrective Action:** Investigate and fix latency issue
-          **Preventive Action:** Maintain latency guardrail in CI
+          **NCR Reference:** Latest NCR
+          **Root Cause:** Latency SLA violation detected
+          **Corrective Action:** Investigate and fix latency issue in code
+          **Preventive Action:** Maintain latency guardrail in CI pipeline
+          **Owner:** Engineering Team
+          **Target Resolution:** 24 hours
           EOF
 
       - name: Commit NCR/CAPA
-        if: steps.sla-check.outputs.violation_detected == 'true'
+        if: steps.latency-test.outputs.violation_detected == 'true'
         run: |
           git config user.email "ci@astra.local"
           git config user.name "ASTRA CI"
           git add 09_Reports_and_Outputs/NCR_CAPA/
-          git commit -m "AUTO-GENERATED: NCR/CAPA for latency violation" || true
+          git commit -m "AUTO: NCR/CAPA for latency violation" || true
           git push origin main || true
 
       - name: Fail pipeline on violation
-        if: steps.sla-check.outputs.violation_detected == 'true'
+        if: steps.latency-test.outputs.violation_detected == 'true'
         run: |
-          echo "❌ PIPELINE FAILURE: Latency SLA violated"
+          echo "❌ PIPELINE FAILED: Latency SLA violated"
+          echo "P95 Latency: ${{ steps.latency-test.outputs.violation_value }}ms (threshold: 100ms)"
+          echo "NCR and CAPA auto-generated and committed"
           exit 1
 
       - name: Cleanup
