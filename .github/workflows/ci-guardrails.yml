@@ -1,52 +1,59 @@
 name: ci-guardrails
-
 on:
   push:
     branches: [ main ]
-
 jobs:
   guardrails:
     runs-on: ubuntu-latest
     timeout-minutes: 30
-
     steps:
       - uses: actions/checkout@v4
-
+      
       - name: Static Guardrails Scan
         run: |
+          echo "Running static scan..."
           FORBIDDEN_REGEX="[async|io|timeout|s|threading|b|\\multiprocessing|b|\\celery|b|\\redis|*"
           if grep -rind "$FORBIDDEN_REGEX" services shared 2>/dev/null; then
-            echo "❌ Forbidden construct detected"
+            echo "Forbidden construct detected"
             exit 1
           fi
-          echo "✓ Static scan passed"
-
+          echo "Static scan passed"
+      
       - name: Install Docker Compose
         run: |
+          echo "Installing docker-compose..."
           sudo apt-get update
           sudo apt-get install -y docker-compose
-
-      - name: Build and start services
-        run: docker-compose up -d
-
+      
+      - name: Start services
+        run: |
+          echo "Starting services..."
+          docker-compose up -d
+      
       - name: Wait for services
         run: |
+          echo "Waiting for services..."
           for i in {1..30}; do
-            curl -s http://localhost:8000/health | grep -q '"ok":true' && break
+            if curl -s http://localhost:8000/health | grep -q '"ok":true'; then
+              echo "Services ready!"
+              break
+            fi
+            echo "Waiting... ($i/30 )"
             sleep 2
           done
-
+      
       - name: Install k6
         run: |
+          echo "Installing k6..."
           sudo apt-get install -y k6
-
+      
       - name: Run latency test
         id: latency-test
         run: |
-          cat > /tmp/latency-test.js << 'K6_SCRIPT'
+          echo "Running latency test..."
+          cat > /tmp/latency-test.js << 'K6SCRIPT'
           import http from 'k6/http';
           import { check } from 'k6';
-          
           function generateUUID( ) {
             return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
               const r = Math.random() * 16 | 0;
@@ -54,7 +61,6 @@ jobs:
               return v.toString(16);
             });
           }
-          
           export const options = {
             stages: [
               { duration: '1m', target: 2 },
@@ -62,7 +68,6 @@ jobs:
               { duration: '1m', target: 0 },
             ],
           };
-          
           export default function () {
             const res = http.post('http://localhost:8001/v2/orchestrator/execute', JSON.stringify({
               request_id: generateUUID( ),
@@ -73,27 +78,25 @@ jobs:
             });
             check(res, { 'status 200': (r) => r.status === 200 });
           }
-          K6_SCRIPT
-          
+          K6SCRIPT
           k6 run /tmp/latency-test.js 2>&1 | tee /tmp/k6-output.txt
-          
-          # Extract p95 latency
-          P95=$(grep "p(95)" /tmp/k6-output.txt | grep "http_req_duration" | awk '{print $NF}' | sed 's/ms//' | head -1 )
+          P95=$(grep "p(95)" /tmp/k6-output.txt | grep "http_req_duration" | awk '{print $NF}' | sed 's/ms//' )
+          echo "P95=$P95"
           echo "P95_LATENCY=$P95" >> $GITHUB_OUTPUT
-          
           if (( $(echo "$P95 > 100" | bc -l) )); then
             echo "violation_detected=true" >> $GITHUB_OUTPUT
             echo "violation_value=$P95" >> $GITHUB_OUTPUT
           else
             echo "violation_detected=false" >> $GITHUB_OUTPUT
           fi
-
+      
       - name: Generate NCR
         if: steps.latency-test.outputs.violation_detected == 'true'
         run: |
+          echo "Generating NCR..."
           mkdir -p 09_Reports_and_Outputs/NCR_CAPA/$(date +%Y-%m-%d)
           TIMESTAMP=$(date +'%Y-%m-%d %H:%M:%S')
-          cat > "09_Reports_and_Outputs/NCR_CAPA/$(date +%Y-%m-%d)/NCR_$(date +%s).md" << EOF
+          cat > "09_Reports_and_Outputs/NCR_CAPA/$(date +%Y-%m-%d)/NCR_$(date +%s).md" << 'NCREOF'
           # Non-Conformance Report (NCR)
           **NCR ID:** NCR_$(date +%s)
           **Timestamp:** $TIMESTAMP
@@ -106,42 +109,40 @@ jobs:
           **Severity:** MAJOR
           **Root Cause:** Code change introduced latency
           **Impact:** Deployment blocked
-          EOF
-
+          NCREOF
+      
       - name: Generate CAPA
         if: steps.latency-test.outputs.violation_detected == 'true'
         run: |
+          echo "Generating CAPA..."
           TIMESTAMP=$(date +'%Y-%m-%d %H:%M:%S')
-          cat > "09_Reports_and_Outputs/NCR_CAPA/$(date +%Y-%m-%d)/CAPA_$(date +%s).md" << EOF
+          cat > "09_Reports_and_Outputs/NCR_CAPA/$(date +%Y-%m-%d)/CAPA_$(date +%s).md" << 'CAPAEOF'
           # Corrective & Preventive Action (CAPA)
           **CAPA ID:** CAPA_$(date +%s)
           **Timestamp:** $TIMESTAMP
           **Status:** OPEN
-          **NCR Reference:** Latest NCR
           **Root Cause:** Latency SLA violation detected
           **Corrective Action:** Investigate and fix latency issue in code
           **Preventive Action:** Maintain latency guardrail in CI pipeline
-          **Owner:** Engineering Team
-          **Target Resolution:** 24 hours
-          EOF
-
+          CAPAEOF
+      
       - name: Commit NCR/CAPA
         if: steps.latency-test.outputs.violation_detected == 'true'
         run: |
+          echo "Committing NCR/CAPA..."
           git config user.email "ci@astra.local"
           git config user.name "ASTRA CI"
-          git add 09_Reports_and_Outputs/NCR_CAPA/
+          git add 09_Reports_and_Outputs/NCR_CAPA/ || true
           git commit -m "AUTO: NCR/CAPA for latency violation" || true
           git push origin main || true
-
-      - name: Fail pipeline on violation
+      
+      - name: Fail on violation
         if: steps.latency-test.outputs.violation_detected == 'true'
         run: |
-          echo "❌ PIPELINE FAILED: Latency SLA violated"
+          echo "PIPELINE FAILED: Latency SLA violated"
           echo "P95 Latency: ${{ steps.latency-test.outputs.violation_value }}ms (threshold: 100ms)"
-          echo "NCR and CAPA auto-generated and committed"
           exit 1
-
+      
       - name: Cleanup
         if: always()
         run: docker-compose down || true
