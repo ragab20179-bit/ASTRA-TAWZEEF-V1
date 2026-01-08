@@ -25,7 +25,7 @@ jobs:
         run: |
           docker build -f services/astra_core/Dockerfile -t astra-core:latest .
           docker build -f services/execution_orchestrator/Dockerfile -t orchestrator:latest .
-          docker build -f services/watcher_shell/Dockerfile -t watcher:latest .
+          docker build -f services/watcher_chair/Dockerfile -t watcher:latest .
 
       - name: Start services
         run: docker-compose up -d
