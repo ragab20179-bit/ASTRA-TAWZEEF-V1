@@ -20,9 +20,6 @@ def health():
 def authority_check(payload: dict):
     t0 = time.time()
 
-    # TEMPORARY — CI DRILL ONLY
-    time.sleep(0.6)  # 600ms, guaranteed to break latency SLA
-
     # Fail-closed: request_id required
     if "request_id" not in payload:
         incr("astra_errors_total", 1)
