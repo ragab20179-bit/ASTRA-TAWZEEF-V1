@@ -90,8 +90,8 @@ jobs:
           echo "=== K6 OUTPUT ANALYSIS ==="
           grep "http_req_duration" /tmp/k6-output.txt || echo "No http_req_duration found"
           
-          # Extract P95 - handle format: "p(95 )=305.21ms"
-          P95_RAW=$(grep "http_req_duration" /tmp/k6-output.txt | grep -oP 'p\(95\ )=\K[0-9.]+')
+          # Extract P95 using sed - handle format: "p(95 )=304.91ms"
+          P95_RAW=$(grep "http_req_duration" /tmp/k6-output.txt | sed -n 's/.*p(95 )=\([0-9.]*\)ms.*/\1/p')
           
           if [ -z "$P95_RAW" ]; then
             echo "ERROR: Could not extract P95 value"
@@ -104,7 +104,8 @@ jobs:
           echo "P95_LATENCY=$P95_RAW" >> $GITHUB_OUTPUT
           
           # Check if P95 > 100ms
-          if (( $(echo "$P95_RAW > 100" | bc -l) )); then
+          VIOLATION=$(echo "$P95_RAW > 100" | bc -l)
+          if [ "$VIOLATION" -eq 1 ]; then
             echo "VIOLATION DETECTED: P95=$P95_RAW ms > 100ms"
             echo "violation_detected=true" >> $GITHUB_OUTPUT
             echo "violation_value=$P95_RAW" >> $GITHUB_OUTPUT
