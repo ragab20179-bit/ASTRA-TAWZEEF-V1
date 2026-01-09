@@ -2,6 +2,10 @@ name: ci-guardrails
 on:
   push:
     branches: [ main ]
+
+permissions:
+  contents: write
+
 jobs:
   guardrails:
     runs-on: ubuntu-latest
@@ -186,9 +190,9 @@ jobs:
           echo "Committing NCR/CAPA..."
           git config user.email "ci@astra.local"
           git config user.name "ASTRA CI"
-          git add 09_Reports_and_Outputs/NCR_CAPA/ || true
-          git commit -m "AUTO: NCR/CAPA for latency violation (p95=${{ steps.latency-test.outputs.violation_value }}ms)" || true
-          git push origin main || echo "Push failed (may be permissions issue)"
+          git add 09_Reports_and_Outputs/NCR_CAPA/
+          git commit -m "AUTO: NCR/CAPA for latency violation (p95=${{ steps.latency-test.outputs.violation_value }}ms)"
+          git push origin main
       
       - name: Fail on violation
         if: steps.latency-test.outputs.violation_detected == 'true'
