@@ -48,7 +48,7 @@ function generateUUID() {
 
 // Main test function
 export default function () {
-  const url = 'http://localhost:8001/v2/orchestrator/execute';
+  const url = 'http://orchestrator:8001/v2/orchestrator/execute';
   
   const payload = JSON.stringify({
     request_id: generateUUID(),
@@ -107,7 +107,7 @@ export function setup() {
   console.log('==========================');
   
   // Verify services are up before starting
-  const healthCheck = http.get('http://localhost:8000/health');
+  const healthCheck = http.get('http://astra-core:8000/health');
   if (healthCheck.status !== 200) {
     throw new Error('Services not ready - health check failed');
   }

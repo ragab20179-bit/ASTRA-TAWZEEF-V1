@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  k6:
+    image: grafana/k6:latest
+    networks:
+      - default
+    volumes:
+      - ./tests/ewoa:/tests
+    depends_on:
+      - orchestrator
+
+networks:
+  default:
+    name: astra-tawzeef-v1_default
+    external: true

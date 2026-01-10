@@ -44,7 +44,7 @@ function generateUUID() {
 
 // Main test function
 export default function () {
-  const url = 'http://localhost:8001/v2/orchestrator/execute';
+  const url = 'http://orchestrator:8001/v2/orchestrator/execute';
   
   const payload = JSON.stringify({
     request_id: generateUUID(),

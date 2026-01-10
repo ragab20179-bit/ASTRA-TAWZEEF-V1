@@ -28,10 +28,10 @@ jobs:
           sudo apt-get install -y docker-compose
 
       - name: Run Baseline Test
-        run: k6 run tests/ewoa/01_k6_baseline.js
+        run: docker-compose -f docker-compose.ewoa.yml run --rm k6 run /tests/01_k6_baseline.js
 
       - name: Run Overload Test
-        run: k6 run tests/ewoa/02_k6_overload.js
+        run: docker-compose -f docker-compose.ewoa.yml run --rm k6 run /tests/02_k6_overload.js
 
       - name: Run Chaos Test - ASTRA Down
         run: ./tests/ewoa/chaos_astra_down.sh
