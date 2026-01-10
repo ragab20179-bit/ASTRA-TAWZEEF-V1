@@ -28,7 +28,7 @@ export const options = {
     { duration: '30s', target: 0 },   // Ramp down
   ],
   thresholds: {
-    'http_req_duration': ['p(95)<100'],  // 95% of requests must complete below 100ms
+    'http_req_duration': ['p(95 )<100'],  // 95% of requests must complete below 100ms
     'errors': ['rate<0.1'],              // Error rate must be below 10%
   },
 };
@@ -78,9 +78,13 @@ export default function () {
     'response has artifact': (r) => {
       try {
         const body = JSON.parse(r.body);
-        return body.artifact !== undefined;
+        const hasArtifact = body.artifact !== undefined;
+        if (!hasArtifact) {
+          console.log(`Response missing artifact. Body: ${r.body}`);
+        }
+        return hasArtifact;
       } catch (e) {
-        console.log(`Invalid response body: ${r.body}`);
+        console.log(`Invalid JSON response body: ${r.body}`);
         return false;
       }
     },
