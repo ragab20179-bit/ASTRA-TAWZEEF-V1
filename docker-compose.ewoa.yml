@@ -7,8 +7,6 @@ services:
       - default
     volumes:
       - ./tests/ewoa:/tests
-    depends_on:
-      - orchestrator
 
 networks:
   default:
