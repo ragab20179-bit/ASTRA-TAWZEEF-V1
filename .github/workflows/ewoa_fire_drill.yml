@@ -1,0 +1,46 @@
+name: EWOA Fire Drill
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ewoa_fire_drill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose k6
+
+      - name: Run Baseline Test
+        run: k6 run tests/ewoa/01_k6_baseline.js
+
+      - name: Run Overload Test
+        run: k6 run tests/ewoa/02_k6_overload.js
+
+      - name: Run Chaos Test - ASTRA Down
+        run: ./tests/ewoa/chaos_astra_down.sh
+
+      - name: Run Chaos Test - Postgres Down
+        run: ./tests/ewoa/chaos_pg_down.sh
+
+      - name: Run Chaos Test - Postgres Latency
+        run: ./tests/ewoa/chaos_pg_latency.sh
+
+      - name: Package Evidence Bundle
+        run: ./tests/ewoa/package_evidence.sh
+
+      - name: Commit Evidence
+        run: |
+          git config user.name "EWOA Fire Drill"
+          git config user.email "ci@astra.local"
+          git add tests/ewoa/evidence/
+          git commit -m "chore: Add EWOA fire drill evidence bundle"
+          git push origin main
