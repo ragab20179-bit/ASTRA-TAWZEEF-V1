@@ -17,7 +17,7 @@ import { check, sleep } from 'k6';
 import { Rate, Trend } from 'k6/metrics';
 
 // Custom metrics
-const errorRate = new Rate('errors');
+const errorRate = new Rate('errors' );
 const executionLatency = new Trend('execution_latency');
 
 // Test configuration
@@ -28,7 +28,7 @@ export const options = {
     { duration: '30s', target: 0 },   // Ramp down
   ],
   thresholds: {
-    'http_req_duration': ['p(95)<100'],  // 95% of requests must complete below 100ms
+    'http_req_duration': ['p(95 )<100'],  // 95% of requests must complete below 100ms
     'errors': ['rate<0.1'],              // Error rate must be below 10%
   },
 };
@@ -47,7 +47,7 @@ export default function () {
   const url = 'http://orchestrator:8001/v2/orchestrator/execute';
   
   const payload = JSON.stringify({
-    request_id: generateUUID(),
+    request_id: generateUUID( ),
     actor: {
       id: `test_user_${__VU}`,
       role: 'recruiter'
@@ -66,7 +66,7 @@ export default function () {
   };
   
   const startTime = Date.now();
-  const response = http.post(url, payload, params);
+  const response = http.post(url, payload, params );
   const endTime = Date.now();
   
   // Record custom metrics
@@ -80,6 +80,7 @@ export default function () {
         const body = JSON.parse(r.body);
         return body.artifact !== undefined;
       } catch (e) {
+        console.log(`Invalid response body: ${r.body}`);
         return false;
       }
     },
