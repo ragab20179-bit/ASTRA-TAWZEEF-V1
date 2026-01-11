@@ -163,21 +163,39 @@ PostgreSQL (Port 5432)
 Artifacts (astra_decision_artifacts, tawzeef_execution_artifacts, tawzeef_watcher_artifacts)
 ```
 
-## Deployment
+## CI/CD Guardrails
 
-1. Copy all files to production server
-2. Update `docker-compose.yml` environment variables (database password, etc.)
-3. Run `docker compose up -d`
-4. Verify health endpoints
-5. Test with provided payloads
+This repository contains the implementation of CI/CD guardrails for the ASTRA TAWZEEF production system. The primary objective of this system is to ensure the stability and reliability of the production environment by automatically preventing deployments that violate the defined Service Level Agreements (SLAs).
 
-## Guardrails
+### System Overview
 
-CI/CD enforces:
-- No async/await
-- No retries
-- No threading/multiprocessing
-- No Celery/RQ
+The CI/CD guardrail system is implemented as a set of GitHub Actions workflows that are triggered on every push to the `main` branch. The system performs the following actions:
 
-See `.github/workflows/ci.yml` for details.
+1.  **Static Code Analysis:** A static analysis of the code is performed to identify any potential issues or vulnerabilities.
+2.  **Service Deployment:** The ASTRA TAWZEEF services are deployed to a clean environment using Docker Compose.
+3.  **Latency Load Testing:** A latency load test is performed using k6 to measure the p95 latency of the system.
+4.  **SLA Violation Check:** The p95 latency is compared against the defined SLA of 100ms. If the latency exceeds the SLA, the deployment is blocked.
+5.  **NCR/CAPA Generation:** In the event of an SLA violation, a Non-Conformance Report (NCR) and a Corrective and Preventive Action (CAPA) report are automatically generated and committed to the repository.
 
+### EWOA Fire Drill
+
+An Emergency Workaround Authorization (EWOA) fire drill has been implemented to validate the failure detection and response mechanisms of the CI/CD guardrail system. The fire drill simulates a production incident by intentionally introducing a latency regression into the system. The fire drill performs the following actions:
+
+1.  **Baseline Test:** A baseline k6 load test is executed to establish the normal performance of the system.
+2.  **Overload Test:** An overload k6 load test is executed to simulate a production incident and trigger the latency SLA violation.
+3.  **Chaos Tests:** A series of chaos tests are performed to validate the resilience of the system to various failure modes, including:
+    *   ASTRA Core service failure
+    *   PostgreSQL database failure
+    *   PostgreSQL database latency
+4.  **Evidence Packaging:** The logs and other evidence from the fire drill are packaged into a bundle for analysis.
+5.  **Evidence Commit:** The evidence bundle is committed to the repository for future reference.
+
+#### EWOA Fire Drill Validation
+
+The EWOA fire drill was successfully validated, and the system performed as expected. The overload test successfully triggered the latency SLA violation, and the system automatically generated the NCR and CAPA reports. The chaos tests also demonstrated the resilience of the system to various failure modes.
+
+### How to Use
+
+To use the CI/CD guardrail system, simply push your changes to the `main` branch. The system will automatically perform the necessary checks and block the deployment if any issues are detected.
+
+To run the EWOA fire drill, navigate to the "Actions" tab in the GitHub repository, select the "EWOA Fire Drill" workflow, and click "Run workflow".
