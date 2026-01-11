@@ -56,7 +56,9 @@ jobs:
         id: ewoa-signal-evaluation
         run: |
           echo "Evaluating EWOA signals..."
-          P95_LATENCY=$(grep "http_req_duration" /tmp/k6-overload-output.txt | awk '{for(i=1;i<=NF;i++  ){if($i~/^p\(95\)=/){gsub(/p\(95\)=/,"",$i); gsub(/ms.*/,"",$i); print $i}}}')
+          chmod +x ./tests/ewoa/generate_evidence_bundle.py
+          P95_LATENCY=$(grep "http_req_duration" /tmp/k6-overload-output.txt | awk 
+'{for(i=1;i<=NF;i++  ){if($i~/^p\\(95\\)=/){gsub(/p\\(95\\)=/,"",$i); gsub(/ms.*/,"",$i); print $i}}}')
           ERROR_RATE=$(grep "errors" /tmp/k6-overload-output.txt | awk '{print $2}' | sed 's/[()%]//g')
           DENIAL_RATE=$(grep "denials" /tmp/k6-overload-output.txt | awk '{print $2}' | sed 's/[()%]//g')
           
@@ -146,3 +148,4 @@ jobs:
       - name: Cleanup Services
         if: always()
         run: docker-compose down
+
