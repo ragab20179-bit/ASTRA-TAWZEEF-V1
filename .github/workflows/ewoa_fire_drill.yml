@@ -50,20 +50,34 @@ jobs:
       - name: Run Overload Test
         id: overload-test
         run: |
+          set -e
           docker-compose -f docker-compose.ewoa.yml run --rm k6 run /tests/02_k6_overload.js 2>&1 | tee /tmp/k6-overload-output.txt
 
       - name: EWOA Signal Evaluation & Evidence Generation
         id: ewoa-signal-evaluation
         run: |
+          set -e
+          echo "--- Start of k6 Overload Test Output ---"
+          cat /tmp/k6-overload-output.txt
+          echo "--- End of k6 Overload Test Output ---"
+
           echo "Evaluating EWOA signals and generating evidence bundle..."
           chmod +x ./tests/ewoa/generate_evidence_bundle.py
-          P95_LATENCY=$(grep "http_req_duration" /tmp/k6-overload-output.txt | awk '{for(i=1;i<=NF;i++  ){if($i~/^p\\(95\\)=/){gsub(/p\\(95\\)=/,"",$i); gsub(/ms.*/,"",$i); print $i}}}')
-          ERROR_RATE=$(grep "errors" /tmp/k6-overload-output.txt | awk '{print $2}' | sed 's/[()%]//g')
-          DENIAL_RATE=$(grep "denials" /tmp/k6-overload-output.txt | awk '{print $2}' | sed 's/[()%]//g')
+          
+          P95_LATENCY=$(grep "http_req_duration" /tmp/k6-overload-output.txt | awk 
+'{for(i=1;i<=NF;i++  ){if($i~/^p\\(95\\)=/){gsub(/p\\(95\\)=/,"",$i); gsub(/ms.*/,"",$i); print $i}}}' || echo "0")
+          ERROR_RATE=$(grep "errors" /tmp/k6-overload-output.txt | awk 
+'{print $2}' | sed 's/[()%]//g' || echo "0")
+          DENIAL_RATE=$(grep "denials" /tmp/k6-overload-output.txt | awk 
+'{print $2}' | sed 's/[()%]//g' || echo "0")
           
           # Generate evidence bundle
           ./tests/ewoa/generate_evidence_bundle.py $P95_LATENCY $ERROR_RATE $DENIAL_RATE > /tmp/ewoa_evidence_bundle.json
           
+          echo "--- Generated Evidence Bundle ---"
+          cat /tmp/ewoa_evidence_bundle.json
+          echo "--- End of Evidence Bundle ---"
+
           # Check for high severity alerts
           if jq -e '.summary.result == "FAIL"' /tmp/ewoa_evidence_bundle.json > /dev/null; then
             echo "Drill failed! NCR required."
