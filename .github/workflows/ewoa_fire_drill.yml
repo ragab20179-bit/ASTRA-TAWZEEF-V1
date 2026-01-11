@@ -14,11 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install dependencies (k6, jq, docker-compose, curl)
+      - name: Install dependencies (k6, jq, docker-compose)
         run: |
           set -euo pipefail
           sudo apt-get update
-          sudo apt-get install -y jq docker-compose curl dirmngr --install-recommends
+          sudo apt-get install -y jq docker-compose dirmngr --install-recommends
 
           # Install k6 (official repo)
           sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
@@ -26,22 +26,21 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y k6
 
-      - name: Start ASTRA/TAW services
+      - name: Start ASTRA services
         run: |
           set -euo pipefail
           docker-compose up -d
-          docker-compose ps
 
       - name: Wait for ASTRA Core health
         run: |
           set -euo pipefail
           echo "Waiting for ASTRA Core..."
           for i in {1..60}; do
-            if curl -fsS http://localhost:8000/health 2>/dev/null | grep -qi 'ok'; then
+            if curl -s http://localhost:8000/health 2>/dev/null | grep -q 'ok'; then
               echo "ASTRA Core is ready."
               exit 0
             fi
-            echo "Waiting... ($i/60)"
+            echo "Waiting... ($i/60 )"
             sleep 2
           done
           echo "ASTRA Core did not become healthy in time."
@@ -53,11 +52,12 @@ jobs:
           set -euo pipefail
           echo "Waiting for Orchestrator..."
           for i in {1..60}; do
-            if curl -fsS http://localhost:8001/health 2>/dev/null | grep -qi 'ok'; then
+            # Use -i for case-insensitive grep, as health checks can return 'OK' or 'ok'
+            if curl -s http://localhost:8001/health 2>/dev/null | grep -qi 'ok'; then
               echo "Orchestrator is ready."
               exit 0
             fi
-            echo "Waiting... ($i/60)"
+            echo "Waiting... ($i/60 )"
             sleep 2
           done
           echo "Orchestrator did not become healthy in time."
@@ -71,7 +71,7 @@ jobs:
             --summary-export /tmp/k6-baseline-summary.json \
             2>&1 | tee /tmp/k6-baseline-output.txt
 
-      - name: Run Overload Test (host k6)
+      - name: Run Overload Test (host k6 )
         run: |
           set -euo pipefail
           BASE_URL=http://localhost:8001 k6 run ./tests/ewoa/02_k6_overload.js \
@@ -85,23 +85,29 @@ jobs:
 
           echo "Evaluating EWOA signals from k6 summary JSON..."
 
-          # ---- REQUIRED signals ----
-          P95_LATENCY=$(jq -r '.metrics.http_req_duration.values["p(95)"] // 0' /tmp/k6-overload-summary.json)
-          HTTP_FAIL_RATE=$(jq -r '.metrics.http_req_failed.values.rate // 0' /tmp/k6-overload-summary.json)
-          ITERATIONS=$(jq -r '.metrics.iterations.values.count // 1' /tmp/k6-overload-summary.json)
+          # --- Extract stable numeric metrics from k6 JSON ---
+          # Correctly extract P95 latency (no trailing space )
+          P95_LATENCY=$(jq -r '.metrics.http_req_duration.values["p(95 )"] // 0' /tmp/k6-overload-summary.json)
 
-          # ---- OPTIONAL signals ----
-          # denials metric exists ONLY if your k6 scripts define it as a real k6 metric.
+          # Defensive check for P95 value
+          if [ "$(printf "%.0f" "$P95_LATENCY")" -eq 0 ]; then
+            echo "WARNING: P95_LATENCY parsed as 0. This may indicate an issue."
+            echo "--- Available http_req_duration keys in k6 summary --- "
+            jq -r '.metrics.http_req_duration.values | keys_unsorted' /tmp/k6-overload-summary.json || echo "jq command failed or file not found"
+          fi
+
+          HTTP_FAIL_RATE=$(jq -r '.metrics.http_req_failed.values.rate // 0' /tmp/k6-overload-summary.json )
+
+          # Custom metric: denials (defensive)
           DENIAL_COUNT=$(jq -r '
             .metrics.denials.values.count //
             .metrics.denials.values["count"] //
             0
           ' /tmp/k6-overload-summary.json)
-
-          # Denial rate = denials / iterations
+          ITERATIONS=$(jq -r '.metrics.iterations.values.count // 1' /tmp/k6-overload-summary.json)
           DENIAL_RATE=$(jq -n --argjson d "$DENIAL_COUNT" --argjson i "$ITERATIONS" 'if $i==0 then 0 else ($d / $i) end')
 
-          # Normalize numeric formatting (strict python-friendly)
+          # Normalize numeric formatting
           P95_LATENCY=$(printf "%.6f" "$P95_LATENCY")
           HTTP_FAIL_RATE=$(printf "%.6f" "$HTTP_FAIL_RATE")
           DENIAL_RATE=$(printf "%.6f" "$DENIAL_RATE")
@@ -109,15 +115,8 @@ jobs:
           echo "P95 Latency (ms): $P95_LATENCY"
           echo "HTTP Fail Rate:   $HTTP_FAIL_RATE"
           echo "Denial Rate:      $DENIAL_RATE"
-          echo "Iterations:       $ITERATIONS"
 
-          # Debug if p95 is suspiciously zero (usually means parsing mismatch)
-          if [ "$P95_LATENCY" = "0.000000" ]; then
-            echo "WARNING: P95 latency parsed as 0. Dumping available p-values:"
-            jq -r '.metrics.http_req_duration.values | keys' /tmp/k6-overload-summary.json || true
-          fi
-
-          # Generate evidence bundle (must conform to EWOA_EVIDENCE_BUNDLE v1.0)
+          # --- Generate Evidence Bundle ---
           python3 ./tests/ewoa/generate_evidence_bundle.py \
             "$P95_LATENCY" "$HTTP_FAIL_RATE" "$DENIAL_RATE" \
             > /tmp/ewoa_evidence_bundle.json
@@ -164,12 +163,12 @@ jobs:
           - **Severity:** ${SEVERITY}
 
           ## Evidence
-          - Evidence Bundle (this run): tests/ewoa/evidence/ewoa_evidence_bundle.json
+          - Evidence Bundle: tests/ewoa/evidence/ewoa_evidence_bundle.json (this run)
 
           ## Actions Required
-          1. Identify bottleneck (DB insert, ASTRA decision latency, orchestration)
-          2. Propose corrective plan (Repair Plan Generator Phase 2)
-          3. Re-run fire drill until PASS
+          1. Run performance analysis under load
+          2. Identify bottleneck (DB insert, ASTRA decision latency, orchestration)
+          3. Propose corrective action (Repair Plan Generator Phase 2)
           NCREOF
 
           echo "NCR generated: ${NCR_ID}.md"
@@ -194,14 +193,14 @@ jobs:
           Latency/availability violation detected during EWOA fire drill.
 
           ## Corrective Action
-          1. Analyze hot path performance
-          2. Remove bottlenecks (no retries, no async in gate)
-          3. Validate improvements by repeating drill
+          1. Identify bottleneck in hot path
+          2. Optimize (no retries, no async in gate path)
+          3. Re-run fire drill until PASS
 
           ## Preventive Action
           1. Keep latency guardrails enforced in CI
           2. Schedule regular EWOA fire drills
-          3. Track p95/p99 trends over time
+          3. Track p95/p99 trends (EWOA)
           CAPAEOF
 
           echo "CAPA generated: ${CAPA_ID}.md"
@@ -211,13 +210,11 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p tests/ewoa/evidence
+          # Keep latest evidence at a stable name + timestamped copy
+          cp /tmp/ewoa_evidence_bundle.json tests/ewoa/evidence/ewoa_evidence_bundle.json || true
+          cp /tmp/ewoa_evidence_bundle.json tests/ewoa/evidence/ewoa_evidence_bundle_$(date +'%Y-%m-%d-%H-%M-%S').json || true
 
-          if [ -f /tmp/ewoa_evidence_bundle.json ]; then
-            cp /tmp/ewoa_evidence_bundle.json tests/ewoa/evidence/ewoa_evidence_bundle.json
-            cp /tmp/ewoa_evidence_bundle.json tests/ewoa/evidence/ewoa_evidence_bundle_$(date +'%Y-%m-%d-%H-%M-%S').json
-          fi
-
-      - name: Upload summaries + evidence (workflow artifacts)
+      - name: Upload k6 summaries + evidence as workflow artifacts (debuggable)
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -240,8 +237,13 @@ jobs:
           git add tests/ewoa/evidence/ || true
           git add 09_Reports_and_Outputs/NCR_CAPA/ || true
 
-          git commit -m "chore: EWOA fire drill evidence $(date +'%Y-%m-%d-%H-%M-%S')" --allow-empty
-          git push
+          # Only commit if there are changes
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: EWOA fire drill evidence $(date +'%Y-%m-%d-%H-%M-%S')"
+            git push
+          else
+            echo "No changes to commit."
+          fi
 
       - name: Cleanup services
         if: always()
