@@ -64,12 +64,9 @@ jobs:
           echo "Evaluating EWOA signals and generating evidence bundle..."
           chmod +x ./tests/ewoa/generate_evidence_bundle.py
           
-          P95_LATENCY=$(grep "http_req_duration" /tmp/k6-overload-output.txt | awk 
-'{for(i=1;i<=NF;i++  ){if($i~/^p\\(95\\)=/){gsub(/p\\(95\\)=/,"",$i); gsub(/ms.*/,"",$i); print $i}}}' || echo "0")
-          ERROR_RATE=$(grep "errors" /tmp/k6-overload-output.txt | awk 
-'{print $2}' | sed 's/[()%]//g' || echo "0")
-          DENIAL_RATE=$(grep "denials" /tmp/k6-overload-output.txt | awk 
-'{print $2}' | sed 's/[()%]//g' || echo "0")
+          P95_LATENCY=$(grep "http_req_duration" /tmp/k6-overload-output.txt | awk '{for(i=1;i<=NF;i++  ){if($i~/^p\\(95\\)=/){gsub(/p\\(95\\)=/,"",$i); gsub(/ms.*/,"",$i); print $i}}}' || echo "0")
+          ERROR_RATE=$(grep "errors" /tmp/k6-overload-output.txt | awk '{print $2}' | sed 's/[()%]//g' || echo "0")
+          DENIAL_RATE=$(grep "denials" /tmp/k6-overload-output.txt | awk '{print $2}' | sed 's/[()%]//g' || echo "0")
           
           # Generate evidence bundle
           ./tests/ewoa/generate_evidence_bundle.py $P95_LATENCY $ERROR_RATE $DENIAL_RATE > /tmp/ewoa_evidence_bundle.json
