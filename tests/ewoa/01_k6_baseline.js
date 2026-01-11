@@ -1,110 +1,56 @@
-/**
- * k6 Baseline Load Test
- * 
- * Purpose: Establish baseline performance metrics for ASTRA TAWZEEF
- * 
- * Metrics captured:
- * - P50/P95/P99 latency
- * - Request rate
- * - Success rate
- * - Error rate
- * 
- * Usage: k6 run tests/ewoa/01_k6_baseline.js
- */
 
-import http from 'k6/http';
-import { check, sleep } from 'k6';
-import { Rate, Trend } from 'k6/metrics';
+Diff
+Original
+Modified
+import http from "k6/http";
+import { check, sleep } from "k6";
+import { Rate, Trend } from "k6/metrics";
 
-// Custom metrics
-const errorRate = new Rate('errors');
-const executionLatency = new Trend('execution_latency');
+export const errorRate = new Rate("errors");
+export const execLatency = new Trend("execution_latency", true);
 
-// Test configuration
+const BASE_URL = __ENV.BASE_URL || "http://localhost:8001";
+
 export const options = {
-  stages: [
-    { duration: '30s', target: 2 },   // Ramp up to 2 VUs
-    { duration: '2m', target: 2 },    // Stay at 2 VUs (baseline load)
-    { duration: '30s', target: 0 },   // Ramp down
-  ],
+  vus: 2,
+  duration: "3m",
   thresholds: {
-    'http_req_duration': ['p(95)<100'],  // 95% of requests must complete below 100ms
-    'errors': ['rate<0.1'],              // Error rate must be below 10%
+    errors: ["rate<0.1"],
+    http_req_duration: ["p(95)<100"],
   },
 };
 
-// Generate UUID for request_id
-function generateUUID() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    const r = Math.random() * 16 | 0;
-    const v = c === 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
-}
-
-// Main test function
 export default function () {
-  const url = 'http://orchestrator:8001/v2/orchestrator/execute';
-  
   const payload = JSON.stringify({
-    request_id: generateUUID(),
-    actor: {
-      id: `test_user_${__VU}`,
-      role: 'recruiter'
-    },
-    context: {
-      domain: 'interview',
-      action: 'start',
-      consent: true
-    }
+    request_id: `baseline-${__VU}-${__ITER}`,
+    action: "baseline_ping",
+    subject: { type: "candidate", id: "test_candidate" },
+    context: { mode: "baseline" },
   });
-  
-  const params = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
-  
-  const startTime = Date.now();
-  const response = http.post(url, payload, params);
-  const endTime = Date.now();
-  
-  // Record custom metrics
-  executionLatency.add(endTime - startTime);
-  
-  // Check response
-  const success = check(response, {
-    'status is 200': (r) => r.status === 200,
-    'response has execution_id': (r) => {
+
+  const res = http.post(`${BASE_URL}/v2/orchestrator/execute`, payload, {
+    headers: { "Content-Type": "application/json" },
+    timeout: "10s",
+  });
+
+  const ok = check(res, {
+    "status is 200": (r) => r.status === 200,
+    "response has execution_id": (r) => {
       try {
-        const body = JSON.parse(r.body);
-        const hasExecutionId = body.execution_id !== undefined;
-        if (!hasExecutionId) {
-          console.log(`Response missing execution_id. Body: ${r.body}`);
-        }
-        return hasExecutionId;
-      } catch (e) {
-        console.log(`Invalid JSON response body: ${r.body}`);
+        const j = r.json();
+        return j && typeof j.execution_id === "string" && j.execution_id.length > 0;
+      } catch (_) {
         return false;
       }
     },
   });
-  
-  errorRate.add(!success);
-  
-  // Think time between requests
+
+  errorRate.add(!ok);
+
+  // record latency if available (avoid NaN)
+  if (res && typeof res.timings?.duration === "number") {
+    execLatency.add(res.timings.duration);
+  }
+
   sleep(1);
-}
-
-// Setup function (runs once at start)
-export function setup() {
-  console.log('=== EWOA Baseline Load Test ===');
-  console.log('Target: 2 VUs for 2 minutes');
-  console.log('Threshold: P95 < 100ms');
-  console.log('================================');
-}
-
-// Teardown function (runs once at end)
-export function teardown(data) {
-  console.log('=== Baseline Test Complete ===');
 }
