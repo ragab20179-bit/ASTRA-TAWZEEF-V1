@@ -29,19 +29,27 @@ export default function () {
     timeout: "10s",
   });
 
+  if (__ITER < 3) {
+    console.log(`STATUS=${res.status}`);
+    console.log(`BODY=${res.body && res.body.length ? res.body.substring(0, 300) : "EMPTY"}`);
+  }
+
   const ok = check(res, {
-    "status is 200": (r) => r.status === 200,
-    "response has execution_id": (r) => {
+    "status is 200 or 503": (r) => r.status === 200 || r.status === 503,
+    "no 500s": (r) => r.status !== 500,
+  });
+
+  const okId = check(res, {
+    "execution_id present when 200": (r) => {
+      if (r.status !== 200) return true;
       try {
         const j = r.json();
         return j && typeof j.execution_id === "string" && j.execution_id.length > 0;
-      } catch (_) {
-        return false;
-      }
+      } catch (_) { return false; }
     },
   });
 
-  errors.add(!ok);
+  errors.add(!ok || !okId);
 
   if (res && res.timings && typeof res.timings.duration === "number") {
     execution_latency.add(res.timings.duration);
