@@ -78,9 +78,9 @@ export default function () {
     'response has artifact': (r) => {
       try {
         const body = JSON.parse(r.body);
-        const hasArtifact = body.artifact !== undefined;
+        const hasArtifact = body.execution_id !== undefined;
         if (!hasArtifact) {
-          console.log(`Response missing artifact. Body: ${r.body}`);
+          console.log(`Response missing execution_id. Body: ${r.body}`);
         }
         return hasArtifact;
       } catch (e) {
