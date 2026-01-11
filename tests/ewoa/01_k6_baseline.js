@@ -17,7 +17,7 @@ import { check, sleep } from 'k6';
 import { Rate, Trend } from 'k6/metrics';
 
 // Custom metrics
-const errorRate = new Rate('errors' );
+const errorRate = new Rate('errors');
 const executionLatency = new Trend('execution_latency');
 
 // Test configuration
@@ -47,7 +47,7 @@ export default function () {
   const url = 'http://orchestrator:8001/v2/orchestrator/execute';
   
   const payload = JSON.stringify({
-    request_id: generateUUID( ),
+    request_id: generateUUID(),
     actor: {
       id: `test_user_${__VU}`,
       role: 'recruiter'
@@ -66,7 +66,7 @@ export default function () {
   };
   
   const startTime = Date.now();
-  const response = http.post(url, payload, params );
+  const response = http.post(url, payload, params);
   const endTime = Date.now();
   
   // Record custom metrics
@@ -75,14 +75,14 @@ export default function () {
   // Check response
   const success = check(response, {
     'status is 200': (r) => r.status === 200,
-    'response has artifact': (r) => {
+    'response has execution_id': (r) => {
       try {
         const body = JSON.parse(r.body);
-        const hasArtifact = body.artifact !== undefined;
-        if (!hasArtifact) {
-          console.log(`Response missing artifact. Body: ${r.body}`);
+        const hasExecutionId = body.execution_id !== undefined;
+        if (!hasExecutionId) {
+          console.log(`Response missing execution_id. Body: ${r.body}`);
         }
-        return hasArtifact;
+        return hasExecutionId;
       } catch (e) {
         console.log(`Invalid JSON response body: ${r.body}`);
         return false;
