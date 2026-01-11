@@ -40,21 +40,41 @@ jobs:
               echo "ASTRA Core is ready."
               exit 0
             fi
-            echo "Waiting... ($i/60)"
+            echo "Waiting... ($i/60 )"
             sleep 2
           done
           echo "ASTRA Core did not become healthy in time."
           docker-compose ps
           exit 1
 
+      - name: Wait for Orchestrator health
+        run: |
+          set -euo pipefail
+          echo "Waiting for Orchestrator..."
+          for i in {1..60}; do
+            if curl -s http://localhost:8001/health 2>/dev/null | grep -qi 'ok'; then
+              echo "Orchestrator is ready."
+              exit 0
+            fi
+            echo "Waiting... ($i/60 )"
+            sleep 2
+          done
+          echo "Orchestrator did not become healthy in time."
+          docker-compose ps
+          exit 1
+
       - name: Run Baseline Test (host k6)
+        env:
+          BASE_URL: http://localhost:8001
         run: |
           set -euo pipefail
           k6 run ./tests/ewoa/01_k6_baseline.js \
             --summary-export /tmp/k6-baseline-summary.json \
             2>&1 | tee /tmp/k6-baseline-output.txt
 
-      - name: Run Overload Test (host k6)
+      - name: Run Overload Test (host k6 )
+        env:
+          BASE_URL: http://localhost:8001
         run: |
           set -euo pipefail
           k6 run ./tests/ewoa/02_k6_overload.js \
@@ -69,22 +89,27 @@ jobs:
           echo "Evaluating EWOA signals from k6 summary JSON..."
 
           # --- Extract stable numeric metrics from k6 JSON ---
-          P95_LATENCY=$(jq -r '.metrics.http_req_duration.values["p(95)"] // 0' /tmp/k6-overload-summary.json)
-          HTTP_FAIL_RATE=$(jq -r '.metrics.http_req_failed.values.rate // 0' /tmp/k6-overload-summary.json)
+          P95_LATENCY=$(jq -r '.metrics.http_req_duration.values["p(95 )"] // 0' /tmp/k6-overload-summary.json)
 
-          # Custom metric: denials (optional; must be defined as a k6 metric to exist here)
+          # Defensive check for P95 value
+          if [ "$(printf "%.0f" "$P95_LATENCY")" -eq 0 ]; then
+            echo "WARNING: P95_LATENCY parsed as 0. This may indicate an issue."
+            echo "--- Available http_req_duration keys in k6 summary --- "
+            jq -r '.metrics.http_req_duration.values | keys_unsorted' /tmp/k6-overload-summary.json || echo "jq command failed or file not found"
+          fi
+
+          HTTP_FAIL_RATE=$(jq -r '.metrics.http_req_failed.values.rate // 0' /tmp/k6-overload-summary.json )
+
+          # Custom metric: denials (defensive)
           DENIAL_COUNT=$(jq -r '
             .metrics.denials.values.count //
             .metrics.denials.values["count"] //
             0
           ' /tmp/k6-overload-summary.json)
-
           ITERATIONS=$(jq -r '.metrics.iterations.values.count // 1' /tmp/k6-overload-summary.json)
-
-          # Denial rate = denials / iterations
           DENIAL_RATE=$(jq -n --argjson d "$DENIAL_COUNT" --argjson i "$ITERATIONS" 'if $i==0 then 0 else ($d / $i) end')
 
-          # Normalize numeric formatting to keep python parsing strict and predictable
+          # Normalize numeric formatting
           P95_LATENCY=$(printf "%.6f" "$P95_LATENCY")
           HTTP_FAIL_RATE=$(printf "%.6f" "$HTTP_FAIL_RATE")
           DENIAL_RATE=$(printf "%.6f" "$DENIAL_RATE")
@@ -94,7 +119,6 @@ jobs:
           echo "Denial Rate:      $DENIAL_RATE"
 
           # --- Generate Evidence Bundle ---
-          # NOTE: generate_evidence_bundle.py MUST accept: p95_latency_ms, http_fail_rate, denial_rate
           python3 ./tests/ewoa/generate_evidence_bundle.py \
             "$P95_LATENCY" "$HTTP_FAIL_RATE" "$DENIAL_RATE" \
             > /tmp/ewoa_evidence_bundle.json
@@ -215,8 +239,13 @@ jobs:
           git add tests/ewoa/evidence/ || true
           git add 09_Reports_and_Outputs/NCR_CAPA/ || true
 
-          git commit -m "chore: EWOA fire drill evidence $(date +'%Y-%m-%d-%H-%M-%S')" --allow-empty
-          git push
+          # Only commit if there are changes
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: EWOA fire drill evidence $(date +'%Y-%m-%d-%H-%M-%S')"
+            git push
+          else
+            echo "No changes to commit."
+          fi
 
       - name: Cleanup services
         if: always()
