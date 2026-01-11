@@ -52,10 +52,10 @@ jobs:
         run: |
           docker-compose -f docker-compose.ewoa.yml run --rm k6 run /tests/02_k6_overload.js 2>&1 | tee /tmp/k6-overload-output.txt
 
-      - name: EWOA Signal Evaluation
+      - name: EWOA Signal Evaluation & Evidence Generation
         id: ewoa-signal-evaluation
         run: |
-          echo "Evaluating EWOA signals..."
+          echo "Evaluating EWOA signals and generating evidence bundle..."
           chmod +x ./tests/ewoa/generate_evidence_bundle.py
           P95_LATENCY=$(grep "http_req_duration" /tmp/k6-overload-output.txt | awk '{for(i=1;i<=NF;i++  ){if($i~/^p\\(95\\)=/){gsub(/p\\(95\\)=/,"",$i); gsub(/ms.*/,"",$i); print $i}}}')
           ERROR_RATE=$(grep "errors" /tmp/k6-overload-output.txt | awk '{print $2}' | sed 's/[()%]//g')
@@ -65,11 +65,11 @@ jobs:
           ./tests/ewoa/generate_evidence_bundle.py $P95_LATENCY $ERROR_RATE $DENIAL_RATE > /tmp/ewoa_evidence_bundle.json
           
           # Check for high severity alerts
-          if jq -e '.alerts[] | select(.severity == "HIGH" or .severity == "CRITICAL")' /tmp/ewoa_evidence_bundle.json > /dev/null; then
-            echo "High severity alert detected!"
+          if jq -e '.summary.result == "FAIL"' /tmp/ewoa_evidence_bundle.json > /dev/null; then
+            echo "Drill failed! NCR required."
             echo "ncr_required=true" >> $GITHUB_OUTPUT
           else
-            echo "No high severity alerts detected."
+            echo "Drill passed. No NCR required."
             echo "ncr_required=false" >> $GITHUB_OUTPUT
           fi
 
@@ -88,12 +88,12 @@ jobs:
           **Status:** OPEN
 
           ## Violation Details
-          - **Invariant Violated:** Latency SLA
-          - **Metric:** p95 latency
-          - **Threshold:** 100ms
-          - **Actual Value:** $(jq '.metrics.p95_latency_ms' /tmp/ewoa_evidence_bundle.json)ms
+          - **Invariant Violated:** $(jq -r '.alerts[0].alert_id' /tmp/ewoa_evidence_bundle.json)
+          - **Metric:** $(jq -r '.alerts[0].evidence[0]' /tmp/ewoa_evidence_bundle.json)
+          - **Threshold:** $(jq -r '.alerts[0].condition' /tmp/ewoa_evidence_bundle.json)
+          - **Actual Value:** $(jq -r '.signals[0].value' /tmp/ewoa_evidence_bundle.json)$(jq -r '.signals[0].unit' /tmp/ewoa_evidence_bundle.json)
           - **Component:** ASTRA Core
-          - **Severity:** $(jq '.alerts[] | select(.name == "High Latency") | .severity' /tmp/ewoa_evidence_bundle.json)
+          - **Severity:** $(jq -r '.alerts[0].severity' /tmp/ewoa_evidence_bundle.json)
 
           ## Analysis
           - **Root Cause:** Overload test induced latency regression
@@ -141,7 +141,7 @@ jobs:
           mv /tmp/ewoa_evidence_bundle.json tests/ewoa/evidence/
           git add tests/ewoa/evidence/
           git add 09_Reports_and_Outputs/NCR_CAPA/
-          git commit -m "chore: Add EWOA fire drill evidence and reports"
+          git commit -m "chore: Add EWOA fire drill evidence and reports for run $(date +'%Y-%m-%d-%H-%M-%S')" --allow-empty
           git push
 
       - name: Cleanup Services
