@@ -63,6 +63,22 @@ jobs:
           docker-compose ps
           exit 1
 
+      - name: Guardrail - Forbid unsupported k6 imports
+        run: |
+          set -euo pipefail
+          if grep -RIn --exclude-dir=node_modules --exclude-dir=.git "Diff" ./tests/ewoa; then
+            echo "ERROR: Found forbidden token 'Diff' in k6 scripts."
+            exit 1
+          fi
+          echo "Guardrail passed. No 'Diff' token found."
+
+      - name: Debug - Show baseline script content
+        run: |
+          set -euo pipefail
+          echo "=== First 40 lines of baseline script ==="
+          nl -ba ./tests/ewoa/01_k6_baseline.js | sed -n '1,40p'
+          echo "========================================"
+
       - name: Run Baseline Test (host k6)
         env:
           BASE_URL: http://localhost:8001
@@ -85,7 +101,6 @@ jobs:
         id: ewoa-signal-evaluation
         run: |
           set -euo pipefail
-
           echo "Evaluating EWOA signals from k6 summary JSON..."
 
           # --- Extract stable numeric metrics from k6 JSON ---
