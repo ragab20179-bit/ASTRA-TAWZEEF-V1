@@ -43,38 +43,37 @@ jobs:
           done
 
       - name: Run Baseline Test
-        run: docker-compose -f docker-compose.ewoa.yml run --rm k6 run /tests/01_k6_baseline.js
+        id: baseline-test
+        run: |
+          docker-compose -f docker-compose.ewoa.yml run --rm k6 run /tests/01_k6_baseline.js 2>&1 | tee /tmp/k6-baseline-output.txt
 
       - name: Run Overload Test
         id: overload-test
         run: |
-          docker-compose -f docker-compose.ewoa.yml run --rm k6 run /tests/02_k6_overload.js 2>&1 | tee /tmp/k6-output.txt
-          
-      - name: Analyze Overload Test Results
-        id: overload-test-analysis
+          docker-compose -f docker-compose.ewoa.yml run --rm k6 run /tests/02_k6_overload.js 2>&1 | tee /tmp/k6-overload-output.txt
+
+      - name: EWOA Signal Evaluation
+        id: ewoa-signal-evaluation
         run: |
-          echo "Analyzing overload test results..."
-          P95_RAW=$(grep "http_req_duration" /tmp/k6-output.txt | awk '{for(i=1;i<=NF;i++  ){if($i~/^p\(95\)=/){gsub(/p\(95\)=/,"",$i); gsub(/ms.*/,"",$i); print $i}}}')
-          if [ -z "$P95_RAW" ]; then
-            echo "ERROR: Could not extract P95 value"
-            echo "P95_LATENCY=0" >> $GITHUB_OUTPUT
-            echo "violation_detected=false" >> $GITHUB_OUTPUT
-            exit 1
-          fi
-          echo "P95_RAW=$P95_RAW"
-          echo "P95_LATENCY=$P95_RAW" >> $GITHUB_OUTPUT
-          VIOLATION=$(echo "$P95_RAW > 100" | bc -l)
-          if [ "$VIOLATION" -eq 1 ]; then
-            echo "VIOLATION DETECTED: P95=$P95_RAW ms > 100ms"
-            echo "violation_detected=true" >> $GITHUB_OUTPUT
-            echo "violation_value=$P95_RAW" >> $GITHUB_OUTPUT
+          echo "Evaluating EWOA signals..."
+          P95_LATENCY=$(grep "http_req_duration" /tmp/k6-overload-output.txt | awk '{for(i=1;i<=NF;i++  ){if($i~/^p\(95\)=/){gsub(/p\(95\)=/,"",$i); gsub(/ms.*/,"",$i); print $i}}}')
+          ERROR_RATE=$(grep "errors" /tmp/k6-overload-output.txt | awk '{print $2}' | sed 's/[()%]//g')
+          DENIAL_RATE=$(grep "denials" /tmp/k6-overload-output.txt | awk '{print $2}' | sed 's/[()%]//g')
+          
+          # Generate evidence bundle
+          ./tests/ewoa/generate_evidence_bundle.py $P95_LATENCY $ERROR_RATE $DENIAL_RATE > /tmp/ewoa_evidence_bundle.json
+          
+          # Check for high severity alerts
+          if jq -e '.alerts[] | select(.severity == "HIGH" or .severity == "CRITICAL")' /tmp/ewoa_evidence_bundle.json > /dev/null; then
+            echo "High severity alert detected!"
+            echo "ncr_required=true" >> $GITHUB_OUTPUT
           else
-            echo "NO VIOLATION: P95=$P95_RAW ms <= 100ms"
-            echo "violation_detected=false" >> $GITHUB_OUTPUT
+            echo "No high severity alerts detected."
+            echo "ncr_required=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Generate NCR
-        if: steps.overload-test-analysis.outputs.violation_detected == 'true'
+        if: steps.ewoa-signal-evaluation.outputs.ncr_required == 'true'
         run: |
           echo "Generating NCR..."
           mkdir -p 09_Reports_and_Outputs/NCR_CAPA/$(date +%Y-%m-%d)
@@ -91,9 +90,9 @@ jobs:
           - **Invariant Violated:** Latency SLA
           - **Metric:** p95 latency
           - **Threshold:** 100ms
-          - **Actual Value:** ${{ steps.overload-test-analysis.outputs.violation_value }}ms
+          - **Actual Value:** $(jq '.metrics.p95_latency_ms' /tmp/ewoa_evidence_bundle.json)ms
           - **Component:** ASTRA Core
-          - **Severity:** MAJOR
+          - **Severity:** $(jq '.alerts[] | select(.name == "High Latency") | .severity' /tmp/ewoa_evidence_bundle.json)
 
           ## Analysis
           - **Root Cause:** Overload test induced latency regression
@@ -106,7 +105,7 @@ jobs:
           echo "NCR generated: ${NCR_ID}.md"
 
       - name: Generate CAPA
-        if: steps.overload-test-analysis.outputs.violation_detected == 'true'
+        if: steps.ewoa-signal-evaluation.outputs.ncr_required == 'true'
         run: |
           echo "Generating CAPA..."
           TIMESTAMP=$(date +'%Y-%m-%d %H:%M:%S')
@@ -131,14 +130,17 @@ jobs:
           CAPAEOF
           echo "CAPA generated: ${CAPA_ID}.md"
 
-      - name: Commit NCR/CAPA
-        if: steps.overload-test-analysis.outputs.violation_detected == 'true'
+      - name: Commit Evidence and Reports
+        if: always()
         run: |
-          echo "Committing NCR/CAPA..."
+          echo "Committing evidence and reports..."
           git config user.email "ci@astra.local"
           git config user.name "ASTRA CI"
+          mkdir -p tests/ewoa/evidence
+          mv /tmp/ewoa_evidence_bundle.json tests/ewoa/evidence/
+          git add tests/ewoa/evidence/
           git add 09_Reports_and_Outputs/NCR_CAPA/
-          git commit -m "AUTO: NCR/CAPA for EWOA fire drill (p95=${{ steps.overload-test-analysis.outputs.violation_value }}ms)"
+          git commit -m "chore: Add EWOA fire drill evidence and reports"
           git push
 
       - name: Cleanup Services
