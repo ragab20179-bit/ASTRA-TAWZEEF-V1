@@ -43,6 +43,7 @@ services:
       PG_CONNECT_TIMEOUT: "2"
       ASTRA_URL: "http://astra-core:8000/v1/astra/authority/check"
       ASTRA_TIMEOUT_S: "0.3"
+      EWOA_FIRE_DRILL_KEY: "${EWOA_FIRE_DRILL_KEY:-}"
       STATSD_HOST: ""
       STATSD_PORT: "8125"
     depends_on:

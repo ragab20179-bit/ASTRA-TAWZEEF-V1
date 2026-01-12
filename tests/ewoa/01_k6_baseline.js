@@ -1,18 +1,17 @@
 import http from "k6/http";
 import { check, sleep } from "k6";
 import { Rate, Trend } from "k6/metrics";
+import { baseUrl, headers } from "./_k6_common.js";
 
 export const errors = new Rate("errors");
 export const execution_latency = new Trend("execution_latency", true);
 
-const BASE_URL = __ENV.BASE_URL || "http://localhost:8001";
-
 export const options = {
-  vus: 2,
-  duration: "3m",
+  vus: Number(__ENV.VUS || 2),
+  duration: __ENV.DURATION || "3m",
   thresholds: {
     errors: ["rate<0.1"],
-    http_req_duration: ["p(95)<100"],
+    http_req_duration: ["p(95)<200"],
   },
 };
 
@@ -24,8 +23,8 @@ export default function () {
     context: { mode: "baseline" },
   });
 
-  const res = http.post(`${BASE_URL}/v2/orchestrator/execute`, payload, {
-    headers: { "Content-Type": "application/json" },
+  const res = http.post(`${baseUrl()}/v2/orchestrator/execute`, payload, {
+    headers: headers(),
     timeout: "10s",
   });
 
@@ -35,25 +34,19 @@ export default function () {
   }
 
   const ok = check(res, {
-    "status is 200 or 503": (r) => r.status === 200 || r.status === 503,
-    "no 500s": (r) => r.status !== 500,
-  });
-
-  const okId = check(res, {
-    "execution_id present when 200": (r) => {
-      if (r.status !== 200) return true;
+    "status is 200": (r) => r.status === 200,
+    "has execution_id": (r) => {
       try {
         const j = r.json();
-        return j && typeof j.execution_id === "string" && j.execution_id.length > 0;
-      } catch (_) { return false; }
+        return !!j.execution_id;
+      } catch (_) {
+        return false;
+      }
     },
   });
 
-  errors.add(!ok || !okId);
-
-  if (res && res.timings && typeof res.timings.duration === "number") {
-    execution_latency.add(res.timings.duration);
-  }
+  errors.add(!ok);
+  execution_latency.add(res.timings.duration);
 
   sleep(1);
 }

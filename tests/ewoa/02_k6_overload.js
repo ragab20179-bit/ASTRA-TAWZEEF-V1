@@ -1,12 +1,11 @@
 import http from "k6/http";
 import { check, sleep } from "k6";
 import { Rate, Trend, Counter } from "k6/metrics";
+import { baseUrl, headers } from "./_k6_common.js";
 
 export const errors = new Rate("errors");
 export const execution_latency = new Trend("execution_latency", true);
 export const denials = new Counter("denials");
-
-const BASE_URL = __ENV.BASE_URL || "http://localhost:8001";
 
 export const options = {
   vus: 50,
@@ -25,8 +24,8 @@ export default function () {
     context: { mode: "overload" },
   });
 
-  const res = http.post(`${BASE_URL}/v2/orchestrator/execute`, payload, {
-    headers: { "Content-Type": "application/json" },
+  const res = http.post(`${baseUrl()}/v2/orchestrator/execute`, payload, {
+    headers: headers(),
     timeout: "10s",
   });
 
