@@ -142,10 +142,10 @@ body { font-family: var(--font-primary); background: var(--navy-deep); color: va
   border-color: rgba(0,229,255,0.4);
   box-shadow: 0 0 15px rgba(0,229,255,0.15);
 }
-.logo-pill svg { height: 28px; width: auto; border-radius: 4px; }
+.logo-pill svg { height: 22px; width: auto; border-radius: 4px; }
 .logo-grid {
-  display: flex; flex-wrap: wrap; gap: 12px;
-  align-items: center; margin: 16px 0;
+  display: flex; flex-wrap: wrap; gap: 8px;
+  align-items: center; margin: 10px 0;
 }
 .logo-section-title {
   font-size: 11px; font-weight: 700; color: var(--cyan);
@@ -254,9 +254,9 @@ tr:last-child td { border-bottom: none; }
 
 /* BADGES */
 .badge {
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex; align-items: center; gap: 5px;
   background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3);
-  border-radius: 20px; padding: 6px 14px; font-size: 11px; font-weight: 600;
+  border-radius: 20px; padding: 4px 10px; font-size: 10px; font-weight: 600;
   color: var(--cyan); letter-spacing: 0.5px; transition: all 0.3s;
 }
 .badge-gold { background: rgba(255,215,0,0.1); border-color: rgba(255,215,0,0.3); color: var(--gold); }
@@ -422,24 +422,30 @@ tr:last-child td { border-bottom: none; }
 .cover-bg-glow { position: absolute; width: 800px; height: 800px; border-radius: 50%; background: radial-gradient(circle, rgba(0,188,212,0.12) 0%, transparent 70%); top: -200px; right: -200px; pointer-events: none; animation: pulse-glow 6s ease-in-out infinite; }
 .cover-bg-glow2 { position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(21,101,192,0.1) 0%, transparent 70%); bottom: -100px; left: -100px; pointer-events: none; animation: pulse-glow 8s ease-in-out infinite reverse; }
 @keyframes pulse-glow { 0%,100% { opacity:0.6; transform:scale(1); } 50% { opacity:1; transform:scale(1.05); } }
-.cover-content { position: relative; z-index: 2; max-width: 900px; }
-.cover-logo { display: flex; align-items: center; gap: 16px; margin-bottom: 48px; }
-.logo-hex { width: 72px; height: 72px; position: relative; display: flex; align-items: center; justify-content: center; }
+.cover-content { position: relative; z-index: 2; max-width: 700px; }
+.cover-logo { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+.logo-hex { width: 56px; height: 56px; position: relative; display: flex; align-items: center; justify-content: center; }
 .logo-hex-bg { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,229,255,0.2), rgba(21,101,192,0.3)); border: 2px solid rgba(0,229,255,0.5); border-radius: 16px; box-shadow: var(--shadow-cyan); animation: logo-pulse 3s ease-in-out infinite; }
 @keyframes logo-pulse { 0%,100% { box-shadow: 0 0 20px rgba(0,229,255,0.3); } 50% { box-shadow: 0 0 40px rgba(0,229,255,0.6), 0 0 80px rgba(0,229,255,0.2); } }
-.logo-letter { font-family: var(--font-display); font-size: 36px; font-weight: 900; color: var(--white); position: relative; z-index: 1; text-shadow: 0 0 20px rgba(0,229,255,0.8); }
-.logo-text h1 { font-family: var(--font-display); font-size: 32px; font-weight: 900; color: var(--white); letter-spacing: 4px; text-shadow: 0 0 30px rgba(0,229,255,0.3); }
+.logo-letter { font-family: var(--font-display); font-size: 28px; font-weight: 900; color: var(--white); position: relative; z-index: 1; text-shadow: 0 0 20px rgba(0,229,255,0.8); }
+.logo-text h1 { font-family: var(--font-display); font-size: 26px; font-weight: 900; color: var(--white); letter-spacing: 4px; text-shadow: 0 0 30px rgba(0,229,255,0.3); }
 .logo-text p { font-size: 11px; color: var(--cyan); letter-spacing: 3px; text-transform: uppercase; margin-top: 2px; font-family: var(--font-mono); }
-.cover-tagline { font-family: var(--font-display); font-size: 52px; font-weight: 900; line-height: 1.1; margin-bottom: 12px; background: linear-gradient(135deg, var(--white) 0%, var(--cyan) 50%, var(--blue-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.cover-sub { font-size: 16px; color: var(--gray-300); margin-bottom: 32px; max-width: 600px; line-height: 1.6; }
-.badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
-.cover-kpi-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
-.cover-kpi { flex: 1; min-width: 120px; background: rgba(0,229,255,0.06); border: 1px solid rgba(0,229,255,0.2); border-radius: 12px; padding: 16px 12px; text-align: center; transition: all 0.3s; }
+.cover-tagline { font-family: var(--font-display); font-size: 44px; font-weight: 900; line-height: 1.1; margin-bottom: 10px; background: linear-gradient(135deg, var(--white) 0%, var(--cyan) 50%, var(--blue-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.cover-sub { font-size: 13px; color: var(--gray-300); margin-bottom: 18px; max-width: 560px; line-height: 1.5; }
+.badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.cover-kpi-row { display: flex; gap: 10px; flex-wrap: nowrap; margin-bottom: 24px; }
+.cover-kpi { flex: 0 0 auto; width: 130px; background: rgba(0,229,255,0.06); border: 1px solid rgba(0,229,255,0.2); border-radius: 10px; padding: 10px 8px; text-align: center; transition: all 0.3s; }
 .cover-kpi:hover { background: rgba(0,229,255,0.12); border-color: rgba(0,229,255,0.5); box-shadow: var(--shadow-cyan); }
-.cover-kpi .v { font-family: var(--font-display); font-size: 20px; font-weight: 900; color: var(--cyan); text-shadow: 0 0 20px rgba(0,229,255,0.5); }
-.cover-kpi .l { font-size: 9px; color: var(--white); text-transform: uppercase; margin-top: 4px; letter-spacing: 1px; }
+.cover-kpi .v { font-family: var(--font-display); font-size: 16px; font-weight: 900; color: var(--cyan); text-shadow: 0 0 15px rgba(0,229,255,0.5); }
+.cover-kpi .l { font-size: 8px; color: var(--white); text-transform: uppercase; margin-top: 3px; letter-spacing: 0.8px; }
 .cert-row { display: flex; gap: 10px; flex-wrap: wrap; }
 .cert { background: rgba(0,229,255,0.08); border: 1px solid rgba(0,229,255,0.25); border-radius: 6px; padding: 5px 12px; font-size: 10px; color: var(--cyan); font-weight: 600; font-family: var(--font-mono); letter-spacing: 0.5px; }
+
+/* COVER LOGO ROW — constrain SVG sizes */
+.cover-logo-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 6px; }
+.cover-logo-row svg { height: 24px; width: auto; border-radius: 4px; }
+.cover-logo-row .logo-pill { padding: 4px 8px; }
+.cover-logo-row .logo-pill svg { height: 20px; }
 
 /* COVER VISUAL RINGS */
 .cover-visual { position: absolute; right: 60px; top: 50%; transform: translateY(-50%); width: 500px; height: 500px; pointer-events: none; }
@@ -511,7 +517,7 @@ tr:last-child td { border-bottom: none; }
 <!-- ═══════════════════════════════════════════════════════════════════
      PAGE 1 — COVER
 ═══════════════════════════════════════════════════════════════════ -->
-<div class="page cover-page" style="max-width:100%; padding:80px 120px;">
+<div class="page cover-page" style="max-width:100%; padding:60px 100px;">
   <div class="cover-bg-grid"></div>
   <div class="cover-bg-glow"></div>
   <div class="cover-bg-glow2"></div>
@@ -563,7 +569,7 @@ tr:last-child td { border-bottom: none; }
     </div>
 
     <!-- Logos Row on Cover -->
-    <div class="logo-grid" style="margin-top:8px;">
+    <div class="cover-logo-row">
       <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
   <rect width="120" height="40" rx="4" fill="#003087"/>
   <text x="60" y="26" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="14" font-weight="900" fill="white" letter-spacing="1">ISO 13485</text>
