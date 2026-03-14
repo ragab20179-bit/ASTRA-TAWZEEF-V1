@@ -1,0 +1,3175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASTRA Medical Packaging — Company Profile 2025 | 4K AI Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════════
+   ASTRA MEDICAL PACKAGING — 4K AI EDITION
+   Ultra-High Resolution Design System
+═══════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* Core Palette */
+  --navy-deep:    #020B18;
+  --navy:         #050F1F;
+  --navy-mid:     #071428;
+  --navy-light:   #0A1E3A;
+  --blue-dark:    #0D2B5E;
+  --blue:         #1565C0;
+  --blue-bright:  #1976D2;
+  --blue-light:   #42A5F5;
+  --cyan-deep:    #006064;
+  --cyan:         #00BCD4;
+  --cyan-bright:  #00E5FF;
+  --cyan-glow:    rgba(0,229,255,0.15);
+  --gold:         #FFD700;
+  --gold-bright:  #FFE566;
+  --gold-glow:    rgba(255,215,0,0.15);
+  --green:        #00E676;
+  --green-dim:    #4CAF50;
+  --orange:       #FF9800;
+  --red:          #FF5252;
+  --purple:       #7C4DFF;
+  --teal:         #1DE9B6;
+  --white:        #FFFFFF;
+  --gray-100:     #F5F7FA;
+  --gray-300:     #90A4AE;
+  --gray-500:     #546E7A;
+  --gray-700:     #263238;
+
+  /* Glass Effects */
+  --glass-bg:     rgba(5,15,31,0.85);
+  --glass-border: rgba(0,229,255,0.2);
+  --glass-hover:  rgba(0,229,255,0.08);
+
+  /* Gradients */
+  --grad-cyan:    linear-gradient(135deg, #00BCD4, #00E5FF);
+  --grad-blue:    linear-gradient(135deg, #1565C0, #42A5F5);
+  --grad-gold:    linear-gradient(135deg, #FFD700, #FF8F00);
+  --grad-hero:    linear-gradient(135deg, #020B18 0%, #071428 50%, #0A1E3A 100%);
+  --grad-card:    linear-gradient(145deg, rgba(13,43,94,0.6), rgba(5,15,31,0.9));
+  --grad-green:   linear-gradient(135deg, #00E676, #1DE9B6);
+  --grad-purple:  linear-gradient(135deg, #7C4DFF, #E040FB);
+
+  /* Typography */
+  --font-primary: 'Inter', sans-serif;
+  --font-display: 'Orbitron', monospace;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Spacing */
+  --page-max:     1400px;
+  --page-pad:     60px;
+
+  /* Shadows */
+  --shadow-cyan:  0 0 30px rgba(0,229,255,0.25), 0 0 60px rgba(0,229,255,0.1);
+  --shadow-gold:  0 0 30px rgba(255,215,0,0.25), 0 0 60px rgba(255,215,0,0.1);
+  --shadow-card:  0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-deep:  0 20px 60px rgba(0,0,0,0.6);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-primary);
+  background: var(--navy-deep);
+  color: var(--white);
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy-deep); }
+::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 3px; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   PARTICLE CANVAS BACKGROUND
+═══════════════════════════════════════════════════════════════════ */
+#particle-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PAGE LAYOUT
+═══════════════════════════════════════════════════════════════════ */
+.page {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--page-pad);
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(0,229,255,0.1);
+  overflow: hidden;
+}
+
+.page::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--cyan), var(--blue-bright), var(--cyan), transparent);
+  animation: scanline 4s linear infinite;
+}
+
+@keyframes scanline {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+.page::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(21,101,192,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(0,188,212,0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════════════════ */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0,229,255,0.15);
+  font-size: 11px;
+  color: var(--gray-300);
+  font-family: var(--font-mono);
+  letter-spacing: 0.5px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-logo-box {
+  width: 20px; height: 20px;
+  background: var(--grad-cyan);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 900; color: var(--navy-deep);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION HEADER
+═══════════════════════════════════════════════════════════════════ */
+.sec-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 32px;
+  padding: 20px 28px;
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-left: 4px solid var(--cyan);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.sec-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(0,229,255,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.sec-num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--cyan);
+  min-width: 56px;
+  height: 56px;
+  background: rgba(0,229,255,0.1);
+  border: 1px solid rgba(0,229,255,0.3);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: var(--shadow-cyan);
+  flex-shrink: 0;
+}
+
+.sec-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.sec-sub {
+  font-size: 11px;
+  color: var(--cyan);
+  margin-top: 4px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  opacity: 0.8;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   KPI TILES
+═══════════════════════════════════════════════════════════════════ */
+.kpi-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.kpi {
+  flex: 1;
+  min-width: 140px;
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 20px 16px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.kpi::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad-cyan);
+}
+
+.kpi:hover {
+  border-color: rgba(0,229,255,0.5);
+  box-shadow: var(--shadow-cyan);
+  transform: translateY(-2px);
+}
+
+.kpi-val {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--cyan);
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(0,229,255,0.5);
+}
+
+.kpi-lbl {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--white);
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.kpi-sub {
+  font-size: 10px;
+  color: var(--gray-300);
+  margin-top: 3px;
+  font-family: var(--font-mono);
+}
+
+.kpi.gold .kpi-val { color: var(--gold); text-shadow: 0 0 20px rgba(255,215,0,0.5); }
+.kpi.gold::before { background: var(--grad-gold); }
+.kpi.green .kpi-val { color: var(--green); text-shadow: 0 0 20px rgba(0,230,118,0.5); }
+.kpi.green::before { background: var(--grad-green); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   GRID LAYOUTS
+═══════════════════════════════════════════════════════════════════ */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+.four-col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   GLASS CARDS
+═══════════════════════════════════════════════════════════════════ */
+.glass-card {
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 24px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(0,229,255,0.4);
+  box-shadow: var(--shadow-cyan);
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,229,255,0.5), transparent);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   TABLES
+═══════════════════════════════════════════════════════════════════ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+thead tr {
+  background: linear-gradient(135deg, rgba(21,101,192,0.8), rgba(13,43,94,0.9));
+}
+
+th {
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(0,229,255,0.2);
+}
+
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(0,229,255,0.06);
+  color: #C8D8E8;
+  transition: background 0.2s;
+}
+
+tr:nth-child(even) td { background: rgba(0,229,255,0.03); }
+tr:hover td { background: rgba(0,229,255,0.07); }
+tr:last-child td { border-bottom: none; }
+
+.green { color: var(--green) !important; font-weight: 700; }
+.gold { color: var(--gold) !important; font-weight: 700; }
+.orange { color: var(--orange) !important; font-weight: 700; }
+.red { color: var(--red) !important; font-weight: 700; }
+.cyan { color: var(--cyan) !important; font-weight: 700; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   HIGHLIGHT BOX
+═══════════════════════════════════════════════════════════════════ */
+.highlight {
+  background: linear-gradient(135deg, rgba(0,229,255,0.08), rgba(21,101,192,0.06));
+  border: 1px solid rgba(0,229,255,0.2);
+  border-left: 4px solid var(--cyan);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 12px;
+  color: #C8D8E8;
+  line-height: 1.7;
+  position: relative;
+}
+
+.highlight::before {
+  content: '◈';
+  position: absolute;
+  top: 14px; left: -2px;
+  color: var(--cyan);
+  font-size: 14px;
+  transform: translateX(-50%);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   BADGES
+═══════════════════════════════════════════════════════════════════ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0,229,255,0.1);
+  border: 1px solid rgba(0,229,255,0.3);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--cyan);
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+}
+
+.badge:hover {
+  background: rgba(0,229,255,0.2);
+  box-shadow: 0 0 15px rgba(0,229,255,0.2);
+}
+
+.badge-gold {
+  background: rgba(255,215,0,0.1);
+  border-color: rgba(255,215,0,0.3);
+  color: var(--gold);
+}
+
+.badge-green {
+  background: rgba(0,230,118,0.1);
+  border-color: rgba(0,230,118,0.3);
+  color: var(--green);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PRODUCT TILES
+═══════════════════════════════════════════════════════════════════ */
+.prod-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.prod-tile {
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 14px 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.prod-tile::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad-cyan);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.prod-tile:hover::before { transform: scaleX(1); }
+.prod-tile:hover {
+  border-color: rgba(0,229,255,0.5);
+  box-shadow: var(--shadow-cyan);
+  transform: translateY(-3px);
+}
+
+.prod-code {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--cyan);
+}
+
+.prod-name {
+  font-size: 9px;
+  color: var(--white);
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+.prod-skus {
+  font-size: 9px;
+  color: var(--gray-300);
+  margin-top: 3px;
+  font-family: var(--font-mono);
+}
+
+.prod-margin {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--green);
+  margin-top: 4px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   WORKFLOW STEPS
+═══════════════════════════════════════════════════════════════════ */
+.workflow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.step {
+  flex: 1;
+  min-width: 100px;
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 14px 8px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.step:hover {
+  border-color: rgba(0,229,255,0.5);
+  box-shadow: var(--shadow-cyan);
+  transform: translateY(-2px);
+}
+
+.step-num {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--white);
+  text-shadow: 0 0 15px rgba(0,229,255,0.5);
+}
+
+.step-title {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--cyan);
+  margin-top: 5px;
+  line-height: 1.3;
+}
+
+.step-desc {
+  font-size: 8px;
+  color: var(--gray-300);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.step-arrow {
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cyan);
+  font-size: 16px;
+  z-index: 2;
+  text-shadow: 0 0 10px rgba(0,229,255,0.8);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   AI MODULE CARDS
+═══════════════════════════════════════════════════════════════════ */
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+.ai-card {
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 20px 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(0,229,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.ai-card:hover {
+  border-color: rgba(0,229,255,0.5);
+  box-shadow: var(--shadow-cyan);
+  transform: translateY(-4px);
+}
+
+.ai-icon { font-size: 28px; line-height: 1; }
+.ai-name {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--cyan);
+  margin-top: 8px;
+  line-height: 1.3;
+  font-family: var(--font-mono);
+}
+.ai-kpi {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--gold);
+  margin-top: 6px;
+  text-shadow: 0 0 15px rgba(255,215,0,0.4);
+}
+.ai-desc {
+  font-size: 8px;
+  color: var(--gray-300);
+  margin-top: 5px;
+  line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SYSTEM TILES
+═══════════════════════════════════════════════════════════════════ */
+.sys-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.sys-tile {
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 18px 10px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.sys-tile:hover {
+  border-color: rgba(0,229,255,0.5);
+  box-shadow: var(--shadow-cyan);
+  transform: translateY(-2px);
+}
+
+.sys-code {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--cyan);
+  text-shadow: 0 0 15px rgba(0,229,255,0.4);
+}
+.sys-name { font-size: 9px; font-weight: 700; color: var(--white); margin-top: 6px; line-height: 1.3; }
+.sys-desc { font-size: 8px; color: var(--gray-300); margin-top: 6px; line-height: 1.4; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   PARTNER TILES
+═══════════════════════════════════════════════════════════════════ */
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.partner-tile {
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 20px 18px;
+  transition: all 0.3s;
+}
+
+.partner-tile:hover {
+  border-color: rgba(0,229,255,0.4);
+  box-shadow: var(--shadow-cyan);
+}
+
+.partner-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cyan);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.partner-desc { font-size: 11px; color: #C8D8E8; line-height: 1.6; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   ORG CHART
+═══════════════════════════════════════════════════════════════════ */
+.org-chart { text-align: center; margin: 16px 0; }
+
+.org-box {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(21,101,192,0.6), rgba(13,43,94,0.8));
+  border: 1px solid rgba(0,229,255,0.4);
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--white);
+  box-shadow: var(--shadow-cyan);
+}
+
+.org-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.org-sub {
+  background: rgba(0,229,255,0.08);
+  border: 1px solid rgba(0,229,255,0.25);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--cyan);
+  text-align: center;
+}
+
+.org-line {
+  border-left: 1px solid rgba(0,229,255,0.3);
+  height: 18px;
+  margin: 0 auto;
+  width: 1px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SVG CHARTS
+═══════════════════════════════════════════════════════════════════ */
+.chart-container {
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--cyan);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: var(--font-mono);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   COVER PAGE
+═══════════════════════════════════════════════════════════════════ */
+.cover-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 80px var(--page-pad);
+}
+
+.cover-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.cover-bg-glow {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,188,212,0.12) 0%, transparent 70%);
+  top: -200px;
+  right: -200px;
+  pointer-events: none;
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+
+.cover-bg-glow2 {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(21,101,192,0.1) 0%, transparent 70%);
+  bottom: -100px;
+  left: -100px;
+  pointer-events: none;
+  animation: pulse-glow 8s ease-in-out infinite reverse;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.cover-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.cover-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.logo-hex {
+  width: 72px;
+  height: 72px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-hex-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,229,255,0.2), rgba(21,101,192,0.3));
+  border: 2px solid rgba(0,229,255,0.5);
+  border-radius: 16px;
+  box-shadow: var(--shadow-cyan);
+  animation: logo-pulse 3s ease-in-out infinite;
+}
+
+@keyframes logo-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0,229,255,0.3); }
+  50% { box-shadow: 0 0 40px rgba(0,229,255,0.6), 0 0 80px rgba(0,229,255,0.2); }
+}
+
+.logo-letter {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--white);
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 20px rgba(0,229,255,0.8);
+}
+
+.logo-text h1 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: 4px;
+  text-shadow: 0 0 30px rgba(0,229,255,0.3);
+}
+
+.logo-text p {
+  font-size: 11px;
+  color: var(--cyan);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 2px;
+  font-family: var(--font-mono);
+}
+
+.cover-tagline {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--white) 0%, var(--cyan) 50%, var(--blue-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cover-year {
+  font-family: var(--font-display);
+  font-size: 80px;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0,229,255,0.3);
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  letter-spacing: 8px;
+}
+
+.cover-sub {
+  font-size: 16px;
+  color: var(--gray-300);
+  margin-bottom: 32px;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.cover-kpi-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.cover-kpi {
+  flex: 1;
+  min-width: 120px;
+  background: rgba(0,229,255,0.06);
+  border: 1px solid rgba(0,229,255,0.2);
+  border-radius: 12px;
+  padding: 16px 12px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.cover-kpi:hover {
+  background: rgba(0,229,255,0.12);
+  border-color: rgba(0,229,255,0.5);
+  box-shadow: var(--shadow-cyan);
+}
+
+.cover-kpi .v {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--cyan);
+  text-shadow: 0 0 20px rgba(0,229,255,0.5);
+}
+
+.cover-kpi .l {
+  font-size: 9px;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-top: 4px;
+  letter-spacing: 1px;
+}
+
+.cert-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cert {
+  background: rgba(0,229,255,0.08);
+  border: 1px solid rgba(0,229,255,0.25);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 10px;
+  color: var(--cyan);
+  font-weight: 600;
+  font-family: var(--font-mono);
+  letter-spacing: 0.5px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   TOC PAGE
+═══════════════════════════════════════════════════════════════════ */
+.toc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.toc-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  background: var(--grad-card);
+  border: 1px solid rgba(0,229,255,0.08);
+  border-radius: 8px;
+  transition: all 0.3s;
+  cursor: default;
+}
+
+.toc-item:hover {
+  border-color: rgba(0,229,255,0.3);
+  background: rgba(0,229,255,0.05);
+}
+
+.toc-num {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--cyan);
+  min-width: 32px;
+  opacity: 0.7;
+}
+
+.toc-title {
+  font-size: 12px;
+  color: var(--white);
+  font-weight: 500;
+  flex: 1;
+}
+
+.toc-page {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gray-300);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ANIMATED SVG BARS
+═══════════════════════════════════════════════════════════════════ */
+.bar-chart {
+  width: 100%;
+}
+
+.bar-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.bar-label {
+  font-size: 10px;
+  color: var(--gray-300);
+  min-width: 80px;
+  text-align: right;
+  font-family: var(--font-mono);
+}
+
+.bar-track {
+  flex: 1;
+  height: 20px;
+  background: rgba(0,229,255,0.06);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(0,229,255,0.1);
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  position: relative;
+  animation: bar-grow 1.5s ease-out forwards;
+  transform-origin: left;
+}
+
+.bar-fill.gold { background: linear-gradient(90deg, #FF8F00, var(--gold)); }
+.bar-fill.green { background: linear-gradient(90deg, #00897B, var(--green)); }
+.bar-fill.purple { background: linear-gradient(90deg, #5E35B1, var(--purple)); }
+
+@keyframes bar-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.bar-value {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--cyan);
+  min-width: 60px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ROADMAP TIMELINE
+═══════════════════════════════════════════════════════════════════ */
+.roadmap {
+  position: relative;
+  padding: 20px 0;
+}
+
+.roadmap-line {
+  position: absolute;
+  top: 50px;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), var(--blue-light), var(--cyan), transparent);
+  z-index: 0;
+}
+
+.roadmap-items {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.roadmap-item {
+  flex: 1;
+  text-align: center;
+  padding: 0 8px;
+}
+
+.roadmap-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--grad-cyan);
+  border: 3px solid var(--navy-deep);
+  margin: 0 auto 12px;
+  box-shadow: 0 0 15px rgba(0,229,255,0.6);
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(0,229,255,0.4); }
+  50% { box-shadow: 0 0 25px rgba(0,229,255,0.8); }
+}
+
+.roadmap-year {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--cyan);
+  margin-bottom: 6px;
+}
+
+.roadmap-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.roadmap-desc {
+  font-size: 9px;
+  color: var(--gray-300);
+  line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   NEO AI ARCHITECTURE
+═══════════════════════════════════════════════════════════════════ */
+.neo-arch {
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.neo-arch::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0,229,255,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.neo-core {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.neo-core-box {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(0,229,255,0.15), rgba(21,101,192,0.2));
+  border: 2px solid rgba(0,229,255,0.5);
+  border-radius: 16px;
+  padding: 24px 40px;
+  box-shadow: var(--shadow-cyan);
+  position: relative;
+}
+
+.neo-core-box::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 20px;
+  background: transparent;
+  border: 1px solid rgba(0,229,255,0.2);
+  animation: ring-pulse 3s ease-in-out infinite;
+}
+
+@keyframes ring-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+}
+
+.neo-core-label {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--cyan);
+  text-shadow: var(--shadow-cyan);
+  letter-spacing: 2px;
+}
+
+.neo-core-sub {
+  font-size: 10px;
+  color: var(--gray-300);
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  letter-spacing: 1px;
+}
+
+.neo-modules {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.neo-module {
+  background: rgba(0,229,255,0.06);
+  border: 1px solid rgba(0,229,255,0.2);
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.neo-module:hover {
+  background: rgba(0,229,255,0.12);
+  border-color: rgba(0,229,255,0.5);
+  box-shadow: var(--shadow-cyan);
+}
+
+.neo-module-icon { font-size: 20px; }
+.neo-module-name {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--cyan);
+  margin-top: 6px;
+  font-family: var(--font-mono);
+}
+.neo-module-desc { font-size: 9px; color: var(--gray-300); margin-top: 4px; line-height: 1.4; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   FINANCIAL CHARTS (SVG-based)
+═══════════════════════════════════════════════════════════════════ */
+.fin-chart-wrap {
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SUPPLY CHAIN NODES
+═══════════════════════════════════════════════════════════════════ */
+.supply-chain {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 20px 0;
+}
+
+.sc-node {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.sc-node-box {
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 14px 8px;
+  margin: 0 4px;
+  transition: all 0.3s;
+}
+
+.sc-node-box:hover {
+  border-color: rgba(0,229,255,0.5);
+  box-shadow: var(--shadow-cyan);
+}
+
+.sc-node-icon { font-size: 24px; }
+.sc-node-name { font-size: 10px; font-weight: 700; color: var(--cyan); margin-top: 6px; }
+.sc-node-desc { font-size: 8px; color: var(--gray-300); margin-top: 3px; line-height: 1.3; }
+
+.sc-arrow {
+  color: var(--cyan);
+  font-size: 20px;
+  opacity: 0.6;
+  flex-shrink: 0;
+  animation: arrow-flow 2s ease-in-out infinite;
+}
+
+@keyframes arrow-flow {
+  0%, 100% { opacity: 0.4; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(3px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   INVESTMENT OVERVIEW
+═══════════════════════════════════════════════════════════════════ */
+.invest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.invest-card {
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.invest-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--grad-cyan);
+}
+
+.invest-card.gold::before { background: var(--grad-gold); }
+.invest-card.green::before { background: var(--grad-green); }
+
+.invest-card:hover {
+  border-color: rgba(0,229,255,0.4);
+  box-shadow: var(--shadow-cyan);
+  transform: translateY(-3px);
+}
+
+.invest-icon { font-size: 36px; margin-bottom: 12px; }
+.invest-val {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--cyan);
+  text-shadow: 0 0 20px rgba(0,229,255,0.4);
+}
+.invest-card.gold .invest-val { color: var(--gold); text-shadow: 0 0 20px rgba(255,215,0,0.4); }
+.invest-card.green .invest-val { color: var(--green); text-shadow: 0 0 20px rgba(0,230,118,0.4); }
+
+.invest-label { font-size: 12px; font-weight: 700; color: var(--white); margin-top: 6px; }
+.invest-desc { font-size: 10px; color: var(--gray-300); margin-top: 4px; line-height: 1.5; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   CERT BADGES
+═══════════════════════════════════════════════════════════════════ */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.cert-card {
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 20px 14px;
+  text-align: center;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(0,229,255,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.cert-card:hover {
+  border-color: rgba(0,229,255,0.5);
+  box-shadow: var(--shadow-cyan);
+  transform: translateY(-3px);
+}
+
+.cert-icon { font-size: 32px; margin-bottom: 10px; }
+.cert-name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--cyan);
+  text-shadow: 0 0 15px rgba(0,229,255,0.4);
+}
+.cert-desc { font-size: 9px; color: var(--gray-300); margin-top: 5px; line-height: 1.4; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION HEADING (h3)
+═══════════════════════════════════════════════════════════════════ */
+.section-h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cyan);
+  margin: 20px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-h3::before {
+  content: '▶';
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PRINT STYLES
+═══════════════════════════════════════════════════════════════════ */
+@media print {
+  #particle-canvas { display: none; }
+  body { background: #020B18; }
+  .page { max-width: 100%; padding: 24px 32px; border-bottom: 1px solid #1a3a5c; }
+  .page::before { display: none; }
+  .cover-bg-grid, .cover-bg-glow, .cover-bg-glow2 { display: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════════════════════════════ */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PROGRESS BARS (for margins)
+═══════════════════════════════════════════════════════════════════ */
+.margin-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.margin-track {
+  flex: 1;
+  height: 8px;
+  background: rgba(0,229,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.margin-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  animation: bar-grow 1.5s ease-out forwards;
+}
+
+.margin-label { font-size: 10px; color: var(--gray-300); min-width: 120px; font-family: var(--font-mono); }
+.margin-val { font-size: 11px; font-weight: 700; color: var(--cyan); min-width: 50px; text-align: right; font-family: var(--font-display); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   WHY PARTNER CARDS
+═══════════════════════════════════════════════════════════════════ */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.why-card {
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 24px 20px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.why-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad-cyan);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.why-card:hover::before { transform: scaleX(1); }
+.why-card:hover {
+  border-color: rgba(0,229,255,0.4);
+  box-shadow: var(--shadow-cyan);
+  transform: translateY(-3px);
+}
+
+.why-icon { font-size: 32px; margin-bottom: 12px; }
+.why-title { font-size: 14px; font-weight: 700; color: var(--cyan); margin-bottom: 8px; }
+.why-desc { font-size: 11px; color: #C8D8E8; line-height: 1.6; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   STAT COUNTER ANIMATION
+═══════════════════════════════════════════════════════════════════ */
+.stat-counter {
+  display: inline-block;
+  font-family: var(--font-display);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   GLOW TEXT
+═══════════════════════════════════════════════════════════════════ */
+.glow-cyan {
+  color: var(--cyan);
+  text-shadow: 0 0 20px rgba(0,229,255,0.6);
+}
+
+.glow-gold {
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(255,215,0,0.6);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--white), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   COVER PAGE VISUAL ELEMENT
+═══════════════════════════════════════════════════════════════════ */
+.cover-visual {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 500px;
+  height: 500px;
+  pointer-events: none;
+}
+
+.hex-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(0,229,255,0.15);
+  animation: ring-rotate 20s linear infinite;
+}
+
+.hex-ring:nth-child(1) { inset: 0; animation-duration: 20s; }
+.hex-ring:nth-child(2) { inset: 40px; animation-duration: 15s; animation-direction: reverse; }
+.hex-ring:nth-child(3) { inset: 80px; animation-duration: 25s; }
+.hex-ring:nth-child(4) { inset: 120px; animation-duration: 18s; animation-direction: reverse; }
+
+@keyframes ring-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hex-dot {
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+}
+
+.hex-ring:nth-child(1) .hex-dot { top: 0; left: 50%; transform: translateX(-50%); }
+.hex-ring:nth-child(2) .hex-dot { top: 0; left: 50%; transform: translateX(-50%); }
+.hex-ring:nth-child(3) .hex-dot { top: 0; left: 50%; transform: translateX(-50%); }
+.hex-ring:nth-child(4) .hex-dot { top: 0; left: 50%; transform: translateX(-50%); }
+
+.hex-center {
+  position: absolute;
+  inset: 160px;
+  background: radial-gradient(circle, rgba(0,229,255,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hex-center-text {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--cyan);
+  text-align: center;
+  text-shadow: var(--shadow-cyan);
+  line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION DIVIDER
+═══════════════════════════════════════════════════════════════════ */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,229,255,0.3), transparent);
+  margin: 20px 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   IMAGES
+═══════════════════════════════════════════════════════════════════ */
+img.full { width: 100%; border-radius: 10px; display: block; }
+img.half { width: 100%; border-radius: 8px; display: block; max-height: 240px; object-fit: cover; }
+img.chart { width: 100%; border-radius: 8px; display: block; }
+.img-placeholder {
+  width: 100%; height: 200px;
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gray-300);
+  font-size: 12px;
+  font-family: var(--font-mono);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MARKET STATS
+═══════════════════════════════════════════════════════════════════ */
+.market-stat {
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.market-stat::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 100%, rgba(0,229,255,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.market-stat-val {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--cyan);
+  text-shadow: 0 0 25px rgba(0,229,255,0.5);
+  line-height: 1;
+}
+
+.market-stat-lbl {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--white);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.market-stat-desc {
+  font-size: 10px;
+  color: var(--gray-300);
+  margin-top: 4px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   LEADERSHIP CARDS
+═══════════════════════════════════════════════════════════════════ */
+.leader-card {
+  background: var(--grad-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s;
+}
+
+.leader-card:hover {
+  border-color: rgba(0,229,255,0.4);
+  box-shadow: var(--shadow-cyan);
+}
+
+.leader-avatar {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0,229,255,0.2), rgba(21,101,192,0.3));
+  border: 2px solid rgba(0,229,255,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  margin-bottom: 14px;
+  box-shadow: 0 0 20px rgba(0,229,255,0.2);
+}
+
+.leader-name { font-size: 15px; font-weight: 700; color: var(--white); }
+.leader-title { font-size: 11px; color: var(--cyan); margin-top: 3px; font-family: var(--font-mono); }
+.leader-desc { font-size: 10px; color: var(--gray-300); margin-top: 10px; line-height: 1.5; }
+
+</style>
+</head>
+<body>
+
+<!-- PARTICLE CANVAS -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 1 — COVER
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page cover-page" style="max-width:100%; padding:80px 120px;">
+  <div class="cover-bg-grid"></div>
+  <div class="cover-bg-glow"></div>
+  <div class="cover-bg-glow2"></div>
+
+  <!-- Visual Rings -->
+  <div class="cover-visual">
+    <div class="hex-ring"><div class="hex-dot"></div></div>
+    <div class="hex-ring"><div class="hex-dot"></div></div>
+    <div class="hex-ring"><div class="hex-dot"></div></div>
+    <div class="hex-ring"><div class="hex-dot"></div></div>
+    <div class="hex-center">
+      <div class="hex-center-text">NEO AI<br>CORE<br>v2.0</div>
+    </div>
+  </div>
+
+  <div class="cover-content">
+    <div class="cover-logo">
+      <div class="logo-hex">
+        <div class="logo-hex-bg"></div>
+        <div class="logo-letter">A</div>
+      </div>
+      <div class="logo-text">
+        <h1>ASTRA</h1>
+        <p>Medical Packaging Industries</p>
+      </div>
+    </div>
+
+    <div class="cover-tagline">COMPANY PROFILE<br>2025</div>
+    <div class="cover-sub">Saudi Arabia's Premier Sterile Packaging Manufacturer — Powered by AI, Aligned with Vision 2030</div>
+
+    <div class="badge-row">
+      <span class="badge">✦ ISO 13485 Certified</span>
+      <span class="badge">🤖 AI-Powered Operations</span>
+      <span class="badge badge-gold">⭐ NUPCO Approved</span>
+      <span class="badge badge-green">🌿 Vision 2030 Aligned</span>
+    </div>
+
+    <div class="cover-kpi-row">
+      <div class="cover-kpi"><div class="v">74M+</div><div class="l">Units/Year</div></div>
+      <div class="cover-kpi"><div class="v">171</div><div class="l">SKUs</div></div>
+      <div class="cover-kpi"><div class="v">SAR 111M</div><div class="l">Year 5 Revenue</div></div>
+      <div class="cover-kpi"><div class="v">66%</div><div class="l">EBITDA Margin</div></div>
+      <div class="cover-kpi"><div class="v">13</div><div class="l">AI Modules</div></div>
+    </div>
+
+    <div class="cert-row">
+      <span class="cert">ISO 13485</span>
+      <span class="cert">ISO 11607</span>
+      <span class="cert">SFDA Compliant</span>
+      <span class="cert">NUPCO Listed</span>
+      <span class="cert">Vision 2030</span>
+      <span class="cert">Industry 4.0</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo">
+      <div class="footer-logo-box">A</div>
+      <span>ASTRA Medical Packaging Industries — Company Profile 2025</span>
+    </div>
+    <span>Kingdom of Saudi Arabia · Jeddah Industrial City · ragab20179@gmail.com</span>
+    <span>Confidential — For Supplier Use Only &nbsp;|&nbsp; Page 1</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 2 — TABLE OF CONTENTS
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num" style="font-size:16px;">TOC</div>
+    <div>
+      <div class="sec-title">Table of Contents</div>
+      <div class="sec-sub">DOCUMENT OVERVIEW — ASTRA MEDICAL PACKAGING COMPANY PROFILE 2025</div>
+    </div>
+  </div>
+
+  <div class="toc-grid">
+    <div class="toc-item"><span class="toc-num">01</span><span class="toc-title">About ASTRA — Vision & Mission</span><span class="toc-page">3</span></div>
+    <div class="toc-item"><span class="toc-num">02</span><span class="toc-title">Market Opportunity — KSA & GCC</span><span class="toc-page">4</span></div>
+    <div class="toc-item"><span class="toc-num">03</span><span class="toc-title">Product Portfolio — 171 SKUs</span><span class="toc-page">5</span></div>
+    <div class="toc-item"><span class="toc-num">04</span><span class="toc-title">Manufacturing Facility & Capabilities</span><span class="toc-page">6</span></div>
+    <div class="toc-item"><span class="toc-num">05</span><span class="toc-title">Production Process Workflow</span><span class="toc-page">7</span></div>
+    <div class="toc-item"><span class="toc-num">06</span><span class="toc-title">Quality Assurance & Certifications</span><span class="toc-page">8</span></div>
+    <div class="toc-item"><span class="toc-num">07</span><span class="toc-title">Global Supply Chain Architecture</span><span class="toc-page">9</span></div>
+    <div class="toc-item"><span class="toc-num">08</span><span class="toc-title">AI-Assisted Management Systems</span><span class="toc-page">10</span></div>
+    <div class="toc-item"><span class="toc-num">09</span><span class="toc-title">NEO AI Core — Intelligence Modules</span><span class="toc-page">11</span></div>
+    <div class="toc-item"><span class="toc-num">10</span><span class="toc-title">AI Module Specifications</span><span class="toc-page">12</span></div>
+    <div class="toc-item"><span class="toc-num">11</span><span class="toc-title">NEO AI Architecture Diagram</span><span class="toc-page">13</span></div>
+    <div class="toc-item"><span class="toc-num">12</span><span class="toc-title">Warehouse & Distribution</span><span class="toc-page">14</span></div>
+    <div class="toc-item"><span class="toc-num">13</span><span class="toc-title">Financial Performance & Projections</span><span class="toc-page">15</span></div>
+    <div class="toc-item"><span class="toc-num">14</span><span class="toc-title">5-Year Cash Flow Model</span><span class="toc-page">16</span></div>
+    <div class="toc-item"><span class="toc-num">15</span><span class="toc-title">Investment Overview</span><span class="toc-page">17</span></div>
+    <div class="toc-item"><span class="toc-num">16</span><span class="toc-title">Leadership & Org Structure</span><span class="toc-page">18</span></div>
+    <div class="toc-item"><span class="toc-num">17</span><span class="toc-title">Raw Material Sourcing Strategy</span><span class="toc-page">19</span></div>
+    <div class="toc-item"><span class="toc-num">18</span><span class="toc-title">Strategic Roadmap 2025–2030</span><span class="toc-page">20</span></div>
+    <div class="toc-item"><span class="toc-num">19</span><span class="toc-title">Why Partner with ASTRA</span><span class="toc-page">21</span></div>
+  </div>
+
+  <div style="margin-top:28px;">
+    <div class="kpi-row">
+      <div class="kpi gold"><div class="kpi-val">SAR 28.75M</div><div class="kpi-lbl">Total Investment</div></div>
+      <div class="kpi"><div class="kpi-val">Year 1</div><div class="kpi-lbl">Break-Even</div></div>
+      <div class="kpi gold"><div class="kpi-val">SAR 178.9M</div><div class="kpi-lbl">5-Yr Cum. Cash</div></div>
+      <div class="kpi"><div class="kpi-val">19</div><div class="kpi-lbl">Machines</div></div>
+      <div class="kpi green"><div class="kpi-val">74M+</div><div class="kpi-lbl">Annual Capacity</div></div>
+      <div class="kpi gold"><div class="kpi-val">66%</div><div class="kpi-lbl">EBITDA Margin Y5</div></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 2</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 3 — ABOUT ASTRA
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">01</div>
+    <div>
+      <div class="sec-title">About ASTRA — Vision & Mission</div>
+      <div class="sec-sub">SAUDI ARABIA'S FIRST FULLY AI-MANAGED STERILIZATION PACKAGING MANUFACTURER</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="glass-card" style="margin-bottom:16px;">
+        <div class="section-h3">Our Vision</div>
+        <p style="font-size:12px;color:#C8D8E8;line-height:1.7;">To be the leading manufacturer of sterile barrier systems in the Arabian Peninsula, protecting patient safety through precision manufacturing, AI-driven quality assurance, and sustainable supply chain practices aligned with Saudi Vision 2030.</p>
+      </div>
+      <div class="glass-card" style="margin-bottom:16px;">
+        <div class="section-h3">Our Mission</div>
+        <p style="font-size:12px;color:#C8D8E8;line-height:1.7;">ASTRA manufactures ISO 11607-compliant sterilization pouches, rolls, and wraps that safeguard the sterility of medical instruments from the production line to the point of care. We serve Saudi Arabia's 500+ hospitals, 2,000+ clinics, and the broader GCC healthcare network through the NUPCO national procurement framework.</p>
+      </div>
+      <div class="highlight">
+        <strong style="color:var(--cyan);">Strategic Positioning:</strong> ASTRA is the only domestic manufacturer of the full sterilization packaging product range in Saudi Arabia, replacing 100% imported supply with locally manufactured, SFDA-certified, NUPCO-listed products — directly supporting the Kingdom's healthcare localization agenda.
+      </div>
+    </div>
+    <div>
+      <div class="glass-card" style="margin-bottom:16px;">
+        <div class="section-h3">Core Values</div>
+        <table>
+          <thead><tr><th>Value</th><th>Commitment</th></tr></thead>
+          <tbody>
+            <tr><td class="cyan">Patient Safety First</td><td>Zero-defect sterile barrier integrity</td></tr>
+            <tr><td class="cyan">Quality Excellence</td><td>ISO 13485 · 100% AI vision inspection</td></tr>
+            <tr><td class="cyan">Innovation</td><td>Industry 4.0 · AI-powered operations</td></tr>
+            <tr><td class="cyan">Reliability</td><td>99.8% on-time delivery commitment</td></tr>
+            <tr><td class="cyan">Sustainability</td><td>Vision 2030 · Local content program</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="glass-card">
+        <div class="section-h3">Company Facts</div>
+        <table>
+          <tbody>
+            <tr><td style="color:var(--gray-300);">Location</td><td>Jeddah Industrial City, KSA</td></tr>
+            <tr><td style="color:var(--gray-300);">Facility Size</td><td>6,000 m² (Production + Warehouse)</td></tr>
+            <tr><td style="color:var(--gray-300);">Production Lines</td><td class="cyan">19 Automated Machines</td></tr>
+            <tr><td style="color:var(--gray-300);">Working Hours</td><td>16 hrs/day · 300 days/year</td></tr>
+            <tr><td style="color:var(--gray-300);">Target OEE</td><td class="green">85%</td></tr>
+            <tr><td style="color:var(--gray-300);">Product Categories</td><td class="cyan">14 Categories · 171 SKUs</td></tr>
+            <tr><td style="color:var(--gray-300);">Primary Market</td><td>NUPCO · Saudi Public Hospitals</td></tr>
+            <tr><td style="color:var(--gray-300);">Export Markets</td><td>UAE · Kuwait · Oman · Bahrain</td></tr>
+            <tr><td style="color:var(--gray-300);">Quality Standard</td><td>ISO 13485:2016 · ISO 11607</td></tr>
+            <tr><td style="color:var(--gray-300);">Regulatory</td><td>SFDA · CE · FDA Compatible</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 3</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 4 — MARKET OPPORTUNITY
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">02</div>
+    <div>
+      <div class="sec-title">Market Opportunity — KSA & GCC</div>
+      <div class="sec-sub">SAR 310M KSA MARKET · SAR 893M GCC ADDRESSABLE · 100% CURRENTLY IMPORTED</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:24px;">
+    <div class="market-stat"><div class="market-stat-val">SAR 310M</div><div class="market-stat-lbl">KSA Market 2025</div><div class="market-stat-desc">Sterilization Packaging</div></div>
+    <div class="market-stat"><div class="market-stat-val">SAR 893M</div><div class="market-stat-lbl">GCC Market 2025</div><div class="market-stat-desc">Total Addressable</div></div>
+    <div class="market-stat" style="border-color:rgba(0,230,118,0.3);"><div class="market-stat-val" style="color:var(--green);">+8.5%</div><div class="market-stat-lbl">CAGR 2025–2030</div><div class="market-stat-desc">KSA Market Growth</div></div>
+    <div class="market-stat" style="border-color:rgba(255,82,82,0.3);"><div class="market-stat-val" style="color:var(--red);">100%</div><div class="market-stat-lbl">Currently Imported</div><div class="market-stat-desc">ASTRA Replaces All</div></div>
+    <div class="market-stat"><div class="market-stat-val">500+</div><div class="market-stat-lbl">Saudi Public Hospitals</div><div class="market-stat-desc">NUPCO Network</div></div>
+    <div class="market-stat"><div class="market-stat-val">2,000+</div><div class="market-stat-lbl">Clinics & Day Surgery</div><div class="market-stat-desc">Secondary Market</div></div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="glass-card" style="margin-bottom:16px;">
+        <div class="section-h3">Market Analysis</div>
+        <p style="font-size:12px;color:#C8D8E8;line-height:1.7;margin-bottom:10px;">Saudi Arabia imports 100% of its sterilization packaging requirements, creating a direct import-substitution opportunity for ASTRA. The NUPCO national procurement framework (Tender NPT0007-24) provides a guaranteed, structured demand channel covering all 500+ public hospitals.</p>
+        <p style="font-size:12px;color:#C8D8E8;line-height:1.7;">The GCC sterilization packaging market is projected to grow at 8.5% CAGR through 2030, driven by hospital expansion programs, Vision 2030 healthcare investment, and increasing surgical procedure volumes across the region.</p>
+      </div>
+      <div class="glass-card">
+        <div class="section-h3">NUPCO Competitive Advantage</div>
+        <table>
+          <thead><tr><th>Advantage</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="cyan">Domestic Manufacturer</td><td>NUPCO policy preference for local suppliers</td></tr>
+            <tr><td class="cyan">Vision 2030 Aligned</td><td>Healthcare localization mandate</td></tr>
+            <tr><td class="green">Price Competitiveness</td><td>30–40% below import cost</td></tr>
+            <tr><td class="green">Supply Security</td><td>No FX risk, no shipping delays</td></tr>
+            <tr><td class="cyan">Regulatory</td><td>SFDA-certified, no import clearance delays</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="glass-card">
+        <div class="section-h3">Market Penetration Plan</div>
+        <table style="margin-bottom:16px;">
+          <thead><tr><th>Year</th><th>KSA Share</th><th>Volume</th><th>Revenue</th></tr></thead>
+          <tbody>
+            <tr><td class="cyan">Year 1</td><td>20%</td><td>14.1M units</td><td class="gold">SAR 52.7M</td></tr>
+            <tr><td class="cyan">Year 2</td><td>30%</td><td>21.2M units</td><td class="gold">SAR 67.4M</td></tr>
+            <tr><td class="cyan">Year 3</td><td>45%</td><td>31.7M units</td><td class="gold">SAR 84.2M</td></tr>
+            <tr><td class="cyan">Year 4</td><td>60%</td><td>42.3M units</td><td class="gold">SAR 97.8M</td></tr>
+            <tr><td class="cyan">Year 5</td><td class="green">70%</td><td class="green">74.4M units</td><td class="green">SAR 111.4M</td></tr>
+          </tbody>
+        </table>
+        <div class="section-h3">Revenue Growth</div>
+        <div class="bar-chart">
+          <div class="bar-group"><span class="bar-label">Year 1</span><div class="bar-track"><div class="bar-fill" style="width:47.3%"></div></div><span class="bar-value">SAR 52.7M</span></div>
+          <div class="bar-group"><span class="bar-label">Year 2</span><div class="bar-track"><div class="bar-fill" style="width:60.5%"></div></div><span class="bar-value">SAR 67.4M</span></div>
+          <div class="bar-group"><span class="bar-label">Year 3</span><div class="bar-track"><div class="bar-fill gold" style="width:75.6%"></div></div><span class="bar-value">SAR 84.2M</span></div>
+          <div class="bar-group"><span class="bar-label">Year 4</span><div class="bar-track"><div class="bar-fill gold" style="width:87.8%"></div></div><span class="bar-value">SAR 97.8M</span></div>
+          <div class="bar-group"><span class="bar-label">Year 5</span><div class="bar-track"><div class="bar-fill green" style="width:100%"></div></div><span class="bar-value">SAR 111.4M</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 4</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 5 — PRODUCT PORTFOLIO
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">03</div>
+    <div>
+      <div class="sec-title">Product Portfolio — 171 SKUs</div>
+      <div class="sec-sub">14 PRODUCT CATEGORIES · NUPCO TENDER NPT0007-24 · ISO 11607 COMPLIANT</div>
+    </div>
+  </div>
+
+  <div class="prod-grid">
+    <div class="prod-tile"><div class="prod-code">PSPH</div><div class="prod-name">Heat-Seal Pouches</div><div class="prod-skus">9 SKUs</div><div class="prod-margin">9.5%</div></div>
+    <div class="prod-tile"><div class="prod-code">PSPS</div><div class="prod-name">Self-Seal Pouches</div><div class="prod-skus">2 SKUs</div><div class="prod-margin">22%</div></div>
+    <div class="prod-tile"><div class="prod-code">PSPG</div><div class="prod-name">Gusset Pouches</div><div class="prod-skus">1 SKU</div><div class="prod-margin">45%</div></div>
+    <div class="prod-tile"><div class="prod-code">PSR</div><div class="prod-name">Paper Rolls</div><div class="prod-skus">5 SKUs</div><div class="prod-margin">91%</div></div>
+    <div class="prod-tile"><div class="prod-code">PSRG</div><div class="prod-name">Gusset Rolls</div><div class="prod-skus">1 SKU</div><div class="prod-margin" style="color:var(--gold);">94%</div></div>
+    <div class="prod-tile"><div class="prod-code">PTP</div><div class="prod-name">Tyvek Pouches</div><div class="prod-skus">19 SKUs</div><div class="prod-margin">85%</div></div>
+    <div class="prod-tile"><div class="prod-code">PTR</div><div class="prod-name">Tyvek Rolls</div><div class="prod-skus">10 SKUs</div><div class="prod-margin">62%</div></div>
+    <div class="prod-tile"><div class="prod-code">PWSB</div><div class="prod-name">SMS Wrappers</div><div class="prod-skus">3 SKUs</div><div class="prod-margin" style="color:var(--orange);">11%</div></div>
+    <div class="prod-tile"><div class="prod-code">PWSD</div><div class="prod-name">Double SMS</div><div class="prod-skus">6 SKUs</div><div class="prod-margin">46%</div></div>
+    <div class="prod-tile"><div class="prod-code">PWSW</div><div class="prod-name">Wetlaid Wrap</div><div class="prod-skus">4 SKUs</div><div class="prod-margin">78%</div></div>
+    <div class="prod-tile"><div class="prod-code">PWSC</div><div class="prod-name">Crepe Wrap</div><div class="prod-skus">3 SKUs</div><div class="prod-margin">72%</div></div>
+    <div class="prod-tile"><div class="prod-code">PTLW</div><div class="prod-name">Tray Liners</div><div class="prod-skus">5 SKUs</div><div class="prod-margin">82%</div></div>
+    <div class="prod-tile"><div class="prod-code">PTAP</div><div class="prod-name">Indicator Tape</div><div class="prod-skus">2 SKUs</div><div class="prod-margin" style="color:var(--gold);">92%</div></div>
+    <div class="prod-tile"><div class="prod-code">PTLC</div><div class="prod-name">Cellulose Liner</div><div class="prod-skus">1 SKU</div><div class="prod-margin">68%</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="glass-card">
+      <div class="section-h3">Manufacturing Cost Formula</div>
+      <div style="background:rgba(0,229,255,0.05);border:1px solid rgba(0,229,255,0.15);border-radius:8px;padding:14px;font-family:var(--font-mono);font-size:11px;color:#C8D8E8;line-height:2;">
+        <div><span style="color:var(--cyan);">Material Cost</span> = Width(m) × Length(m) × GSM × Waste Factor ÷ 1000 × Price(SAR/kg)</div>
+        <div><span style="color:var(--cyan);">Ops Overhead</span> = Material Cost × 15%</div>
+        <div><span style="color:var(--cyan);">Total Mfg Cost</span> = Material Cost + Operations Overhead</div>
+        <div><span style="color:var(--gold);">Gross Margin</span> = (NUPCO Price − Mfg Cost) ÷ NUPCO Price × 100%</div>
+      </div>
+    </div>
+    <div class="glass-card">
+      <div class="section-h3">Category Margin Summary</div>
+      <div class="margin-bar"><span class="margin-label">PSRG Gusset Rolls</span><div class="margin-track"><div class="margin-fill" style="width:94.1%;background:linear-gradient(90deg,var(--gold),#FFE566);"></div></div><span class="margin-val" style="color:var(--gold);">94.1%</span></div>
+      <div class="margin-bar"><span class="margin-label">PTAP Indicator Tape</span><div class="margin-track"><div class="margin-fill" style="width:92.1%;background:linear-gradient(90deg,var(--gold),#FFE566);"></div></div><span class="margin-val" style="color:var(--gold);">92.1%</span></div>
+      <div class="margin-bar"><span class="margin-label">PSR Paper Rolls</span><div class="margin-track"><div class="margin-fill" style="width:91%;"></div></div><span class="margin-val">91.0%</span></div>
+      <div class="margin-bar"><span class="margin-label">PTP Tyvek Pouches</span><div class="margin-track"><div class="margin-fill" style="width:85.2%;"></div></div><span class="margin-val">85.2%</span></div>
+      <div class="margin-bar"><span class="margin-label">PTLW Tray Liners</span><div class="margin-track"><div class="margin-fill" style="width:82%;"></div></div><span class="margin-val">82.0%</span></div>
+      <div class="margin-bar"><span class="margin-label">PTR Tyvek Rolls</span><div class="margin-track"><div class="margin-fill" style="width:61.6%;background:linear-gradient(90deg,var(--blue-dark),var(--blue-bright));"></div></div><span class="margin-val" style="color:var(--blue-light);">61.6%</span></div>
+      <div class="margin-bar"><span class="margin-label">PSPH Heat-Seal</span><div class="margin-track"><div class="margin-fill" style="width:9.5%;background:linear-gradient(90deg,var(--orange),#FFCC02);"></div></div><span class="margin-val" style="color:var(--orange);">9.5%</span></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 5</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 6 — MANUFACTURING FACILITY
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">04</div>
+    <div>
+      <div class="sec-title">Manufacturing Facility & Capabilities</div>
+      <div class="sec-sub">19 AUTOMATED PRODUCTION LINES · 16 HRS/DAY · 300 DAYS/YEAR · 85% OEE</div>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">19</div><div class="kpi-lbl">Production Lines</div><div class="kpi-sub">Fully Automated</div></div>
+    <div class="kpi"><div class="kpi-val">6,000 m²</div><div class="kpi-lbl">Facility Size</div><div class="kpi-sub">Jeddah Industrial City</div></div>
+    <div class="kpi green"><div class="kpi-val">85%</div><div class="kpi-lbl">Target OEE</div><div class="kpi-sub">Overall Equipment Effectiveness</div></div>
+    <div class="kpi"><div class="kpi-val">16 hrs</div><div class="kpi-lbl">Daily Operation</div><div class="kpi-sub">300 days/year</div></div>
+    <div class="kpi gold"><div class="kpi-val">74M+</div><div class="kpi-lbl">Annual Capacity</div><div class="kpi-sub">Units/Year</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="glass-card">
+      <div class="section-h3">Machine Inventory</div>
+      <table>
+        <thead><tr><th>Machine Type</th><th>Qty</th><th>Speed</th><th>Products</th></tr></thead>
+        <tbody>
+          <tr><td>Pouch Making Machines</td><td class="cyan">4</td><td>80/min</td><td>PSPH, PSPS, PSPG</td></tr>
+          <tr><td>Roll Slitting Lines</td><td class="cyan">4</td><td>120m/min</td><td>PSR, PSRG</td></tr>
+          <tr><td>Tyvek Pouch Lines</td><td class="cyan">2</td><td>60/min</td><td>PTP</td></tr>
+          <tr><td>Tyvek Roll Lines</td><td class="cyan">2</td><td>80m/min</td><td>PTR</td></tr>
+          <tr><td>SMS Wrapper Cutters</td><td class="cyan">2</td><td>200/min</td><td>PWSB, PWSD</td></tr>
+          <tr><td>Wetlaid/Crepe Cutters</td><td class="cyan">2</td><td>180/min</td><td>PWSW, PWSC</td></tr>
+          <tr><td>Tray Liner Cutters</td><td class="cyan">2</td><td>300/min</td><td>PTLW</td></tr>
+          <tr><td>Tape Slitters</td><td class="cyan">2</td><td>150m/min</td><td>PTAP</td></tr>
+          <tr><td>Vision AI QC Systems</td><td class="gold">1</td><td class="green">100%</td><td>All lines</td></tr>
+          <tr><td><strong>TOTAL</strong></td><td class="gold"><strong>19</strong></td><td>—</td><td>All products</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="glass-card">
+      <div class="section-h3">Production Capacity Ramp-Up</div>
+      <table style="margin-bottom:16px;">
+        <thead><tr><th>Year</th><th>Units (M)</th><th>KSA Share</th><th>Revenue</th></tr></thead>
+        <tbody>
+          <tr><td class="cyan">Year 1</td><td>14.1M</td><td>20%</td><td class="gold">SAR 52.7M</td></tr>
+          <tr><td class="cyan">Year 2</td><td>21.2M</td><td>30%</td><td class="gold">SAR 67.4M</td></tr>
+          <tr><td class="cyan">Year 3</td><td>31.7M</td><td>45%</td><td class="gold">SAR 84.2M</td></tr>
+          <tr><td class="cyan">Year 4</td><td>42.3M</td><td>60%</td><td class="gold">SAR 97.8M</td></tr>
+          <tr><td class="cyan">Year 5</td><td class="green">74.4M</td><td class="green">70%</td><td class="green">SAR 111.4M</td></tr>
+        </tbody>
+      </table>
+      <div class="section-h3">Capacity Utilization</div>
+      <div class="bar-chart">
+        <div class="bar-group"><span class="bar-label">Year 1</span><div class="bar-track"><div class="bar-fill" style="width:19%;"></div></div><span class="bar-value">14.1M</span></div>
+        <div class="bar-group"><span class="bar-label">Year 2</span><div class="bar-track"><div class="bar-fill" style="width:28.5%;"></div></div><span class="bar-value">21.2M</span></div>
+        <div class="bar-group"><span class="bar-label">Year 3</span><div class="bar-track"><div class="bar-fill gold" style="width:42.6%;"></div></div><span class="bar-value">31.7M</span></div>
+        <div class="bar-group"><span class="bar-label">Year 4</span><div class="bar-track"><div class="bar-fill gold" style="width:56.9%;"></div></div><span class="bar-value">42.3M</span></div>
+        <div class="bar-group"><span class="bar-label">Year 5</span><div class="bar-track"><div class="bar-fill green" style="width:100%;"></div></div><span class="bar-value">74.4M</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 6</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 7 — PRODUCTION PROCESS
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">05</div>
+    <div>
+      <div class="sec-title">Production Process Workflow</div>
+      <div class="sec-sub">10-STEP ISO 13485 COMPLIANT MANUFACTURING PROCESS</div>
+    </div>
+  </div>
+
+  <div class="workflow">
+    <div class="step"><div class="step-num">01</div><div class="step-title">Raw Material Receiving</div><div class="step-desc">Incoming QC · CoA verification</div><div class="step-arrow">›</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">Material Storage</div><div class="step-desc">FIFO/FEFO · Controlled env.</div><div class="step-arrow">›</div></div>
+    <div class="step"><div class="step-num">03</div><div class="step-title">Slitting & Cutting</div><div class="step-desc">Precision width ±0.5mm</div><div class="step-arrow">›</div></div>
+    <div class="step"><div class="step-num">04</div><div class="step-title">Printing & Indicators</div><div class="step-desc">Chemical indicator ISO 11140-1</div><div class="step-arrow">›</div></div>
+    <div class="step"><div class="step-num">05</div><div class="step-title">Forming & Sealing</div><div class="step-desc">Heat/self-seal · Seal strength</div><div class="step-arrow">›</div></div>
+    <div class="step"><div class="step-num">06</div><div class="step-title">Gusset Forming</div><div class="step-desc">Gusset fold · Dimension check</div><div class="step-arrow">›</div></div>
+    <div class="step" style="border-color:rgba(0,229,255,0.5);box-shadow:var(--shadow-cyan);"><div class="step-num" style="color:var(--gold);">07</div><div class="step-title" style="color:var(--gold);">Vision AI Inspection</div><div class="step-desc">100% automated · Seal integrity</div><div class="step-arrow">›</div></div>
+    <div class="step"><div class="step-num">08</div><div class="step-title">Sampling & QC Lab</div><div class="step-desc">ISO 11607 tests · Burst & peel</div><div class="step-arrow">›</div></div>
+    <div class="step"><div class="step-num">09</div><div class="step-title">Packaging & Labeling</div><div class="step-desc">Lot coding · Traceability</div><div class="step-arrow">›</div></div>
+    <div class="step"><div class="step-num">10</div><div class="step-title">Warehouse & Dispatch</div><div class="step-desc">RFID tracking · NUPCO delivery</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="glass-card">
+      <div class="section-h3">Quality Control Points</div>
+      <table>
+        <thead><tr><th>Step</th><th>Test</th><th>Standard</th><th>Frequency</th></tr></thead>
+        <tbody>
+          <tr><td>Incoming Material</td><td>CoA verification</td><td class="cyan">ISO 11607</td><td>Every lot</td></tr>
+          <tr><td>In-Process</td><td>Seal strength test</td><td class="cyan">ASTM F88</td><td>Every 30 min</td></tr>
+          <tr><td>In-Process</td><td>Burst test</td><td class="cyan">ASTM F1140</td><td>Every 30 min</td></tr>
+          <tr><td>Vision AI</td><td>Seal integrity scan</td><td class="cyan">ISO 11607</td><td class="gold">100% units</td></tr>
+          <tr><td>Final</td><td>Peel test</td><td class="cyan">ASTM F1929</td><td>Every batch</td></tr>
+          <tr><td>Final</td><td>Microbial barrier</td><td class="cyan">ISO 11607</td><td>Every lot</td></tr>
+          <tr><td>Release</td><td>Certificate of Conformance</td><td class="cyan">ISO 13485</td><td>Every lot</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="glass-card">
+      <div class="section-h3">AI Vision Inspection System</div>
+      <div class="kpi-row" style="margin-bottom:16px;">
+        <div class="kpi gold" style="min-width:0;"><div class="kpi-val" style="font-size:18px;">100%</div><div class="kpi-lbl">Coverage</div></div>
+        <div class="kpi green" style="min-width:0;"><div class="kpi-val" style="font-size:18px;">99.97%</div><div class="kpi-lbl">Accuracy</div></div>
+        <div class="kpi" style="min-width:0;"><div class="kpi-val" style="font-size:18px;">&lt;0.1s</div><div class="kpi-lbl">Per Unit</div></div>
+      </div>
+      <div class="highlight">
+        <strong style="color:var(--cyan);">AI Vision System</strong> performs real-time seal integrity analysis on every unit produced, using deep learning models trained on 10M+ samples. Defect detection includes seal voids, channel defects, contamination, and dimensional non-conformance — all logged to the NEO AI quality database.
+      </div>
+      <div style="margin-top:12px;">
+        <div class="badge" style="margin-right:8px;margin-bottom:8px;">🔍 Seal Integrity</div>
+        <div class="badge" style="margin-right:8px;margin-bottom:8px;">📏 Dimensional Check</div>
+        <div class="badge" style="margin-right:8px;margin-bottom:8px;">🧫 Contamination Detection</div>
+        <div class="badge" style="margin-right:8px;margin-bottom:8px;">📊 Real-time Analytics</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 7</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 8 — QUALITY ASSURANCE
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">06</div>
+    <div>
+      <div class="sec-title">Quality Assurance & Certifications</div>
+      <div class="sec-sub">ISO 13485 · ISO 11607 · SFDA · CE · FDA COMPATIBLE · NUPCO APPROVED</div>
+    </div>
+  </div>
+
+  <div class="cert-grid" style="margin-bottom:24px;">
+    <div class="cert-card"><div class="cert-icon">🏅</div><div class="cert-name">ISO 13485</div><div class="cert-desc">Medical Device Quality Management System — Full compliance with 2016 revision</div></div>
+    <div class="cert-card"><div class="cert-icon">🛡️</div><div class="cert-name">ISO 11607</div><div class="cert-desc">Sterile Barrier Systems for Medical Devices — Parts 1 & 2 compliant</div></div>
+    <div class="cert-card"><div class="cert-icon">🇸🇦</div><div class="cert-name">SFDA</div><div class="cert-desc">Saudi Food & Drug Authority — Full regulatory approval for all 171 SKUs</div></div>
+    <div class="cert-card"><div class="cert-icon">⭐</div><div class="cert-name">NUPCO</div><div class="cert-desc">National Unified Procurement Company — Listed supplier, Tender NPT0007-24</div></div>
+    <div class="cert-card"><div class="cert-icon">🇪🇺</div><div class="cert-name">CE Mark</div><div class="cert-desc">European Conformity — Compatible with EU MDR 2017/745 requirements</div></div>
+    <div class="cert-card"><div class="cert-icon">🇺🇸</div><div class="cert-name">FDA Compatible</div><div class="cert-desc">US FDA 21 CFR Part 820 compatible manufacturing practices</div></div>
+    <div class="cert-card"><div class="cert-icon">🌿</div><div class="cert-name">Vision 2030</div><div class="cert-desc">Saudi Vision 2030 Healthcare Localization — Certified local manufacturer</div></div>
+    <div class="cert-card"><div class="cert-icon">🤖</div><div class="cert-name">Industry 4.0</div><div class="cert-desc">AI-powered quality management — 13 integrated AI modules</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="glass-card">
+      <div class="section-h3">Quality KPIs</div>
+      <div class="kpi-row" style="flex-wrap:wrap;">
+        <div class="kpi green" style="min-width:100px;"><div class="kpi-val" style="font-size:18px;">99.97%</div><div class="kpi-lbl">First Pass Yield</div></div>
+        <div class="kpi" style="min-width:100px;"><div class="kpi-val" style="font-size:18px;">&lt;0.03%</div><div class="kpi-lbl">Defect Rate</div></div>
+        <div class="kpi gold" style="min-width:100px;"><div class="kpi-val" style="font-size:18px;">99.8%</div><div class="kpi-lbl">On-Time Delivery</div></div>
+        <div class="kpi green" style="min-width:100px;"><div class="kpi-val" style="font-size:18px;">100%</div><div class="kpi-lbl">Lot Traceability</div></div>
+      </div>
+    </div>
+    <div class="glass-card">
+      <div class="section-h3">Testing Standards</div>
+      <table>
+        <thead><tr><th>Test</th><th>Standard</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td>Seal Strength</td><td class="cyan">ASTM F88</td><td class="green">≥1.5 N/15mm</td></tr>
+          <tr><td>Burst Test</td><td class="cyan">ASTM F1140</td><td class="green">≥50 kPa</td></tr>
+          <tr><td>Peel Test</td><td class="cyan">ASTM F1929</td><td class="green">Pass</td></tr>
+          <tr><td>Microbial Barrier</td><td class="cyan">ISO 11607</td><td class="green">≥6 log reduction</td></tr>
+          <tr><td>Accelerated Aging</td><td class="cyan">ASTM F1980</td><td class="green">5-year shelf life</td></tr>
+          <tr><td>Biocompatibility</td><td class="cyan">ISO 10993</td><td class="green">Pass</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 8</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 9 — SUPPLY CHAIN
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">07</div>
+    <div>
+      <div class="sec-title">Global Supply Chain Architecture</div>
+      <div class="sec-sub">MULTI-TIER SOURCING · AI PROCUREMENT · RFID TRACKING · NUPCO LAST MILE</div>
+    </div>
+  </div>
+
+  <div class="supply-chain" style="margin-bottom:24px;">
+    <div class="sc-node"><div class="sc-node-box"><div class="sc-node-icon">🌍</div><div class="sc-node-name">Tier 1 Suppliers</div><div class="sc-node-desc">DuPont (Tyvek)<br>Ahlstrom · Fiberweb</div></div></div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-node"><div class="sc-node-box"><div class="sc-node-icon">🚢</div><div class="sc-node-name">Logistics Hub</div><div class="sc-node-desc">Jeddah Islamic Port<br>King Abdulaziz Port</div></div></div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-node"><div class="sc-node-box" style="border-color:rgba(0,229,255,0.5);box-shadow:var(--shadow-cyan);"><div class="sc-node-icon">🏭</div><div class="sc-node-name">ASTRA Factory</div><div class="sc-node-desc">Jeddah Industrial City<br>6,000 m² · 19 Lines</div></div></div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-node"><div class="sc-node-box"><div class="sc-node-icon">📦</div><div class="sc-node-name">Warehouse</div><div class="sc-node-desc">RFID-tracked<br>FIFO/FEFO managed</div></div></div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-node"><div class="sc-node-box"><div class="sc-node-icon">🏥</div><div class="sc-node-name">NUPCO Network</div><div class="sc-node-desc">500+ Hospitals<br>2,000+ Clinics</div></div></div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-node"><div class="sc-node-box"><div class="sc-node-icon">🌐</div><div class="sc-node-name">GCC Export</div><div class="sc-node-desc">UAE · Kuwait<br>Oman · Bahrain</div></div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="glass-card">
+      <div class="section-h3">Raw Material Sourcing</div>
+      <table>
+        <thead><tr><th>Material</th><th>Supplier</th><th>Origin</th><th>Tier</th></tr></thead>
+        <tbody>
+          <tr><td>Tyvek® 1073B/1059B</td><td>DuPont</td><td>USA/Luxembourg</td><td class="gold">Tier 1</td></tr>
+          <tr><td>SMS Nonwoven</td><td>Ahlstrom-Munksjö</td><td>Finland/China</td><td class="gold">Tier 1</td></tr>
+          <tr><td>Medical-Grade Paper</td><td>Fiberweb/Billerud</td><td>Europe</td><td class="cyan">Tier 2</td></tr>
+          <tr><td>PET/PE Laminate Film</td><td>Sealed Air / Berry</td><td>USA/Europe</td><td class="cyan">Tier 2</td></tr>
+          <tr><td>Chemical Indicators</td><td>3M / Crosstex</td><td>USA</td><td class="cyan">Tier 2</td></tr>
+          <tr><td>Packaging Materials</td><td>Local KSA</td><td>Saudi Arabia</td><td style="color:var(--green);">Tier 4</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="glass-card">
+      <div class="section-h3">Inventory Strategy</div>
+      <table>
+        <thead><tr><th>Material Tier</th><th>Safety Stock</th><th>Reorder Point</th><th>Lead Time</th></tr></thead>
+        <tbody>
+          <tr><td class="gold">Tyvek (Tier 1)</td><td>90 days</td><td>75 days</td><td>60 days</td></tr>
+          <tr><td class="gold">SMS Nonwoven (Tier 1)</td><td>90 days</td><td>75 days</td><td>45 days</td></tr>
+          <tr><td class="cyan">Medical Paper (Tier 2)</td><td>45 days</td><td>35 days</td><td>30 days</td></tr>
+          <tr><td class="cyan">PET/PE Film (Tier 2)</td><td>45 days</td><td>35 days</td><td>30 days</td></tr>
+          <tr><td style="color:var(--green);">Local (Tier 4)</td><td>14 days</td><td>10 days</td><td>5 days</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight" style="margin-top:12px;">
+        <strong style="color:var(--cyan);">AI Procurement Agent</strong> automatically triggers purchase orders when stock reaches the reorder point, ensuring zero stockout events while minimizing working capital tied up in inventory.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 9</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 10 — AI MANAGEMENT SYSTEMS
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">08</div>
+    <div>
+      <div class="sec-title">AI-Assisted Management Systems</div>
+      <div class="sec-sub">13 AI MODULES · INDUSTRY 4.0 · REAL-TIME ANALYTICS · ZERO-DEFECT OPERATIONS</div>
+    </div>
+  </div>
+
+  <div class="sys-grid">
+    <div class="sys-tile"><div class="sys-code">ERP</div><div class="sys-name">Enterprise Resource Planning</div><div class="sys-desc">SAP-integrated AI-enhanced ERP</div></div>
+    <div class="sys-tile"><div class="sys-code">MES</div><div class="sys-name">Manufacturing Execution</div><div class="sys-desc">Real-time production control</div></div>
+    <div class="sys-tile"><div class="sys-code">QMS</div><div class="sys-name">Quality Management</div><div class="sys-desc">ISO 13485 digital QMS</div></div>
+    <div class="sys-tile"><div class="sys-code">WMS</div><div class="sys-name">Warehouse Management</div><div class="sys-desc">RFID-enabled inventory</div></div>
+    <div class="sys-tile"><div class="sys-code">SCM</div><div class="sys-name">Supply Chain Mgmt</div><div class="sys-desc">AI procurement automation</div></div>
+    <div class="sys-tile"><div class="sys-code">CRM</div><div class="sys-name">Customer Relations</div><div class="sys-desc">NUPCO portal integration</div></div>
+  </div>
+
+  <div class="highlight" style="margin-bottom:20px;">
+    <strong style="color:var(--cyan);">NEO AI Core</strong> serves as the central intelligence hub, integrating all 13 AI modules through a unified data lake. Real-time dashboards provide management with live KPIs across production, quality, supply chain, and financial performance — enabling proactive decision-making and predictive maintenance.
+  </div>
+
+  <div class="three-col">
+    <div class="glass-card">
+      <div class="section-h3">Production AI</div>
+      <div style="font-size:11px;color:#C8D8E8;line-height:1.7;">
+        <div style="margin-bottom:8px;">🤖 <strong style="color:var(--cyan);">Predictive Maintenance</strong> — ML models predict equipment failures 72h in advance, reducing unplanned downtime by 85%</div>
+        <div style="margin-bottom:8px;">⚡ <strong style="color:var(--cyan);">OEE Optimizer</strong> — AI continuously adjusts machine parameters to maximize Overall Equipment Effectiveness</div>
+        <div>📊 <strong style="color:var(--cyan);">Production Scheduler</strong> — Dynamic scheduling based on demand forecasts and material availability</div>
+      </div>
+    </div>
+    <div class="glass-card">
+      <div class="section-h3">Quality AI</div>
+      <div style="font-size:11px;color:#C8D8E8;line-height:1.7;">
+        <div style="margin-bottom:8px;">👁️ <strong style="color:var(--cyan);">Vision Inspection</strong> — Deep learning models inspect 100% of units at production speed</div>
+        <div style="margin-bottom:8px;">📋 <strong style="color:var(--cyan);">SPC Engine</strong> — Statistical Process Control with AI-driven root cause analysis</div>
+        <div>🔬 <strong style="color:var(--cyan);">CAPA Manager</strong> —
+ Automated CAPA workflows with AI-assisted investigation</div>
+      </div>
+    </div>
+    <div class="glass-card">
+      <div class="section-h3">Business AI</div>
+      <div style="font-size:11px;color:#C8D8E8;line-height:1.7;">
+        <div style="margin-bottom:8px;">💰 <strong style="color:var(--cyan);">Demand Forecasting</strong> — 95% accuracy 90-day demand forecasts using hospital consumption data</div>
+        <div style="margin-bottom:8px;">🛒 <strong style="color:var(--cyan);">Procurement Agent</strong> — Autonomous PO generation with supplier performance scoring</div>
+        <div>📈 <strong style="color:var(--cyan);">Financial Analytics</strong> — Real-time P&L, cash flow, and EBITDA monitoring</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 10</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 11 — NEO AI CORE
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">09</div>
+    <div>
+      <div class="sec-title">NEO AI Core — Intelligence Modules</div>
+      <div class="sec-sub">13 INTEGRATED AI MODULES · UNIFIED DATA LAKE · REAL-TIME DECISION ENGINE</div>
+    </div>
+  </div>
+
+  <div class="ai-grid" style="margin-bottom:24px;">
+    <div class="ai-card"><div class="ai-icon">👁️</div><div class="ai-name">Vision QC</div><div class="ai-kpi">100%</div><div class="ai-desc">Real-time seal integrity inspection on all production lines</div></div>
+    <div class="ai-card"><div class="ai-icon">🔧</div><div class="ai-name">Predictive Maint.</div><div class="ai-kpi">85%</div><div class="ai-desc">Downtime reduction through ML failure prediction</div></div>
+    <div class="ai-card"><div class="ai-icon">📊</div><div class="ai-name">SPC Engine</div><div class="ai-kpi">6σ</div><div class="ai-desc">Statistical process control with AI root cause analysis</div></div>
+    <div class="ai-card"><div class="ai-icon">📦</div><div class="ai-name">Inventory AI</div><div class="ai-kpi">0</div><div class="ai-desc">Zero stockout events with autonomous reorder management</div></div>
+    <div class="ai-card"><div class="ai-icon">🛒</div><div class="ai-name">Procurement Bot</div><div class="ai-kpi">Auto</div><div class="ai-desc">Autonomous PO generation and supplier performance scoring</div></div>
+    <div class="ai-card"><div class="ai-icon">📈</div><div class="ai-name">Demand Forecast</div><div class="ai-kpi">95%</div><div class="ai-desc">90-day demand forecasting accuracy using hospital data</div></div>
+    <div class="ai-card"><div class="ai-icon">⚡</div><div class="ai-name">OEE Optimizer</div><div class="ai-kpi">85%</div><div class="ai-desc">Continuous machine parameter optimization for max efficiency</div></div>
+    <div class="ai-card"><div class="ai-icon">📋</div><div class="ai-name">CAPA Manager</div><div class="ai-kpi">Auto</div><div class="ai-desc">Automated corrective action workflows with AI investigation</div></div>
+    <div class="ai-card"><div class="ai-icon">🚚</div><div class="ai-name">Logistics AI</div><div class="ai-kpi">99.8%</div><div class="ai-desc">On-time delivery optimization for NUPCO network</div></div>
+    <div class="ai-card"><div class="ai-icon">💰</div><div class="ai-name">Finance Analytics</div><div class="ai-kpi">Live</div><div class="ai-desc">Real-time P&L, cash flow, and EBITDA dashboards</div></div>
+    <div class="ai-card"><div class="ai-icon">🔬</div><div class="ai-name">Lab LIMS</div><div class="ai-kpi">Digital</div><div class="ai-desc">Laboratory Information Management with e-signatures</div></div>
+    <div class="ai-card"><div class="ai-icon">📡</div><div class="ai-name">IoT Sensors</div><div class="ai-kpi">1000+</div><div class="ai-desc">Real-time environmental and process monitoring sensors</div></div>
+    <div class="ai-card"><div class="ai-icon">🧠</div><div class="ai-name">NEO Core</div><div class="ai-kpi">v2.0</div><div class="ai-desc">Central AI orchestration and decision intelligence hub</div></div>
+  </div>
+
+  <div class="highlight">
+    <strong style="color:var(--gold);">NEO AI Core v2.0</strong> is ASTRA's proprietary artificial intelligence platform — a unified intelligence layer that connects all 13 AI modules through a shared data lake, enabling cross-functional optimization, predictive analytics, and autonomous operations management. NEO processes over 1 million data points per hour from IoT sensors, vision systems, ERP, and external market data.
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 11</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 12 — AI MODULE SPECIFICATIONS
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">10</div>
+    <div>
+      <div class="sec-title">AI Module Specifications</div>
+      <div class="sec-sub">TECHNICAL SPECIFICATIONS · PERFORMANCE METRICS · INTEGRATION DETAILS</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="glass-card">
+      <div class="section-h3">Core AI Modules</div>
+      <table>
+        <thead><tr><th>Module</th><th>Technology</th><th>KPI</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="cyan">Vision QC</td><td>CNN Deep Learning</td><td class="green">100% coverage</td><td class="green">● Live</td></tr>
+          <tr><td class="cyan">Predictive Maint.</td><td>LSTM Time Series</td><td class="green">85% reduction</td><td class="green">● Live</td></tr>
+          <tr><td class="cyan">SPC Engine</td><td>Statistical ML</td><td class="green">6σ quality</td><td class="green">● Live</td></tr>
+          <tr><td class="cyan">Demand Forecast</td><td>Transformer Model</td><td class="green">95% accuracy</td><td class="green">● Live</td></tr>
+          <tr><td class="cyan">Procurement Bot</td><td>Reinforcement Learning</td><td class="green">0 stockouts</td><td class="green">● Live</td></tr>
+          <tr><td class="cyan">OEE Optimizer</td><td>Genetic Algorithm</td><td class="green">85% OEE</td><td class="green">● Live</td></tr>
+          <tr><td class="cyan">Finance Analytics</td><td>NLP + Time Series</td><td class="green">Real-time</td><td class="green">● Live</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="glass-card">
+      <div class="section-h3">System Architecture</div>
+      <table>
+        <thead><tr><th>Layer</th><th>Technology</th><th>Capacity</th></tr></thead>
+        <tbody>
+          <tr><td class="cyan">Data Ingestion</td><td>Apache Kafka</td><td>1M events/hr</td></tr>
+          <tr><td class="cyan">Data Lake</td><td>Azure Data Lake</td><td>100TB storage</td></tr>
+          <tr><td class="cyan">ML Platform</td><td>Azure ML + ONNX</td><td>GPU-accelerated</td></tr>
+          <tr><td class="cyan">API Gateway</td><td>REST + GraphQL</td><td>10K req/sec</td></tr>
+          <tr><td class="cyan">Dashboard</td><td>Power BI + Custom</td><td>Real-time</td></tr>
+          <tr><td class="cyan">Mobile App</td><td>React Native</td><td>iOS + Android</td></tr>
+          <tr><td class="cyan">Security</td><td>ISO 27001</td><td>End-to-end encrypt</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="three-col" style="margin-top:20px;">
+    <div class="glass-card" style="text-align:center;">
+      <div style="font-size:40px;margin-bottom:10px;">🧠</div>
+      <div style="font-family:var(--font-display);font-size:20px;font-weight:900;color:var(--cyan);text-shadow:var(--shadow-cyan);">1M+</div>
+      <div style="font-size:11px;color:var(--white);margin-top:4px;">Data Points/Hour</div>
+      <div style="font-size:10px;color:var(--gray-300);margin-top:3px;">Processed by NEO AI Core</div>
+    </div>
+    <div class="glass-card" style="text-align:center;">
+      <div style="font-size:40px;margin-bottom:10px;">⚡</div>
+      <div style="font-family:var(--font-display);font-size:20px;font-weight:900;color:var(--gold);text-shadow:var(--shadow-gold);">&lt;50ms</div>
+      <div style="font-size:11px;color:var(--white);margin-top:4px;">Response Latency</div>
+      <div style="font-size:10px;color:var(--gray-300);margin-top:3px;">AI decision-making speed</div>
+    </div>
+    <div class="glass-card" style="text-align:center;">
+      <div style="font-size:40px;margin-bottom:10px;">🔒</div>
+      <div style="font-family:var(--font-display);font-size:20px;font-weight:900;color:var(--green);text-shadow:0 0 20px rgba(0,230,118,0.4);">99.99%</div>
+      <div style="font-size:11px;color:var(--white);margin-top:4px;">System Uptime</div>
+      <div style="font-size:10px;color:var(--gray-300);margin-top:3px;">High availability architecture</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 12</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 13 — NEO AI ARCHITECTURE DIAGRAM
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">11</div>
+    <div>
+      <div class="sec-title">NEO AI Core — System Architecture</div>
+      <div class="sec-sub">UNIFIED AI PLATFORM · DATA LAKE · ML PIPELINE · REAL-TIME OPERATIONS</div>
+    </div>
+  </div>
+
+  <div class="neo-arch">
+    <div class="neo-core">
+      <div class="neo-core-box">
+        <div class="neo-core-label">🧠 NEO AI CORE v2.0</div>
+        <div class="neo-core-sub">Central Intelligence Hub · 1M+ Data Points/Hour · &lt;50ms Latency</div>
+      </div>
+    </div>
+
+    <!-- Data Sources Row -->
+    <div style="margin-bottom:20px;">
+      <div class="section-h3">Data Sources</div>
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;">
+        <div class="neo-module"><div class="neo-module-icon">📡</div><div class="neo-module-name">IoT Sensors</div><div class="neo-module-desc">1000+ production sensors</div></div>
+        <div class="neo-module"><div class="neo-module-icon">👁️</div><div class="neo-module-name">Vision Cameras</div><div class="neo-module-desc">19 AI inspection cameras</div></div>
+        <div class="neo-module"><div class="neo-module-icon">🏭</div><div class="neo-module-name">MES/ERP</div><div class="neo-module-desc">SAP production data</div></div>
+        <div class="neo-module"><div class="neo-module-icon">🔬</div><div class="neo-module-name">LIMS</div><div class="neo-module-desc">Lab test results</div></div>
+        <div class="neo-module"><div class="neo-module-icon">📦</div><div class="neo-module-name">WMS/RFID</div><div class="neo-module-desc">Inventory tracking</div></div>
+        <div class="neo-module"><div class="neo-module-icon">🌐</div><div class="neo-module-name">Market Data</div><div class="neo-module-desc">NUPCO demand signals</div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- AI Processing Layer -->
+    <div style="margin-bottom:20px;">
+      <div class="section-h3">AI Processing Layer</div>
+      <div class="neo-modules">
+        <div class="neo-module"><div class="neo-module-icon">🔍</div><div class="neo-module-name">Vision QC Engine</div><div class="neo-module-desc">CNN · 100% inspection · 99.97% accuracy</div></div>
+        <div class="neo-module"><div class="neo-module-icon">🔧</div><div class="neo-module-name">Predictive Maint.</div><div class="neo-module-desc">LSTM · 72h advance warning · 85% reduction</div></div>
+        <div class="neo-module"><div class="neo-module-icon">📊</div><div class="neo-module-name">SPC Analytics</div><div class="neo-module-desc">Statistical ML · 6σ quality control</div></div>
+        <div class="neo-module"><div class="neo-module-icon">📈</div><div class="neo-module-name">Demand Forecasting</div><div class="neo-module-desc">Transformer · 95% accuracy · 90-day horizon</div></div>
+        <div class="neo-module"><div class="neo-module-icon">🛒</div><div class="neo-module-name">Procurement AI</div><div class="neo-module-desc">RL · Autonomous PO · 0 stockouts</div></div>
+        <div class="neo-module"><div class="neo-module-icon">⚡</div><div class="neo-module-name">OEE Optimizer</div><div class="neo-module-desc">Genetic algo · Real-time tuning · 85% OEE</div></div>
+        <div class="neo-module"><div class="neo-module-icon">💰</div><div class="neo-module-name">Finance Engine</div><div class="neo-module-desc">NLP + TS · Real-time P&L · EBITDA tracking</div></div>
+        <div class="neo-module"><div class="neo-module-icon">📋</div><div class="neo-module-name">CAPA Manager</div><div class="neo-module-desc">NLP · Auto root cause · Workflow automation</div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Output Layer -->
+    <div>
+      <div class="section-h3">Outputs & Actions</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;">
+        <div class="neo-module" style="background:rgba(0,230,118,0.08);border-color:rgba(0,230,118,0.3);"><div class="neo-module-icon">🖥️</div><div class="neo-module-name" style="color:var(--green);">Live Dashboard</div><div class="neo-module-desc">Real-time KPI monitoring</div></div>
+        <div class="neo-module" style="background:rgba(0,230,118,0.08);border-color:rgba(0,230,118,0.3);"><div class="neo-module-icon">📱</div><div class="neo-module-name" style="color:var(--green);">Mobile Alerts</div><div class="neo-module-desc">Instant notifications</div></div>
+        <div class="neo-module" style="background:rgba(0,230,118,0.08);border-color:rgba(0,230,118,0.3);"><div class="neo-module-icon">🤖</div><div class="neo-module-name" style="color:var(--green);">Auto Actions</div><div class="neo-module-desc">Autonomous decisions</div></div>
+        <div class="neo-module" style="background:rgba(0,230,118,0.08);border-color:rgba(0,230,118,0.3);"><div class="neo-module-icon">📊</div><div class="neo-module-name" style="color:var(--green);">Reports</div><div class="neo-module-desc">Regulatory & management</div></div>
+        <div class="neo-module" style="background:rgba(0,230,118,0.08);border-color:rgba(0,230,118,0.3);"><div class="neo-module-icon">🔗</div><div class="neo-module-name" style="color:var(--green);">API Integration</div><div class="neo-module-desc">NUPCO, SAP, Azure</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 13</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 14 — WAREHOUSE & DISTRIBUTION
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">12</div>
+    <div>
+      <div class="sec-title">Warehouse & Distribution</div>
+      <div class="sec-sub">RFID-ENABLED · FIFO/FEFO · AI INVENTORY · NUPCO LAST-MILE DELIVERY</div>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">2,000 m²</div><div class="kpi-lbl">Warehouse Area</div></div>
+    <div class="kpi gold"><div class="kpi-val">99.8%</div><div class="kpi-lbl">On-Time Delivery</div></div>
+    <div class="kpi"><div class="kpi-val">RFID</div><div class="kpi-lbl">Tracking System</div><div class="kpi-sub">100% lot traceability</div></div>
+    <div class="kpi green"><div class="kpi-val">3–5 Days</div><div class="kpi-lbl">NUPCO Delivery</div><div class="kpi-sub">All 500+ hospitals</div></div>
+    <div class="kpi"><div class="kpi-val">5 Years</div><div class="kpi-lbl">Shelf Life</div><div class="kpi-sub">Accelerated aging tested</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="glass-card">
+      <div class="section-h3">Distribution Channels</div>
+      <table>
+        <thead><tr><th>Channel</th><th>Customers</th><th>Lead Time</th><th>Share</th></tr></thead>
+        <tbody>
+          <tr><td class="cyan">NUPCO Direct</td><td>All 500+ Saudi hospitals</td><td>3–5 days</td><td class="green">70%</td></tr>
+          <tr><td class="cyan">MOH Hospitals</td><td>Direct to facility</td><td>3–5 days</td><td>15%</td></tr>
+          <tr><td class="cyan">Private Hospitals</td><td>Via distributors</td><td>5–7 days</td><td>10%</td></tr>
+          <tr><td class="cyan">GCC Export</td><td>UAE, Kuwait, Oman, Bahrain</td><td>7–14 days</td><td>5%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="glass-card">
+      <div class="section-h3">Inventory Strategy</div>
+      <table>
+        <thead><tr><th>Material Tier</th><th>Safety Stock</th><th>Reorder Point</th><th>Lead Time</th></tr></thead>
+        <tbody>
+          <tr><td class="gold">Tyvek (Tier 1)</td><td>90 days</td><td>75 days</td><td>60 days</td></tr>
+          <tr><td class="gold">SMS Nonwoven (Tier 1)</td><td>90 days</td><td>75 days</td><td>45 days</td></tr>
+          <tr><td class="cyan">Medical Paper (Tier 2)</td><td>45 days</td><td>35 days</td><td>30 days</td></tr>
+          <tr><td class="cyan">PET/PE Film (Tier 2)</td><td>45 days</td><td>35 days</td><td>30 days</td></tr>
+          <tr><td style="color:var(--green);">Local (Tier 4)</td><td>14 days</td><td>10 days</td><td>5 days</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight" style="margin-top:12px;">
+        <strong style="color:var(--cyan);">AI Procurement Agent</strong> automatically triggers purchase orders when stock reaches the reorder point, ensuring zero stockout events while minimizing working capital tied up in inventory.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 14</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 15 — FINANCIAL PERFORMANCE
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">13</div>
+    <div>
+      <div class="sec-title">Financial Performance & Projections</div>
+      <div class="sec-sub">5-YEAR P&L · EBITDA RECONCILIATION · BREAK-EVEN ANALYSIS</div>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">SAR 52.7M</div><div class="kpi-lbl">Year 1 Revenue</div></div>
+    <div class="kpi gold"><div class="kpi-val">SAR 111.4M</div><div class="kpi-lbl">Year 5 Revenue</div><div class="kpi-sub">+111% growth</div></div>
+    <div class="kpi green"><div class="kpi-val">63.7%</div><div class="kpi-lbl">Year 1 EBITDA</div><div class="kpi-sub">SAR 33.6M</div></div>
+    <div class="kpi gold"><div class="kpi-val">66.0%</div><div class="kpi-lbl">Year 5 EBITDA</div><div class="kpi-sub">SAR 73.5M</div></div>
+    <div class="kpi"><div class="kpi-val">Year 1</div><div class="kpi-lbl">Break-Even</div><div class="kpi-sub">SAR 28.75M invest.</div></div>
+    <div class="kpi gold"><div class="kpi-val">SAR 178.9M</div><div class="kpi-lbl">5-Yr Cum. Cash</div><div class="kpi-sub">Free cash flow</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="glass-card">
+      <div class="section-h3">5-Year Revenue & EBITDA</div>
+      <table style="margin-bottom:16px;">
+        <thead><tr><th>Year</th><th>Revenue</th><th>EBITDA</th><th>EBITDA%</th><th>FCF</th></tr></thead>
+        <tbody>
+          <tr><td class="cyan">Year 1</td><td>SAR 52.7M</td><td class="green">SAR 33.6M</td><td class="green">63.7%</td><td>SAR 24.1M</td></tr>
+          <tr><td class="cyan">Year 2</td><td>SAR 67.4M</td><td class="green">SAR 43.8M</td><td class="green">65.0%</td><td>SAR 35.2M</td></tr>
+          <tr><td class="cyan">Year 3</td><td>SAR 84.2M</td><td class="green">SAR 55.1M</td><td class="green">65.4%</td><td>SAR 44.8M</td></tr>
+          <tr><td class="cyan">Year 4</td><td>SAR 97.8M</td><td class="green">SAR 64.2M</td><td class="green">65.6%</td><td>SAR 52.3M</td></tr>
+          <tr><td class="cyan">Year 5</td><td class="gold">SAR 111.4M</td><td class="gold">SAR 73.5M</td><td class="gold">66.0%</td><td class="gold">SAR 22.5M</td></tr>
+        </tbody>
+      </table>
+      <div class="section-h3">Revenue Growth</div>
+      <div class="bar-chart">
+        <div class="bar-group"><span class="bar-label">Year 1</span><div class="bar-track"><div class="bar-fill" style="width:47.3%"></div></div><span class="bar-value" style="color:var(--cyan);">SAR 52.7M</span></div>
+        <div class="bar-group"><span class="bar-label">Year 2</span><div class="bar-track"><div class="bar-fill" style="width:60.5%"></div></div><span class="bar-value" style="color:var(--cyan);">SAR 67.4M</span></div>
+        <div class="bar-group"><span class="bar-label">Year 3</span><div class="bar-track"><div class="bar-fill gold" style="width:75.6%"></div></div><span class="bar-value" style="color:var(--gold);">SAR 84.2M</span></div>
+        <div class="bar-group"><span class="bar-label">Year 4</span><div class="bar-track"><div class="bar-fill gold" style="width:87.8%"></div></div><span class="bar-value" style="color:var(--gold);">SAR 97.8M</span></div>
+        <div class="bar-group"><span class="bar-label">Year 5</span><div class="bar-track"><div class="bar-fill green" style="width:100%"></div></div><span class="bar-value" style="color:var(--green);">SAR 111.4M</span></div>
+      </div>
+    </div>
+    <div class="glass-card">
+      <div class="section-h3">EBITDA Margin Progression</div>
+      <div class="bar-chart" style="margin-bottom:20px;">
+        <div class="bar-group"><span class="bar-label">Year 1</span><div class="bar-track"><div class="bar-fill" style="width:63.7%"></div></div><span class="bar-value" style="color:var(--cyan);">63.7%</span></div>
+        <div class="bar-group"><span class="bar-label">Year 2</span><div class="bar-track"><div class="bar-fill" style="width:65%"></div></div><span class="bar-value" style="color:var(--cyan);">65.0%</span></div>
+        <div class="bar-group"><span class="bar-label">Year 3</span><div class="bar-track"><div class="bar-fill gold" style="width:65.4%"></div></div><span class="bar-value" style="color:var(--gold);">65.4%</span></div>
+        <div class="bar-group"><span class="bar-label">Year 4</span><div class="bar-track"><div class="bar-fill gold" style="width:65.6%"></div></div><span class="bar-value" style="color:var(--gold);">65.6%</span></div>
+        <div class="bar-group"><span class="bar-label">Year 5</span><div class="bar-track"><div class="bar-fill green" style="width:66%"></div></div><span class="bar-value" style="color:var(--green);">66.0%</span></div>
+      </div>
+      <div class="section-h3">Cost Structure (Year 1)</div>
+      <table>
+        <thead><tr><th>Cost Category</th><th>Amount</th><th>% Revenue</th></tr></thead>
+        <tbody>
+          <tr><td>Raw Materials</td><td>SAR 12.8M</td><td>24.3%</td></tr>
+          <tr><td>Direct Labor</td><td>SAR 2.1M</td><td>4.0%</td></tr>
+          <tr><td>Manufacturing Overhead</td><td>SAR 1.9M</td><td>3.6%</td></tr>
+          <tr><td>SG&A</td><td>SAR 2.3M</td><td>4.4%</td></tr>
+          <tr><td class="green"><strong>EBITDA</strong></td><td class="green"><strong>SAR 33.6M</strong></td><td class="green"><strong>63.7%</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 15</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 16 — CASH FLOW MODEL
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">14</div>
+    <div>
+      <div class="sec-title">5-Year Cash Flow Model</div>
+      <div class="sec-sub">FREE CASH FLOW · CUMULATIVE RETURNS · INVESTMENT PAYBACK</div>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi gold"><div class="kpi-val">SAR 28.75M</div><div class="kpi-lbl">Total Investment</div><div class="kpi-sub">Capex + Working Capital</div></div>
+    <div class="kpi green"><div class="kpi-val">Year 1</div><div class="kpi-lbl">Payback Period</div><div class="kpi-sub">Full recovery Year 1</div></div>
+    <div class="kpi gold"><div class="kpi-val">SAR 178.9M</div><div class="kpi-lbl">5-Yr Cumulative FCF</div><div class="kpi-sub">Free cash flow total</div></div>
+    <div class="kpi green"><div class="kpi-val">622%</div><div class="kpi-lbl">5-Year ROI</div><div class="kpi-sub">Return on investment</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="glass-card">
+      <div class="section-h3">Cash Flow Summary</div>
+      <table>
+        <thead><tr><th>Year</th><th>Revenue</th><th>EBITDA</th><th>CapEx</th><th>FCF</th><th>Cumulative</th></tr></thead>
+        <tbody>
+          <tr><td>Y0</td><td>—</td><td>—</td><td class="red">(28.75M)</td><td class="red">(28.75M)</td><td class="red">(28.75M)</td></tr>
+          <tr><td class="cyan">Y1</td><td>52.7M</td><td class="green">33.6M</td><td>(2.1M)</td><td class="green">24.1M</td><td class="green">SAR (4.65M)</td></tr>
+          <tr><td class="cyan">Y2</td><td>67.4M</td><td class="green">43.8M</td><td>(1.5M)</td><td class="green">35.2M</td><td class="green">SAR 30.55M</td></tr>
+          <tr><td class="cyan">Y3</td><td>84.2M</td><td class="green">55.1M</td><td>(1.2M)</td><td class="green">44.8M</td><td class="green">SAR 75.35M</td></tr>
+          <tr><td class="cyan">Y4</td><td>97.8M</td><td class="green">64.2M</td><td>(1.0M)</td><td class="green">52.3M</td><td class="green">SAR 127.65M</td></tr>
+          <tr><td class="cyan">Y5</td><td class="gold">111.4M</td><td class="gold">73.5M</td><td>(0.8M)</td><td class="gold">22.5M</td><td class="gold">SAR 178.9M</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="glass-card">
+      <div class="section-h3">Cumulative Cash Flow</div>
+      <div class="bar-chart">
+        <div class="bar-group"><span class="bar-label">Year 0</span><div class="bar-track"><div class="bar-fill" style="width:16%;background:linear-gradient(90deg,var(--red),#FF8A80);"></div></div><span class="bar-value" style="color:var(--red);">(28.75M)</span></div>
+        <div class="bar-group"><span class="bar-label">Year 1</span><div class="bar-track"><div class="bar-fill" style="width:2.6%;background:linear-gradient(90deg,var(--orange),#FFCC02);"></div></div><span class="bar-value" style="color:var(--orange);">(4.65M)</span></div>
+        <div class="bar-group"><span class="bar-label">Year 2</span><div class="bar-track"><div class="bar-fill" style="width:17.1%;"></div></div><span class="bar-value" style="color:var(--cyan);">30.55M</span></div>
+        <div class="bar-group"><span class="bar-label">Year 3</span><div class="bar-track"><div class="bar-fill gold" style="width:42.1%;"></div></div><span class="bar-value" style="color:var(--gold);">75.35M</span></div>
+        <div class="bar-group"><span class="bar-label">Year 4</span><div class="bar-track"><div class="bar-fill gold" style="width:71.4%;"></div></div><span class="bar-value" style="color:var(--gold);">127.65M</span></div>
+        <div class="bar-group"><span class="bar-label">Year 5</span><div class="bar-track"><div class="bar-fill green" style="width:100%;"></div></div><span class="bar-value" style="color:var(--green);">178.9M</span></div>
+      </div>
+      <div class="highlight" style="margin-top:16px;">
+        <strong style="color:var(--gold);">Break-Even Analysis:</strong> ASTRA achieves full investment payback within Year 1 of operations. The high EBITDA margin (63–66%) driven by premium Tyvek and paper roll products generates exceptional cash returns, with cumulative 5-year FCF of SAR 178.9M on a SAR 28.75M investment — a 622% ROI.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 16</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 17 — INVESTMENT OVERVIEW
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">15</div>
+    <div>
+      <div class="sec-title">Investment Overview</div>
+      <div class="sec-sub">SAR 28.75M TOTAL INVESTMENT · YEAR 1 BREAK-EVEN · 622% 5-YEAR ROI</div>
+    </div>
+  </div>
+
+  <div class="invest-grid" style="margin-bottom:24px;">
+    <div class="invest-card gold">
+      <div class="invest-icon">🏭</div>
+      <div class="invest-val">SAR 18.5M</div>
+      <div class="invest-label">Capital Expenditure</div>
+      <div class="invest-desc">19 production machines, facility fit-out, AI systems, utility infrastructure</div>
+    </div>
+    <div class="invest-card">
+      <div class="invest-icon">💼</div>
+      <div class="invest-val">SAR 7.25M</div>
+      <div class="invest-label">Working Capital</div>
+      <div class="invest-desc">90-day raw material inventory, pre-operational expenses, staff recruitment</div>
+    </div>
+    <div class="invest-card green">
+      <div class="invest-icon">🤖</div>
+      <div class="invest-val">SAR 3.0M</div>
+      <div class="invest-label">AI & Technology</div>
+      <div class="invest-desc">NEO AI Core platform, MES/ERP integration, IoT sensors, vision systems</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="glass-card">
+      <div class="section-h3">CapEx Breakdown</div>
+      <table>
+        <thead><tr><th>Item</th><th>Cost (SAR)</th><th>%</th></tr></thead>
+        <tbody>
+          <tr><td>Production Machinery (19 lines)</td><td class="gold">12,400,000</td><td>43.1%</td></tr>
+          <tr><td>Facility Fit-Out & Civil Works</td><td>2,800,000</td><td>9.7%</td></tr>
+          <tr><td>Utility Infrastructure</td><td>1,200,000</td><td>4.2%</td></tr>
+          <tr><td>NEO AI Platform & IT</td><td class="cyan">3,000,000</td><td>10.4%</td></tr>
+          <tr><td>Quality Lab Equipment</td><td>850,000</td><td>3.0%</td></tr>
+          <tr><td>Warehouse & RFID Systems</td><td>650,000</td><td>2.3%</td></tr>
+          <tr><td>Working Capital</td><td>7,250,000</td><td>25.2%</td></tr>
+          <tr><td class="gold"><strong>TOTAL</strong></td><td class="gold"><strong>28,750,000</strong></td><td class="gold"><strong>100%</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="glass-card">
+      <div class="section-h3">Investment Returns</div>
+      <div class="kpi-row" style="flex-wrap:wrap;margin-bottom:16px;">
+        <div class="kpi gold" style="min-width:100px;"><div class="kpi-val" style="font-size:18px;">622%</div><div class="kpi-lbl">5-Year ROI</div></div>
+        <div class="kpi green" style="min-width:100px;"><div class="kpi-val" style="font-size:18px;">Year 1</div><div class="kpi-lbl">Payback</div></div>
+        <div class="kpi" style="min-width:100px;"><div class="kpi-val" style="font-size:18px;">SAR 178.9M</div><div class="kpi-lbl">5-Yr FCF</div></div>
+      </div>
+      <div class="highlight">
+        <strong style="color:var(--gold);">Investment Thesis:</strong> ASTRA's unique position as Saudi Arabia's only domestic sterilization packaging manufacturer, combined with guaranteed NUPCO procurement framework access and AI-driven operational efficiency, creates an exceptional risk-adjusted return profile. The 63–66% EBITDA margin is industry-leading and sustainable through the NUPCO pricing framework.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 17</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 18 — LEADERSHIP & ORG STRUCTURE
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">16</div>
+    <div>
+      <div class="sec-title">Leadership & Org Structure</div>
+      <div class="sec-sub">EXPERIENCED MANAGEMENT TEAM · INDUSTRY EXPERTISE · VISION 2030 LEADERSHIP</div>
+    </div>
+  </div>
+
+  <div class="org-chart" style="margin-bottom:24px;">
+    <div class="org-box" style="font-size:14px;padding:14px 28px;">
+      👤 Chief Executive Officer<br>
+      <span style="font-size:10px;color:var(--cyan);font-family:var(--font-mono);">Strategic Leadership · Vision 2030</span>
+    </div>
+    <div class="org-line"></div>
+    <div class="org-row">
+      <div class="org-sub">🏭 VP Operations<br><span style="font-size:9px;color:var(--gray-300);">19 Production Lines</span></div>
+      <div class="org-sub">🔬 VP Quality<br><span style="font-size:9px;color:var(--gray-300);">ISO 13485 · SFDA</span></div>
+      <div class="org-sub">🤖 VP Technology<br><span style="font-size:9px;color:var(--gray-300);">NEO AI Core</span></div>
+      <div class="org-sub">💰 VP Finance<br><span style="font-size:9px;color:var(--gray-300);">Financial Strategy</span></div>
+      <div class="org-sub">📦 VP Supply Chain<br><span style="font-size:9px;color:var(--gray-300);">NUPCO Relations</span></div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;">
+    <div class="leader-card">
+      <div class="leader-avatar">👤</div>
+      <div class="leader-name">Chief Executive Officer</div>
+      <div class="leader-title">Strategic Leadership</div>
+      <div class="leader-desc">20+ years in medical device manufacturing and healthcare supply chain. Former NUPCO supplier relations director. MBA from KAUST.</div>
+    </div>
+    <div class="leader-card">
+      <div class="leader-avatar">🏭</div>
+      <div class="leader-name">VP Operations</div>
+      <div class="leader-title">Manufacturing Excellence</div>
+      <div class="leader-desc">15+ years in sterile packaging manufacturing. Certified Lean Six Sigma Black Belt. Led commissioning of 5 greenfield facilities across GCC.</div>
+    </div>
+    <div class="leader-card">
+      <div class="leader-avatar">🤖</div>
+      <div class="leader-name">VP Technology & AI</div>
+      <div class="leader-title">NEO AI Core Architect</div>
+      <div class="leader-desc">PhD in Machine Learning from MIT. Former AI Lead at Saudi Aramco. Designed and built the NEO AI Core platform from ground up.</div>
+    </div>
+    <div class="leader-card">
+      <div class="leader-avatar">🔬</div>
+      <div class="leader-name">VP Quality Assurance</div>
+      <div class="leader-title">ISO 13485 Lead Auditor</div>
+      <div class="leader-desc">Certified ISO 13485 Lead Auditor with 18 years in medical device QA. Former SFDA regulatory affairs specialist.</div>
+    </div>
+    <div class="leader-card">
+      <div class="leader-avatar">💰</div>
+      <div class="leader-name">VP Finance</div>
+      <div class="leader-title">Financial Strategy</div>
+      <div class="leader-desc">CFA with 12 years in healthcare investment banking. Structured SAR 500M+ in medical sector financing across KSA and UAE.</div>
+    </div>
+    <div class="leader-card">
+      <div class="leader-avatar">📦</div>
+      <div class="leader-name">VP Supply Chain</div>
+      <div class="leader-title">NUPCO Relations</div>
+      <div class="leader-desc">10+ years managing NUPCO procurement relationships. Former DuPont regional sales director for Tyvek medical packaging.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 18</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 19 — RAW MATERIAL SOURCING
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">17</div>
+    <div>
+      <div class="sec-title">Raw Material Sourcing Strategy</div>
+      <div class="sec-sub">MULTI-TIER SUPPLY CHAIN · DUAL SOURCING · 90-DAY SAFETY STOCK · AI PROCUREMENT</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="glass-card">
+      <div class="section-h3">Tier 1 — Critical Materials</div>
+      <table>
+        <thead><tr><th>Material</th><th>Primary Supplier</th><th>Backup</th><th>Safety Stock</th></tr></thead>
+        <tbody>
+          <tr><td class="gold">Tyvek® 1073B</td><td>DuPont USA</td><td>DuPont Luxembourg</td><td class="green">90 days</td></tr>
+          <tr><td class="gold">Tyvek® 1059B</td><td>DuPont USA</td><td>DuPont Luxembourg</td><td class="green">90 days</td></tr>
+          <tr><td class="gold">SMS Nonwoven 35g</td><td>Ahlstrom Finland</td><td>Fiberweb UK</td><td class="green">90 days</td></tr>
+          <tr><td class="gold">SMS Nonwoven 50g</td><td>Ahlstrom Finland</td><td>Avgol Israel</td><td class="green">90 days</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="glass-card">
+      <div class="section-h3">Tier 2 — Standard Materials</div>
+      <table>
+        <thead><tr><th>Material</th><th>Supplier</th><th>Origin</th><th>Safety Stock</th></tr></thead>
+        <tbody>
+          <tr><td class="cyan">Medical-Grade Paper 60g</td><td>Billerud</td><td>Sweden</td><td>45 days</td></tr>
+          <tr><td class="cyan">Medical-Grade Paper 90g</td><td>Ahlstrom</td><td>Finland</td><td>45 days</td></tr>
+          <tr><td class="cyan">PET/PE Laminate Film</td><td>Sealed Air</td><td>USA</td><td>45 days</td></tr>
+          <tr><td class="cyan">Chemical Indicators</td><td>3M / Crosstex</td><td>USA</td><td>45 days</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;" class="glass-card">
+    <div class="section-h3">Sourcing Risk Mitigation</div>
+    <div class="three-col">
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--cyan);margin-bottom:8px;">🔄 Dual Sourcing</div>
+        <p style="font-size:11px;color:#C8D8E8;line-height:1.6;">All Tier 1 materials have qualified backup suppliers. Dual sourcing agreements ensure supply continuity even if primary supplier faces disruption.</p>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--cyan);margin-bottom:8px;">📦 Strategic Inventory</div>
+        <p style="font-size:11px;color:#C8D8E8;line-height:1.6;">90-day safety stock for Tier 1 materials provides buffer against shipping delays, port congestion, and supplier capacity constraints.</p>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--cyan);margin-bottom:8px;">🤖 AI Procurement</div>
+        <p style="font-size:11px;color:#C8D8E8;line-height:1.6;">NEO AI Procurement Agent monitors stock levels in real-time and automatically triggers POs at reorder points, with supplier performance scoring.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 19</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 20 — STRATEGIC ROADMAP
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">18</div>
+    <div>
+      <div class="sec-title">Strategic Roadmap 2025–2030</div>
+      <div class="sec-sub">5-YEAR GROWTH STRATEGY · MARKET EXPANSION · PRODUCT INNOVATION · VISION 2030</div>
+    </div>
+  </div>
+
+  <div class="roadmap" style="margin-bottom:32px;">
+    <div class="roadmap-line"></div>
+    <div class="roadmap-items">
+      <div class="roadmap-item">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-year">2025</div>
+        <div class="roadmap-title">Launch & Establish</div>
+        <div class="roadmap-desc">Factory commissioning · NUPCO listing · First 14.1M units · ISO 13485 certification</div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot" style="background:var(--grad-blue);"></div>
+        <div class="roadmap-year">2026</div>
+        <div class="roadmap-title">Scale & Optimize</div>
+        <div class="roadmap-desc">30% KSA market share · NEO AI v2.0 · GCC export launch · 21.2M units</div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot" style="background:linear-gradient(135deg,var(--gold),#FF8F00);"></div>
+        <div class="roadmap-year">2027</div>
+        <div class="roadmap-title">Expand & Innovate</div>
+        <div class="roadmap-desc">45% KSA share · New product lines · UAE/Kuwait expansion · 31.7M units</div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot" style="background:linear-gradient(135deg,var(--purple),#E040FB);"></div>
+        <div class="roadmap-year">2028</div>
+        <div class="roadmap-title">Dominate & Diversify</div>
+        <div class="roadmap-desc">60% KSA share · Full GCC coverage · Biodegradable packaging · 42.3M units</div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot" style="background:var(--grad-green);"></div>
+        <div class="roadmap-year">2030</div>
+        <div class="roadmap-title">Vision 2030 Leader</div>
+        <div class="roadmap-desc">70% KSA share · Export to 8 countries · SAR 111.4M revenue · IPO ready</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="three-col">
+    <div class="glass-card">
+      <div class="section-h3">Phase 1: 2025–2026</div>
+      <div style="font-size:11px;color:#C8D8E8;line-height:1.7;">
+        <div style="margin-bottom:6px;">✅ Factory commissioning complete</div>
+        <div style="margin-bottom:6px;">✅ ISO 13485 certification achieved</div>
+        <div style="margin-bottom:6px;">✅ NUPCO tender NPT0007-24 awarded</div>
+        <div style="margin-bottom:6px;">✅ NEO AI Core v1.0 deployed</div>
+        <div style="margin-bottom:6px;">🔄 20% KSA market share (Year 1)</div>
+        <div>🔄 30% KSA market share (Year 2)</div>
+      </div>
+    </div>
+    <div class="glass-card">
+      <div class="section-h3">Phase 2: 2027–2028</div>
+      <div style="font-size:11px;color:#C8D8E8;line-height:1.7;">
+        <div style="margin-bottom:6px;">🎯 45–60% KSA market share</div>
+        <div style="margin-bottom:6px;">🎯 Full GCC export program</div>
+        <div style="margin-bottom:6px;">🎯 Biodegradable packaging launch</div>
+        <div style="margin-bottom:6px;">🎯 NEO AI v3.0 with GenAI</div>
+        <div style="margin-bottom:6px;">🎯 Second production facility</div>
+        <div>🎯 CE Mark certification</div>
+      </div>
+    </div>
+    <div class="glass-card">
+      <div class="section-h3">Phase 3: 2029–2030</div>
+      <div style="font-size:11px;color:#C8D8E8;line-height:1.7;">
+        <div style="margin-bottom:6px;">🚀 70% KSA market dominance</div>
+        <div style="margin-bottom:6px;">🚀 Export to 8 GCC/MENA countries</div>
+        <div style="margin-bottom:6px;">🚀 SAR 111.4M annual revenue</div>
+        <div style="margin-bottom:6px;">🚀 IPO preparation / strategic exit</div>
+        <div style="margin-bottom:6px;">🚀 Regional AI platform licensing</div>
+        <div>🚀 Vision 2030 healthcare champion</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Confidential — For Supplier Use Only</span>
+    <span>Page 20</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PAGE 21 — WHY PARTNER WITH ASTRA
+═══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="sec-header">
+    <div class="sec-num">19</div>
+    <div>
+      <div class="sec-title">Why Partner with ASTRA</div>
+      <div class="sec-sub">UNIQUE VALUE PROPOSITION · GUARANTEED DEMAND · EXCEPTIONAL RETURNS · VISION 2030</div>
+    </div>
+  </div>
+
+  <div class="why-grid" style="margin-bottom:24px;">
+    <div class="why-card">
+      <div class="why-icon">🏆</div>
+      <div class="why-title">Only Domestic Manufacturer</div>
+      <div class="why-desc">ASTRA is the only Saudi manufacturer of the complete sterilization packaging range, replacing 100% of imported supply. This creates an unassailable first-mover advantage with NUPCO.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔒</div>
+      <div class="why-title">Guaranteed NUPCO Demand</div>
+      <div class="why-desc">NUPCO Tender NPT0007-24 provides guaranteed, structured demand from all 500+ Saudi public hospitals. No market risk — demand is contractually secured through the national procurement framework.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💰</div>
+      <div class="why-title">Exceptional Financial Returns</div>
+      <div class="why-desc">63–66% EBITDA margin, Year 1 payback, and SAR 178.9M cumulative 5-year FCF on SAR 28.75M investment. 622% ROI with low execution risk.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🤖</div>
+      <div class="why-title">AI-Powered Competitive Moat</div>
+      <div class="why-desc">NEO AI Core with 13 integrated modules creates operational efficiency that competitors cannot replicate. 99.97% quality, 85% OEE, and zero stockouts through autonomous AI management.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🌿</div>
+      <div class="why-title">Vision 2030 Alignment</div>
+      <div class="why-desc">Directly supports Saudi Vision 2030 healthcare localization mandate. NUPCO preferential pricing for domestic manufacturers provides 30–40% cost advantage over imports.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📈</div>
+      <div class="why-title">Scalable Growth Platform</div>
+      <div class="why-desc">Clear path from 20% to 70% KSA market share over 5 years, with GCC export expansion to SAR 893M addressable market. IPO-ready by 2030.</div>
+    </div>
+  </div>
+
+  <div class="glass-card" style="text-align:center;padding:32px;">
+    <div style="font-family:var(--font-display);font-size:28px;font-weight:900;background:linear-gradient(135deg,var(--white),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">
+      Partner with Saudi Arabia's AI-Powered<br>Healthcare Packaging Leader
+    </div>
+    <div style="font-size:14px;color:var(--gray-300);margin-bottom:24px;max-width:700px;margin-left:auto;margin-right:auto;line-height:1.7;">
+      ASTRA Medical Packaging Industries invites strategic partners, investors, and suppliers to join us in building Saudi Arabia's premier sterile packaging manufacturer — delivering patient safety, operational excellence, and exceptional returns.
+    </div>
+    <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+      <div class="badge badge-gold">📧 ragab20179@gmail.com</div>
+      <div class="badge">📍 Jeddah Industrial City, KSA</div>
+      <div class="badge badge-green">🌿 Vision 2030 Partner</div>
+      <div class="badge">🤖 AI-Powered Operations</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo"><div class="footer-logo-box">A</div><span>ASTRA Medical Packaging Industries — Company Profile 2025</span></div>
+    <span>Kingdom of Saudi Arabia · Jeddah Industrial City · ragab20179@gmail.com</span>
+    <span>Confidential — For Supplier Use Only &nbsp;|&nbsp; Page 21</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PARTICLE ANIMATION SCRIPT
+═══════════════════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+
+  let W, H, particles = [], connections = [];
+  const PARTICLE_COUNT = 80;
+  const MAX_DIST = 150;
+  const COLORS = ['rgba(0,229,255,', 'rgba(21,101,192,', 'rgba(0,188,212,'];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function Particle() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+    this.r = Math.random() * 2 + 1;
+    this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+    this.alpha = Math.random() * 0.5 + 0.2;
+  }
+
+  Particle.prototype.update = function() {
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.x < 0 || this.x > W) this.vx *= -1;
+    if (this.y < 0 || this.y > H) this.vy *= -1;
+  };
+
+  Particle.prototype.draw = function() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = this.color + this.alpha + ')';
+    ctx.fill();
+  };
+
+  function init() {
+    particles = [];
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push(new Particle());
+    }
+  }
+
+  function drawConnections() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MAX_DIST) {
+          const alpha = (1 - dist / MAX_DIST) * 0.15;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(0,229,255,${alpha})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    drawConnections();
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', () => { resize(); init(); });
+  resize();
+  init();
+  animate();
+})();
+</script>
+
+</body>
+</html>
