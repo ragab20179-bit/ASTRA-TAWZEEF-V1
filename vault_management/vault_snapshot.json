@@ -1,0 +1,1042 @@
+{
+  "generated_at": "2026-03-14T17:35:49.374299Z",
+  "vault_root_id": "1sJilvwjRUiX7v2bbLAIDEZnd-qy5_QxY",
+  "total_files": 105,
+  "folders": {
+    "00 - Artwork": {
+      "folder_id": "1aO0z4P21kBaG1u1eTMuq7Kv7qsiXsJht",
+      "total_files": 2,
+      "files": [
+        {
+          "id": "17WGd-a_IcI9Wi-tKFJoHakpOC0tw7-bY",
+          "name": "astra_logo_white.png",
+          "mimeType": "image/png",
+          "modifiedTime": "2026-03-14T14:39:30.279Z",
+          "size": "3985915",
+          "folder": "00 - Artwork",
+          "folder_id": "1aO0z4P21kBaG1u1eTMuq7Kv7qsiXsJht"
+        },
+        {
+          "id": "1kbrVpppZb72CNA7eYu7llY9B3oaqQWut",
+          "name": "astra_logo_dark.png",
+          "mimeType": "image/png",
+          "modifiedTime": "2026-03-14T14:39:30.275Z",
+          "size": "4824022",
+          "folder": "00 - Artwork",
+          "folder_id": "1aO0z4P21kBaG1u1eTMuq7Kv7qsiXsJht"
+        }
+      ]
+    },
+    "01 - Feasibility Study Reports": {
+      "folder_id": "1oRHFuv2j1vLCtWSA2J-fqG1P_-WbYEz3",
+      "total_files": 7,
+      "files": [
+        {
+          "id": "1UAPjVNg7P74wrSu5vcS8zryscbc9vhvg",
+          "name": "00_Feasibility_Study_Main_Report_v1.1.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T10:25:32.044Z",
+          "size": "3758",
+          "folder": "01 - Feasibility Study Reports",
+          "folder_id": "1oRHFuv2j1vLCtWSA2J-fqG1P_-WbYEz3"
+        },
+        {
+          "id": "1z7DInCbqgdRcdqMqpdhyzBOtEdKUgiOa",
+          "name": "00_Feasibility_Study_Main_Report.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T09:59:14.003Z",
+          "size": "3627",
+          "folder": "01 - Feasibility Study Reports",
+          "folder_id": "1oRHFuv2j1vLCtWSA2J-fqG1P_-WbYEz3"
+        },
+        {
+          "id": "1yCZ8LTSwFKpuvoNcTP6mxIMUR7H3gipO",
+          "name": "05_Product_Portfolio.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T09:55:44.012Z",
+          "size": "2991",
+          "folder": "01 - Feasibility Study Reports",
+          "folder_id": "1oRHFuv2j1vLCtWSA2J-fqG1P_-WbYEz3"
+        },
+        {
+          "id": "1hNWnG-6CwKN1P_hlZQ6EY9UFWm9lFfWr",
+          "name": "04_5_Year_Phased_Production_Plan.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T09:55:28.648Z",
+          "size": "2651",
+          "folder": "01 - Feasibility Study Reports",
+          "folder_id": "1oRHFuv2j1vLCtWSA2J-fqG1P_-WbYEz3"
+        },
+        {
+          "id": "1IC_2NTzeov1EDAYN9jdE2QjVVg9o3OrQ",
+          "name": "03_Financial_Projections.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T09:55:12.944Z",
+          "size": "2671",
+          "folder": "01 - Feasibility Study Reports",
+          "folder_id": "1oRHFuv2j1vLCtWSA2J-fqG1P_-WbYEz3"
+        },
+        {
+          "id": "1al4KAvwDF2feCt_hDWUHykZOvbHTsOab",
+          "name": "02_Machinery_and_Production_Capacity.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T09:54:52.160Z",
+          "size": "3216",
+          "folder": "01 - Feasibility Study Reports",
+          "folder_id": "1oRHFuv2j1vLCtWSA2J-fqG1P_-WbYEz3"
+        },
+        {
+          "id": "1iVh-RIBYV-niKJo_kso_AminDhxXWNJl",
+          "name": "01_Raw_Material_Analysis.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T09:54:35.087Z",
+          "size": "3192",
+          "folder": "01 - Feasibility Study Reports",
+          "folder_id": "1oRHFuv2j1vLCtWSA2J-fqG1P_-WbYEz3"
+        }
+      ]
+    },
+    "02 - Raw Material Analysis": {
+      "folder_id": "1gw1sBBa97ECkeQXCSIq_fNi44qt9zF7f",
+      "total_files": 6,
+      "files": [
+        {
+          "id": "1-9-WbVEMPfOnWnm8Q38-M6sACRXLyxH7",
+          "name": "Raw Material Market Price Research.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "4825",
+          "folder": "02 - Raw Material Analysis",
+          "folder_id": "1gw1sBBa97ECkeQXCSIq_fNi44qt9zF7f"
+        },
+        {
+          "id": "1whX445zip4ZSTxxnwZZckb5-WpQ0Vyf_",
+          "name": "year5_materials.csv",
+          "mimeType": "text/csv",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "755",
+          "folder": "02 - Raw Material Analysis",
+          "folder_id": "1gw1sBBa97ECkeQXCSIq_fNi44qt9zF7f"
+        },
+        {
+          "id": "192XU1h4MqTksfrORXUG_dWAS8b18xmrH",
+          "name": "Correction Summary and Impact Analysis.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "2532",
+          "folder": "02 - Raw Material Analysis",
+          "folder_id": "1gw1sBBa97ECkeQXCSIq_fNi44qt9zF7f"
+        },
+        {
+          "id": "14VsyqAudq4KEGTQZ4TH1TuYdCj2YaPeD",
+          "name": "corrected_raw_material_costs_updated.csv",
+          "mimeType": "text/csv",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "1461",
+          "folder": "02 - Raw Material Analysis",
+          "folder_id": "1gw1sBBa97ECkeQXCSIq_fNi44qt9zF7f"
+        },
+        {
+          "id": "1pwmPoRauXuePhPBYxxHPE7RwhkAiuBHI",
+          "name": "year1_materials.csv",
+          "mimeType": "text/csv",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "839",
+          "folder": "02 - Raw Material Analysis",
+          "folder_id": "1gw1sBBa97ECkeQXCSIq_fNi44qt9zF7f"
+        },
+        {
+          "id": "1gQ7XNkvCgh0xlHOm1SH3-xh7ptBN11fN",
+          "name": "Complete Raw Materials - Quantity and Cost per Ton (FINAL CORRECTED).md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "11235",
+          "folder": "02 - Raw Material Analysis",
+          "folder_id": "1gw1sBBa97ECkeQXCSIq_fNi44qt9zF7f"
+        }
+      ]
+    },
+    "03 - Machinery and Equipment": {
+      "folder_id": "1btTNq7TEu7cIIWwIvSKlUlpljZzzzNqo",
+      "total_files": 4,
+      "files": [
+        {
+          "id": "1whzB4JeZqpRBdwlNx0GZgZJJMRvLaW49",
+          "name": "machinery_requirements.csv",
+          "mimeType": "text/csv",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "329",
+          "folder": "03 - Machinery and Equipment",
+          "folder_id": "1btTNq7TEu7cIIWwIvSKlUlpljZzzzNqo"
+        },
+        {
+          "id": "1D9b4U7J5sHKEWfQLI2IjXQwOndbjhirV",
+          "name": "hci_machines_specs.txt",
+          "mimeType": "text/plain",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "1562",
+          "folder": "03 - Machinery and Equipment",
+          "folder_id": "1btTNq7TEu7cIIWwIvSKlUlpljZzzzNqo"
+        },
+        {
+          "id": "1ivNcjcEe0KhCx9sw0hTmQj8GjJ-gw7KQ",
+          "name": "Manufacturing Process Documentation.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "17587",
+          "folder": "03 - Machinery and Equipment",
+          "folder_id": "1btTNq7TEu7cIIWwIvSKlUlpljZzzzNqo"
+        },
+        {
+          "id": "1cEJxYNgkuYhmB9ZhgU9dOXVg76bwuQ4H",
+          "name": "hci_slitting_machines.txt",
+          "mimeType": "text/plain",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "1365",
+          "folder": "03 - Machinery and Equipment",
+          "folder_id": "1btTNq7TEu7cIIWwIvSKlUlpljZzzzNqo"
+        }
+      ]
+    },
+    "04 - Financial Projections": {
+      "folder_id": "1lg7p1P0MApTxYPnvgHOo3QDcRb039cet",
+      "total_files": 3,
+      "files": [
+        {
+          "id": "1KDJ9k6cbtWWBbU01UVP_u45PKVuf2iru",
+          "name": "phased_production_plan.json",
+          "mimeType": "application/json",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "1210",
+          "folder": "04 - Financial Projections",
+          "folder_id": "1lg7p1P0MApTxYPnvgHOo3QDcRb039cet"
+        },
+        {
+          "id": "1Ew3-Zs3itRUGzXQSXkm8YOFdSuusMCIg",
+          "name": "profitability_analysis.json",
+          "mimeType": "application/json",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "552",
+          "folder": "04 - Financial Projections",
+          "folder_id": "1lg7p1P0MApTxYPnvgHOo3QDcRb039cet"
+        },
+        {
+          "id": "1SVjxJzE-xyKW3tB3-u6_R-eOzAvD_MqF",
+          "name": "final_costs_summary.json",
+          "mimeType": "application/json",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "446",
+          "folder": "04 - Financial Projections",
+          "folder_id": "1lg7p1P0MApTxYPnvgHOo3QDcRb039cet"
+        }
+      ]
+    },
+    "05 - Product Portfolio": {
+      "folder_id": "1wVNyz1TOmqP1ySDpDqhkVF-r80y9cR1d",
+      "total_files": 4,
+      "files": [
+        {
+          "id": "1g1xpjTfySsLSQG5AZkBZF3VbUtFK9Dcr",
+          "name": "tyvek_expected_sales.csv",
+          "mimeType": "text/csv",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "4922",
+          "folder": "05 - Product Portfolio",
+          "folder_id": "1wVNyz1TOmqP1ySDpDqhkVF-r80y9cR1d"
+        },
+        {
+          "id": "1HfCRqOPFF_AMsFh1aNv-Xd0VSdKMUA_S",
+          "name": "tyvek_items_clean.csv",
+          "mimeType": "text/csv",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "8764",
+          "folder": "05 - Product Portfolio",
+          "folder_id": "1wVNyz1TOmqP1ySDpDqhkVF-r80y9cR1d"
+        },
+        {
+          "id": "1vBK2qTaaou_Y0VD2gscc536LRN3sdeZz",
+          "name": "original_products_revenue.csv",
+          "mimeType": "text/csv",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "18430",
+          "folder": "05 - Product Portfolio",
+          "folder_id": "1wVNyz1TOmqP1ySDpDqhkVF-r80y9cR1d"
+        },
+        {
+          "id": "1utyMbGiI1joy2rElG-sT7OwmwWBKtVIw",
+          "name": "Medical Sterilization Products - Items Main List.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "8429",
+          "folder": "05 - Product Portfolio",
+          "folder_id": "1wVNyz1TOmqP1ySDpDqhkVF-r80y9cR1d"
+        }
+      ]
+    },
+    "06 - Source Data Files": {
+      "folder_id": "1BCVx3ohbqyjVXtSNiNeN5yk-RRs6Gb-s",
+      "total_files": 3,
+      "files": [
+        {
+          "id": "1HXMr819WtH3bkRg5rEva6f5AJRPVpRx3",
+          "name": "nupco_lowest_awarded_prices_full.csv",
+          "mimeType": "text/csv",
+          "modifiedTime": "2026-03-13T17:43:13.399Z",
+          "size": "127238",
+          "folder": "06 - Source Data Files",
+          "folder_id": "1BCVx3ohbqyjVXtSNiNeN5yk-RRs6Gb-s"
+        },
+        {
+          "id": "1R50FlveHLFR6paDKAJW-ehaT9dGGzL9t",
+          "name": "tyvek.xlsx",
+          "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "21754",
+          "folder": "06 - Source Data Files",
+          "folder_id": "1BCVx3ohbqyjVXtSNiNeN5yk-RRs6Gb-s"
+        },
+        {
+          "id": "1zuyzyoIdh_lza3ERwUII2y9Q0dZXnNFw",
+          "name": "NPT0007-24_CSSD_TENDERresults.xlsx",
+          "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "122421",
+          "folder": "06 - Source Data Files",
+          "folder_id": "1BCVx3ohbqyjVXtSNiNeN5yk-RRs6Gb-s"
+        }
+      ]
+    },
+    "07 - Technical References": {
+      "folder_id": "1vSZnhAkZsi0rnU6LzIOPq6DWTROzdMlg",
+      "total_files": 7,
+      "files": [
+        {
+          "id": "1Mez8YKIP-i6dKdwVMbarjLrZRE3NY4-g",
+          "name": "SMS 60.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "1760674",
+          "folder": "07 - Technical References",
+          "folder_id": "1vSZnhAkZsi0rnU6LzIOPq6DWTROzdMlg"
+        },
+        {
+          "id": "1AxcysqSxN1lEfHxrxqdBiJ28i7C4A8vJ",
+          "name": "STEAM.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "1344475",
+          "folder": "07 - Technical References",
+          "folder_id": "1vSZnhAkZsi0rnU6LzIOPq6DWTROzdMlg"
+        },
+        {
+          "id": "1e-fwbhqAMwm74iCyYyrH_AYckNgylFPz",
+          "name": "Calculation Formulas and Validation Documentation.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "13119",
+          "folder": "07 - Technical References",
+          "folder_id": "1vSZnhAkZsi0rnU6LzIOPq6DWTROzdMlg"
+        },
+        {
+          "id": "1XBlcwHdai7DCRZnTCmlvQl50KKFOYElJ",
+          "name": "SMS 80.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "1760302",
+          "folder": "07 - Technical References",
+          "folder_id": "1vSZnhAkZsi0rnU6LzIOPq6DWTROzdMlg"
+        },
+        {
+          "id": "1j7CgTqNFim0oZjyQ8FDAy2nNRpVudcDM",
+          "name": "PURE TRAY LINER.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "1155193",
+          "folder": "07 - Technical References",
+          "folder_id": "1vSZnhAkZsi0rnU6LzIOPq6DWTROzdMlg"
+        },
+        {
+          "id": "1XaDxSPZ70N0EcoOqj52-A7PeYZ486UWp",
+          "name": "sms60_specs.txt",
+          "mimeType": "text/plain",
+          "modifiedTime": "2026-02-23T14:35:40.000Z",
+          "size": "1068",
+          "folder": "07 - Technical References",
+          "folder_id": "1vSZnhAkZsi0rnU6LzIOPq6DWTROzdMlg"
+        },
+        {
+          "id": "1bwjz93wlrPv7FrY-u5wO0pqG_vtUNRk7",
+          "name": "ISO_13485_Master_Documentation_Index.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T09:58:51.550Z",
+          "size": "7415",
+          "folder": "07 - Technical References",
+          "folder_id": "1vSZnhAkZsi0rnU6LzIOPq6DWTROzdMlg"
+        }
+      ]
+    },
+    "08 - Financial Models (v1.1)": {
+      "folder_id": "1B2yTsCfDc7wmBrdpK0m-SIViO8DlbHhe",
+      "total_files": 12,
+      "files": [
+        {
+          "id": "118tIsp54bOiNElXvlpziDaEpviABKcZU",
+          "name": "NUPCO_Manufacturing_Cost_CrossRef_v2_WithTyvek.xlsx",
+          "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "modifiedTime": "2026-03-13T22:00:47.596Z",
+          "size": "25028",
+          "folder": "08 - Financial Models (v1.1)",
+          "folder_id": "1B2yTsCfDc7wmBrdpK0m-SIViO8DlbHhe"
+        },
+        {
+          "id": "1JcpCOYBsMFQSPztlY9oAoyTvU_gUCMdR",
+          "name": "NUPCO_Manufacturing_Cost_CrossRef.xlsx",
+          "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "modifiedTime": "2026-03-13T17:49:51.213Z",
+          "size": "15841",
+          "folder": "08 - Financial Models (v1.1)",
+          "folder_id": "1B2yTsCfDc7wmBrdpK0m-SIViO8DlbHhe"
+        },
+        {
+          "id": "1EG4VnOGltemwLMlrjgn2Dlz8NYbHwBNq",
+          "name": "tender_traceability_matrix.xlsx",
+          "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "modifiedTime": "2026-02-23T10:22:40.463Z",
+          "size": "22882",
+          "folder": "08 - Financial Models (v1.1)",
+          "folder_id": "1B2yTsCfDc7wmBrdpK0m-SIViO8DlbHhe"
+        },
+        {
+          "id": "1V0tGu4pL3YIepMCgTf6VOOKMtUyt4qea",
+          "name": "machine_capacity_master_v2.xlsx",
+          "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "modifiedTime": "2026-02-23T10:22:38.471Z",
+          "size": "7377",
+          "folder": "08 - Financial Models (v1.1)",
+          "folder_id": "1B2yTsCfDc7wmBrdpK0m-SIViO8DlbHhe"
+        },
+        {
+          "id": "1O9Ym4xJg9q1xs8hcf7zZOn85s2E84FGQ",
+          "name": "sensitivity_analysis_v1.xlsx",
+          "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "modifiedTime": "2026-02-23T10:22:36.543Z",
+          "size": "7163",
+          "folder": "08 - Financial Models (v1.1)",
+          "folder_id": "1B2yTsCfDc7wmBrdpK0m-SIViO8DlbHhe"
+        },
+        {
+          "id": "1Ao5JqE8_M8Z2RSRL-Xz2M9o0SDvdw9WU",
+          "name": "break_even_analysis.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T10:22:34.735Z",
+          "size": "2080",
+          "folder": "08 - Financial Models (v1.1)",
+          "folder_id": "1B2yTsCfDc7wmBrdpK0m-SIViO8DlbHhe"
+        },
+        {
+          "id": "1xzMrZnxsCnMlD-PJO_m0gXWrt2oYaJNM",
+          "name": "break_even_analysis.csv",
+          "mimeType": "text/csv",
+          "modifiedTime": "2026-02-23T10:22:34.731Z",
+          "size": "481",
+          "folder": "08 - Financial Models (v1.1)",
+          "folder_id": "1B2yTsCfDc7wmBrdpK0m-SIViO8DlbHhe"
+        },
+        {
+          "id": "1iO4ONgpRWRyNv1IlilrWEuB0_hrBqThm",
+          "name": "contribution_margin_by_sku.csv",
+          "mimeType": "text/csv",
+          "modifiedTime": "2026-02-23T10:22:34.731Z",
+          "size": "501",
+          "folder": "08 - Financial Models (v1.1)",
+          "folder_id": "1B2yTsCfDc7wmBrdpK0m-SIViO8DlbHhe"
+        },
+        {
+          "id": "1sQ-B45khBNqgPOEGRFqTcvTIzolimCk_",
+          "name": "cashflow_5year.xlsx",
+          "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "modifiedTime": "2026-02-23T10:22:33.147Z",
+          "size": "7028",
+          "folder": "08 - Financial Models (v1.1)",
+          "folder_id": "1B2yTsCfDc7wmBrdpK0m-SIViO8DlbHhe"
+        },
+        {
+          "id": "1nXkoloc1dHaD1TDrx78fCBxEAJ7rq7K0",
+          "name": "financial_core_reconciliation_v1.xlsx",
+          "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "modifiedTime": "2026-02-23T10:22:31.295Z",
+          "size": "5855",
+          "folder": "08 - Financial Models (v1.1)",
+          "folder_id": "1B2yTsCfDc7wmBrdpK0m-SIViO8DlbHhe"
+        },
+        {
+          "id": "1CzZmjFXBPBiThtRZsqi8-g9WbqKW8SZX",
+          "name": "material_totals_by_year.csv",
+          "mimeType": "text/csv",
+          "modifiedTime": "2026-02-23T10:22:29.459Z",
+          "size": "3836",
+          "folder": "08 - Financial Models (v1.1)",
+          "folder_id": "1B2yTsCfDc7wmBrdpK0m-SIViO8DlbHhe"
+        },
+        {
+          "id": "1eZymqIxq_YwMSh5sdan9dTj4n39_NhWc",
+          "name": "sku_master.csv",
+          "mimeType": "text/csv",
+          "modifiedTime": "2026-02-23T10:22:27.947Z",
+          "size": "25641",
+          "folder": "08 - Financial Models (v1.1)",
+          "folder_id": "1B2yTsCfDc7wmBrdpK0m-SIViO8DlbHhe"
+        }
+      ]
+    },
+    "09 - Governance and Compliance": {
+      "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ",
+      "total_files": 5,
+      "files": [
+        {
+          "id": "11mVoBKhSpLwkTl42KaNBAlfNCRUCpggM",
+          "name": "audit_readiness_pack.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T10:24:45.043Z",
+          "size": "4424",
+          "folder": "09 - Governance and Compliance",
+          "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ"
+        },
+        {
+          "id": "1CdDCukuXzQWWIYu9qbA94ANxCVTavGiE",
+          "name": "external_validation_appendix.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T10:24:23.915Z",
+          "size": "3209",
+          "folder": "09 - Governance and Compliance",
+          "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ"
+        },
+        {
+          "id": "1_31F3SsQx-QyJuDjMppgAmIrIk0w2Mny",
+          "name": "risk_register_v1.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T10:24:08.411Z",
+          "size": "4189",
+          "folder": "09 - Governance and Compliance",
+          "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ"
+        },
+        {
+          "id": "1kUek02AI8TDXUT7eXR7bSPrfifds2RDu",
+          "name": "pricing_governance_protocol.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T10:23:49.007Z",
+          "size": "3423",
+          "folder": "09 - Governance and Compliance",
+          "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ"
+        },
+        {
+          "id": "1eC-o75QYPVzK1mMjflc9uLxFbAvQ_zl_",
+          "name": "production_loss_model.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T10:23:22.867Z",
+          "size": "4057",
+          "folder": "09 - Governance and Compliance",
+          "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ"
+        }
+      ]
+    },
+    "10 - Pipeline Scripts": {
+      "folder_id": "1oWFsV_z9NHU3_l5OTx_lzEcAcMCdPxCj",
+      "total_files": 11,
+      "files": [
+        {
+          "id": "1CS-JFQuBl2MaK67bgYJlGhcc4FC4Kucg",
+          "name": "CHANGE_LOG.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-02-23T10:25:09.547Z",
+          "size": "2840",
+          "folder": "10 - Pipeline Scripts",
+          "folder_id": "1oWFsV_z9NHU3_l5OTx_lzEcAcMCdPxCj"
+        },
+        {
+          "id": "1In-DCn8NQ3iwqyS53IHkUHjiZtzT8dVt",
+          "name": "run_all.py",
+          "mimeType": "text/x-python",
+          "modifiedTime": "2026-02-23T10:22:20.331Z",
+          "size": "1541",
+          "folder": "10 - Pipeline Scripts",
+          "folder_id": "1oWFsV_z9NHU3_l5OTx_lzEcAcMCdPxCj"
+        },
+        {
+          "id": "1vEJb-ZbYrpLMUmXSa9WB5C4vMwxkMYKe",
+          "name": "08_tender_traceability.py",
+          "mimeType": "text/x-python",
+          "modifiedTime": "2026-02-23T10:22:09.279Z",
+          "size": "4748",
+          "folder": "10 - Pipeline Scripts",
+          "folder_id": "1oWFsV_z9NHU3_l5OTx_lzEcAcMCdPxCj"
+        },
+        {
+          "id": "1RtahtjsciQwqVqBY5HEIOAdfEmHiNEt_",
+          "name": "07_machine_load.py",
+          "mimeType": "text/x-python",
+          "modifiedTime": "2026-02-23T10:21:45.583Z",
+          "size": "6261",
+          "folder": "10 - Pipeline Scripts",
+          "folder_id": "1oWFsV_z9NHU3_l5OTx_lzEcAcMCdPxCj"
+        },
+        {
+          "id": "1z4HrDjI09RJCGGpreMpk1rGqTPAJDKcP",
+          "name": "06_sensitivity.py",
+          "mimeType": "text/x-python",
+          "modifiedTime": "2026-02-23T10:21:10.919Z",
+          "size": "6038",
+          "folder": "10 - Pipeline Scripts",
+          "folder_id": "1oWFsV_z9NHU3_l5OTx_lzEcAcMCdPxCj"
+        },
+        {
+          "id": "1P54CNZmvVYnAqG09XR8RgDkr9i4lucqx",
+          "name": "05_break_even.py",
+          "mimeType": "text/x-python",
+          "modifiedTime": "2026-02-23T10:20:40.315Z",
+          "size": "7984",
+          "folder": "10 - Pipeline Scripts",
+          "folder_id": "1oWFsV_z9NHU3_l5OTx_lzEcAcMCdPxCj"
+        },
+        {
+          "id": "1oVataydO0l-lfzWVxYHZ-bhziuifC0kr",
+          "name": "04_cashflow_model.py",
+          "mimeType": "text/x-python",
+          "modifiedTime": "2026-02-23T10:20:07.375Z",
+          "size": "6150",
+          "folder": "10 - Pipeline Scripts",
+          "folder_id": "1oWFsV_z9NHU3_l5OTx_lzEcAcMCdPxCj"
+        },
+        {
+          "id": "1JJ_rHRvSL0Z9LSB5ebP69zyA8r3xISaL",
+          "name": "03_financial_core.py",
+          "mimeType": "text/x-python",
+          "modifiedTime": "2026-02-23T10:19:43.179Z",
+          "size": "3480",
+          "folder": "10 - Pipeline Scripts",
+          "folder_id": "1oWFsV_z9NHU3_l5OTx_lzEcAcMCdPxCj"
+        },
+        {
+          "id": "1f3HDuhICtdMY5HZTJu7lljyc44Kfk-cb",
+          "name": "02_material_totals.py",
+          "mimeType": "text/x-python",
+          "modifiedTime": "2026-02-23T10:19:26.927Z",
+          "size": "2186",
+          "folder": "10 - Pipeline Scripts",
+          "folder_id": "1oWFsV_z9NHU3_l5OTx_lzEcAcMCdPxCj"
+        },
+        {
+          "id": "1qzyBFPL7YvcJb3TAhfyNJUMrG7rSrf04",
+          "name": "01_build_sku_data.py",
+          "mimeType": "text/x-python",
+          "modifiedTime": "2026-02-23T10:19:13.871Z",
+          "size": "1631",
+          "folder": "10 - Pipeline Scripts",
+          "folder_id": "1oWFsV_z9NHU3_l5OTx_lzEcAcMCdPxCj"
+        },
+        {
+          "id": "1x72VQVQSskmkP8Oif_OaPt3AiTk6p5a3",
+          "name": "constants.py",
+          "mimeType": "text/x-python",
+          "modifiedTime": "2026-02-23T10:18:42.483Z",
+          "size": "3860",
+          "folder": "10 - Pipeline Scripts",
+          "folder_id": "1oWFsV_z9NHU3_l5OTx_lzEcAcMCdPxCj"
+        }
+      ]
+    },
+    "11 - Full Illustrated Study": {
+      "folder_id": "1XeI22OemBdjQnyvzdDifMsUgpQlZAucs",
+      "total_files": 11,
+      "files": [
+        {
+          "id": "13WVNjmOxWwxNlxy_j_g__pBzUraTp7ca",
+          "name": "chart_risk_matrix.png",
+          "mimeType": "image/png",
+          "modifiedTime": "2026-02-23T10:34:36.264Z",
+          "size": "69306",
+          "folder": "11 - Full Illustrated Study/charts",
+          "folder_id": "18dfiS0j7xsLHVaAFjuV4PV9xLE39jfnW"
+        },
+        {
+          "id": "1ttP-a9lGdP3stNBorEOxNJAq_6OOndSK",
+          "name": "chart_machine_utilization.png",
+          "mimeType": "image/png",
+          "modifiedTime": "2026-02-23T10:34:35.972Z",
+          "size": "57558",
+          "folder": "11 - Full Illustrated Study/charts",
+          "folder_id": "18dfiS0j7xsLHVaAFjuV4PV9xLE39jfnW"
+        },
+        {
+          "id": "13ids7HmgxHNVRl39I_WTsh3hdkE5t_b8",
+          "name": "chart_investment_breakdown.png",
+          "mimeType": "image/png",
+          "modifiedTime": "2026-02-23T10:34:35.696Z",
+          "size": "56797",
+          "folder": "11 - Full Illustrated Study/charts",
+          "folder_id": "18dfiS0j7xsLHVaAFjuV4PV9xLE39jfnW"
+        },
+        {
+          "id": "1wG5EiKaIfpDB2e6osPydwcSEtZdQ2ekt",
+          "name": "chart_ebitda_margin.png",
+          "mimeType": "image/png",
+          "modifiedTime": "2026-02-23T10:34:35.464Z",
+          "size": "53685",
+          "folder": "11 - Full Illustrated Study/charts",
+          "folder_id": "18dfiS0j7xsLHVaAFjuV4PV9xLE39jfnW"
+        },
+        {
+          "id": "1iK0RmhiO5IM_Xn9o2fOrLWqibMiFOPTT",
+          "name": "chart_product_portfolio.png",
+          "mimeType": "image/png",
+          "modifiedTime": "2026-02-23T10:34:35.236Z",
+          "size": "94025",
+          "folder": "11 - Full Illustrated Study/charts",
+          "folder_id": "18dfiS0j7xsLHVaAFjuV4PV9xLE39jfnW"
+        },
+        {
+          "id": "1jAAyDnsY2iZlSl1nxkWUwrhxSvvoqISL",
+          "name": "chart_production_rampup.png",
+          "mimeType": "image/png",
+          "modifiedTime": "2026-02-23T10:34:34.928Z",
+          "size": "74118",
+          "folder": "11 - Full Illustrated Study/charts",
+          "folder_id": "18dfiS0j7xsLHVaAFjuV4PV9xLE39jfnW"
+        },
+        {
+          "id": "1rBMnfHHb7nvtJWqVLbsjN77KBAu3PaaJ",
+          "name": "chart_sensitivity_tornado.png",
+          "mimeType": "image/png",
+          "modifiedTime": "2026-02-23T10:34:34.616Z",
+          "size": "64420",
+          "folder": "11 - Full Illustrated Study/charts",
+          "folder_id": "18dfiS0j7xsLHVaAFjuV4PV9xLE39jfnW"
+        },
+        {
+          "id": "1NuiX65RjOG8vQbHu7oVX8nGxBcuJO2Zv",
+          "name": "chart_materials_donut.png",
+          "mimeType": "image/png",
+          "modifiedTime": "2026-02-23T10:34:34.384Z",
+          "size": "110837",
+          "folder": "11 - Full Illustrated Study/charts",
+          "folder_id": "18dfiS0j7xsLHVaAFjuV4PV9xLE39jfnW"
+        },
+        {
+          "id": "15NZCl9_mtufBvL6ShjkP-opJlfWqD9uL",
+          "name": "chart_cashflow.png",
+          "mimeType": "image/png",
+          "modifiedTime": "2026-02-23T10:34:34.052Z",
+          "size": "97843",
+          "folder": "11 - Full Illustrated Study/charts",
+          "folder_id": "18dfiS0j7xsLHVaAFjuV4PV9xLE39jfnW"
+        },
+        {
+          "id": "17IL_-xNwolctvClz1yndgeD1XHcpRR01",
+          "name": "chart_financial_performance.png",
+          "mimeType": "image/png",
+          "modifiedTime": "2026-02-23T10:34:33.624Z",
+          "size": "56503",
+          "folder": "11 - Full Illustrated Study/charts",
+          "folder_id": "18dfiS0j7xsLHVaAFjuV4PV9xLE39jfnW"
+        },
+        {
+          "id": "1MyBBHelChua9w6MskEbnk4elIralV6Wl",
+          "name": "Feasibility_Study_FINAL.html",
+          "mimeType": "text/html",
+          "modifiedTime": "2026-02-23T10:40:17.033Z",
+          "size": "1069205",
+          "folder": "11 - Full Illustrated Study",
+          "folder_id": "1XeI22OemBdjQnyvzdDifMsUgpQlZAucs"
+        }
+      ]
+    },
+    "12 - Company Profile": {
+      "folder_id": "1nJzyls7YWWCs71VjwL-PhnS6iqlsvrLD",
+      "total_files": 4,
+      "files": [
+        {
+          "id": "1OcVs_00kz44WOByVaaJbUlYSgZGA0ns_",
+          "name": "ASTRA_Company_Profile_2025_v4.html",
+          "mimeType": "text/html",
+          "modifiedTime": "2026-03-14T14:40:54.560Z",
+          "size": "1374795",
+          "folder": "12 - Company Profile",
+          "folder_id": "1nJzyls7YWWCs71VjwL-PhnS6iqlsvrLD"
+        },
+        {
+          "id": "1VTd8q8QQFkvwmswxw5vMaPp9z2mBjS9h",
+          "name": "ASTRA_Company_Profile_2025_v3.html",
+          "mimeType": "text/html",
+          "modifiedTime": "2026-03-14T12:50:32.111Z",
+          "size": "1243603",
+          "folder": "12 - Company Profile",
+          "folder_id": "1nJzyls7YWWCs71VjwL-PhnS6iqlsvrLD"
+        },
+        {
+          "id": "1uYOKa-1M_0x0TzQAEJ8d1KYU_SNmd_JE",
+          "name": "ASTRA_Company_Profile_2025_v2.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T12:38:54.433Z",
+          "size": "3567309",
+          "folder": "12 - Company Profile",
+          "folder_id": "1nJzyls7YWWCs71VjwL-PhnS6iqlsvrLD"
+        },
+        {
+          "id": "1TWJXs1pcVbq73SKOX8DaHiDcCAIbMzn_",
+          "name": "ASTRA_Company_Profile_2025.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T11:38:39.722Z",
+          "size": "5795185",
+          "folder": "12 - Company Profile",
+          "folder_id": "1nJzyls7YWWCs71VjwL-PhnS6iqlsvrLD"
+        }
+      ]
+    },
+    "13 - RFQ Documents": {
+      "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8",
+      "total_files": 25,
+      "files": [
+        {
+          "id": "1xQRU3B-6cXOErxuZQ3q-lMYp5bwu298f",
+          "name": "ASTRA_RFQ_012_SunChemical_v2.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T14:42:45.629Z",
+          "size": "52343",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1X_WtsZvu2KzM8gUP56jCQQOvs2W04UTG",
+          "name": "ASTRA_RFQ_011_Henkel_v2.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T14:42:45.593Z",
+          "size": "52351",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1y1kAChMPtODkIGx4XIlK38FU-OTlIHpO",
+          "name": "ASTRA_RFQ_010_Yipak_v2.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T14:42:45.561Z",
+          "size": "52447",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1WokdmysZhpqKpohTp7gcFL9q9AeIrLf-",
+          "name": "ASTRA_RFQ_009_Sterivic_v2.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T14:42:45.525Z",
+          "size": "52699",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1Zhr6nkLwPbgpQggTxfnz9J7KWJGeV-nC",
+          "name": "ASTRA_RFQ_008_Billerud_v2.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T14:42:45.493Z",
+          "size": "52459",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1-sZQuZt2tW4HB3hOXn735pOuNVNmf2Zo",
+          "name": "ASTRA_RFQ_007_Wipak_v2.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T14:42:45.457Z",
+          "size": "52473",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "17sPT1pSI8jut5tlTsIjfYfegd1LIQ-65",
+          "name": "ASTRA_RFQ_006_Oliver_HCP_v2.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T14:42:45.421Z",
+          "size": "52510",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1EuxxpWVuICZIiGkrzS8najYynBE1vnFf",
+          "name": "ASTRA_RFQ_005_DuPont_Tyvek_v2.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T14:42:45.385Z",
+          "size": "52415",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1UpuVKcoOmAwbpHTYJOKbY2JnKE5XMUzt",
+          "name": "ASTRA_RFQ_003_KMNPack_Expanded_v2.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T14:42:45.349Z",
+          "size": "52897",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1umndap-pTMYZs_bLpQseO9Ykf2xT1uQL",
+          "name": "ASTRA_RFQ_002_Synwin_Expanded_v2.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T14:42:45.313Z",
+          "size": "52931",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1w512LtXCCQPqHodz9GDhORbFbDdY4wSz",
+          "name": "ASTRA_RFQ_004_Ahlstrom_Comprehensive_v2.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T14:42:45.277Z",
+          "size": "53179",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1_aiJJTV_MyXeLzqKVc6MKuJbVcy648ZI",
+          "name": "ASTRA_RFQ_012_SunChemical_Indicator_Inks.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T13:25:55.280Z",
+          "size": "8183",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1hEcssBLYS4l6R-dYjX0AA1krrZ2o1UP9",
+          "name": "ASTRA_RFQ_011_Henkel_Adhesives.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T13:25:55.272Z",
+          "size": "8102",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1wn5RA0hNJrtrwU-1jA89NgtFCiUAeLy9",
+          "name": "ASTRA_RFQ_010_Yipak_Paper_Film.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T13:25:55.264Z",
+          "size": "8728",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1zhl8-OL0Lt9sooFr8Eu04M52oGekrhch",
+          "name": "ASTRA_RFQ_009_Sterivic_Paper_Film.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T13:25:55.256Z",
+          "size": "8743",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1pvOszWPw3Z8dopck8ld2Q4HekiwnRUyH",
+          "name": "ASTRA_RFQ_008_Billerud_Paper_Film.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T13:25:55.244Z",
+          "size": "8754",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1ggx_zoax2kL25be1p2mEMDI1H77P7M05",
+          "name": "ASTRA_RFQ_007_Wipak_Tyvek.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T13:25:55.236Z",
+          "size": "8836",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1ASp3fkuZ6wWRfydEZAteRt6RC8RlLMkt",
+          "name": "ASTRA_RFQ_006_Oliver_HCP_Tyvek.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T13:25:55.228Z",
+          "size": "8831",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1B0o5IwTN1JNBeQHxy67x1-5tfNWa5cUG",
+          "name": "ASTRA_RFQ_005_DuPont_Tyvek_1073B.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T13:25:55.216Z",
+          "size": "8829",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1ozsgIAK565OShlHxs-MUVoBEWKO_-wVm",
+          "name": "ASTRA_RFQ_003_KMNPack_SMS_Nonwoven.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T13:25:55.208Z",
+          "size": "8632",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1NqZz4Rm1QD_sgzQhsOkU8QD_t90r3ydT",
+          "name": "ASTRA_RFQ_002_Synwin_SMS_Nonwoven.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T13:25:55.200Z",
+          "size": "8647",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1AapU2xxC11tNEEbcrhkWzsZGVlnVGHYR",
+          "name": "ASTRA_RFQ_004_Ahlstrom_Comprehensive.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T13:22:34.858Z",
+          "size": "13733",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "10VxnZsiknqbWJyPolF58vU27dqk61Fhi",
+          "name": "ASTRA_RFQ_003_Paper_Film_Adhesives.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T13:09:29.190Z",
+          "size": "9529",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1dGABKGcyJ-ikOXG7Sdd3Py74M7SGc9Jg",
+          "name": "ASTRA_RFQ_002_Tyvek_1073B.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T13:09:29.178Z",
+          "size": "8861",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "14wpbs7qk91n1xnljh4Km1-u47ra1gJe0",
+          "name": "ASTRA_RFQ_001_SMS_Nonwoven.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T13:09:29.170Z",
+          "size": "8889",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        }
+      ]
+    },
+    "Master Data Dossier": {
+      "folder_id": "1uWU6DeAj6yNM8zLs_P5caI0t2_ZdN8pS",
+      "total_files": 1,
+      "files": [
+        {
+          "id": "1BU2JezKKv3AhiFDTpUSWt-cN-safucLG",
+          "name": "Master_Data_Dossier.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-02-28T10:11:29.412Z",
+          "size": "716167",
+          "folder": "Master Data Dossier",
+          "folder_id": "1uWU6DeAj6yNM8zLs_P5caI0t2_ZdN8pS"
+        }
+      ]
+    }
+  }
+}
