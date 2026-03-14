@@ -1,20 +1,23 @@
 # Vault Daily Diff Report — 2026-03-14
 
-**Baseline snapshot:** 2026-03-14T17:33:49.356750Z
-**Current snapshot:**  2026-03-14T17:35:49.374299Z
+**Baseline snapshot:** 2026-03-14T17:35:49.374299Z
+**Current snapshot:**  2026-03-14T17:36:42.763323Z
 
 | Metric | Count |
 |---|---|
-| New files added | 0 |
+| New files added | 2 |
 | Files modified | 0 |
 | Files deleted / moved | 0 |
-| Total files (current) | 105 |
+| Total files (current) | 107 |
 
 ---
 
-## No Changes Detected
+## New Files Added
 
-> The vault is identical to the previous snapshot.
+| Folder | File Name | Modified Time |
+|---|---|---|
+| 09 - Governance and Compliance | vault_diff_report_2026-03-14.md | 2026-03-14T17:36:09.082Z |
+| 09 - Governance and Compliance | MASTER_KNOWLEDGE_BASE.md | 2026-03-14T17:36:02.368Z |
 
 ---
 

@@ -4,8 +4,8 @@
 Auto-generated and updated daily. When creating any new document, **always consult
 this file first** to check for previous versions and maintain continuity.
 
-**Last Updated:** 2026-03-14T17:35:49.374299Z
-**Total Files Tracked:** 105
+**Last Updated:** 2026-03-14T17:36:42.763323Z
+**Total Files Tracked:** 107
 
 ---
 
@@ -34,7 +34,7 @@ this file first** to check for previous versions and maintain continuity.
 | 06 - Source Data Files | `1BCVx3ohbqyjVXtSNiNeN5yk-RRs6Gb-s` | 3 |
 | 07 - Technical References | `1vSZnhAkZsi0rnU6LzIOPq6DWTROzdMlg` | 7 |
 | 08 - Financial Models (v1.1) | `1B2yTsCfDc7wmBrdpK0m-SIViO8DlbHhe` | 12 |
-| 09 - Governance and Compliance | `1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ` | 5 |
+| 09 - Governance and Compliance | `1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ` | 7 |
 | 10 - Pipeline Scripts | `1oWFsV_z9NHU3_l5OTx_lzEcAcMCdPxCj` | 11 |
 | 11 - Full Illustrated Study | `1XeI22OemBdjQnyvzdDifMsUgpQlZAucs` | 11 |
 | 12 - Company Profile | `1nJzyls7YWWCs71VjwL-PhnS6iqlsvrLD` | 4 |
@@ -142,11 +142,13 @@ this file first** to check for previous versions and maintain continuity.
 
 | File Name | Last Modified | Type | File ID |
 |---|---|---|---|
+| MASTER_KNOWLEDGE_BASE.md | 2026-03-14T17:36:02.368Z | `markdown` | `1OtSrsOlwSzNi545uAZ62ASWrxJvZMNxd` |
 | audit_readiness_pack.md | 2026-02-23T10:24:45.043Z | `markdown` | `11mVoBKhSpLwkTl42KaNBAlfNCRUCpggM` |
 | external_validation_appendix.md | 2026-02-23T10:24:23.915Z | `markdown` | `1CdDCukuXzQWWIYu9qbA94ANxCVTavGiE` |
 | pricing_governance_protocol.md | 2026-02-23T10:23:49.007Z | `markdown` | `1kUek02AI8TDXUT7eXR7bSPrfifds2RDu` |
 | production_loss_model.md | 2026-02-23T10:23:22.867Z | `markdown` | `1eC-o75QYPVzK1mMjflc9uLxFbAvQ_zl_` |
 | risk_register_v1.md | 2026-02-23T10:24:08.411Z | `markdown` | `1_31F3SsQx-QyJuDjMppgAmIrIk0w2Mny` |
+| vault_diff_report_2026-03-14.md | 2026-03-14T17:36:09.082Z | `markdown` | `1ywaQjGjmTJ5KIwZ_OITz5Zl3jy4FcUIX` |
 
 ### 10 - Pipeline Scripts
 
