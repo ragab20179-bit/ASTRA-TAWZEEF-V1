@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-15T05:01:35.564669Z",
+  "generated_at": "2026-03-16T05:03:40.271235Z",
   "vault_root_id": "1sJilvwjRUiX7v2bbLAIDEZnd-qy5_QxY",
-  "total_files": 124,
+  "total_files": 126,
   "folders": {
     "00 - Artwork": {
       "folder_id": "1aO0z4P21kBaG1u1eTMuq7Kv7qsiXsJht",
@@ -491,8 +491,26 @@
     },
     "09 - Governance and Compliance": {
       "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ",
-      "total_files": 9,
+      "total_files": 11,
       "files": [
+        {
+          "id": "1EjIDBHLZKCNbO7TSPhKfrHjdSXYAbaTu",
+          "name": "vault_diff_report_2026-03-15.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-03-15T05:01:38.259Z",
+          "size": "1823",
+          "folder": "09 - Governance and Compliance",
+          "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ"
+        },
+        {
+          "id": "1Vl3_pKpNvk3f6CHGNoN86YUSpavtzujZ",
+          "name": "MASTER_KNOWLEDGE_BASE.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-03-15T05:01:36.498Z",
+          "size": "17473",
+          "folder": "09 - Governance and Compliance",
+          "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ"
+        },
         {
           "id": "1edPD814hnX5TAlNE4yCWwfjB0cvrwplK",
           "name": "vault_diff_report_2026-03-14.md",
