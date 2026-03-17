@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-16T05:03:40.271235Z",
+  "generated_at": "2026-03-17T05:02:37.038226Z",
   "vault_root_id": "1sJilvwjRUiX7v2bbLAIDEZnd-qy5_QxY",
-  "total_files": 126,
+  "total_files": 156,
   "folders": {
     "00 - Artwork": {
       "folder_id": "1aO0z4P21kBaG1u1eTMuq7Kv7qsiXsJht",
@@ -491,8 +491,71 @@
     },
     "09 - Governance and Compliance": {
       "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ",
-      "total_files": 11,
+      "total_files": 18,
       "files": [
+        {
+          "id": "1BSoLgm1TGXoyh-pt52rGWJ-vraNVdJqm",
+          "name": "ASTRA_Project_Status_Report.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-16T09:07:25.919Z",
+          "size": "9628",
+          "folder": "09 - Governance and Compliance",
+          "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ"
+        },
+        {
+          "id": "116hhIvZkaOX5P9Ax0W22KLT-f4fUZBo0",
+          "name": "ASTRA_HR_Plan_Integrated_v5.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-16T06:55:23.638Z",
+          "size": "61259",
+          "folder": "09 - Governance and Compliance",
+          "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ"
+        },
+        {
+          "id": "12ENscITbTzHEwhgybZxKDYJ0X6sAb5sN",
+          "name": "ASTRA_HR_Plan_Full_Details_v2.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-16T06:35:42.190Z",
+          "size": "59734",
+          "folder": "09 - Governance and Compliance",
+          "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ"
+        },
+        {
+          "id": "17ikG8u79CatKMw4zYZDCZdQ0o3FBR1xY",
+          "name": "ASTRA_HR_Plan_and_Cost_Estimates.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-16T06:18:11.334Z",
+          "size": "8696",
+          "folder": "09 - Governance and Compliance",
+          "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ"
+        },
+        {
+          "id": "1jNXzmETcpPrPX95dDTz7Dx84dYoOg6r9",
+          "name": "session_documentation_log_2026-03-16.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-03-16T05:50:45.513Z",
+          "size": "2975",
+          "folder": "09 - Governance and Compliance",
+          "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ"
+        },
+        {
+          "id": "13yp9mrMZPrkmmumeoamZcVxWlplpd2Rw",
+          "name": "vault_diff_report_2026-03-16.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-03-16T05:03:43.143Z",
+          "size": "543",
+          "folder": "09 - Governance and Compliance",
+          "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ"
+        },
+        {
+          "id": "1Py1bTw_UXjBpljHsZF24vVtCf87TEJYw",
+          "name": "MASTER_KNOWLEDGE_BASE.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-03-16T05:03:41.287Z",
+          "size": "17695",
+          "folder": "09 - Governance and Compliance",
+          "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ"
+        },
         {
           "id": "1EjIDBHLZKCNbO7TSPhKfrHjdSXYAbaTu",
           "name": "vault_diff_report_2026-03-15.md",
@@ -848,8 +911,215 @@
     },
     "13 - RFQ Documents": {
       "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8",
-      "total_files": 40,
+      "total_files": 63,
       "files": [
+        {
+          "id": "11XHYBLK28tuYyvCnH6YD5Loi93vLx7UT",
+          "name": "ASTRA_RFQ_Follow_Up_Log.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-16T09:07:40.475Z",
+          "size": "287158",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1U67REVMXBI1NzvaFx9rVKCl3eE74Gzwa",
+          "name": "ASTRA_RFQ_Follow_Up_Log.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-03-16T09:03:21.892Z",
+          "size": "3664",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
+        {
+          "id": "1uEZ-cGbFx2XpdL_U8PoF4RAaSSLVx_kq",
+          "name": "ASTRA_RFQ_MACH_010_QC_Equipment.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T23:54:59.507Z",
+          "size": "4778",
+          "folder": "13 - RFQ Documents/Machinery RFQs",
+          "folder_id": "1sPTiD9Gr760_gDH6phw4oACzeoqLBlt7"
+        },
+        {
+          "id": "1t0-xc2GLSW9JzAwKYMVWTxrUlXrHh82t",
+          "name": "ASTRA_RFQ_MACH_009_Indicator_Printer.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T23:54:16.899Z",
+          "size": "4778",
+          "folder": "13 - RFQ Documents/Machinery RFQs",
+          "folder_id": "1sPTiD9Gr760_gDH6phw4oACzeoqLBlt7"
+        },
+        {
+          "id": "1EFGgzruNr1XplfODE8G94l7Ccd4L0xWk",
+          "name": "ASTRA_RFQ_MACH_008_Tape_Slitter.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T23:53:34.595Z",
+          "size": "4603",
+          "folder": "13 - RFQ Documents/Machinery RFQs",
+          "folder_id": "1sPTiD9Gr760_gDH6phw4oACzeoqLBlt7"
+        },
+        {
+          "id": "1BO5eCTuTQeL6OlgUsFmIi0wOMOlfIEGc",
+          "name": "ASTRA_RFQ_MACH_007_Sheet_Cutter.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T23:52:53.995Z",
+          "size": "4611",
+          "folder": "13 - RFQ Documents/Machinery RFQs",
+          "folder_id": "1sPTiD9Gr760_gDH6phw4oACzeoqLBlt7"
+        },
+        {
+          "id": "1--Vwzlj0BIC8aJM6EPX4IiQFuJR0t_lu",
+          "name": "ASTRA_RFQ_MACH_006_Reel_Maker.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T23:52:18.739Z",
+          "size": "4767",
+          "folder": "13 - RFQ Documents/Machinery RFQs",
+          "folder_id": "1sPTiD9Gr760_gDH6phw4oACzeoqLBlt7"
+        },
+        {
+          "id": "1vRsfUXPfeQJWSzO3JlSLhapGfi_s8N9w",
+          "name": "ASTRA_RFQ_MACH_005_Vision_System.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T23:51:38.882Z",
+          "size": "4853",
+          "folder": "13 - RFQ Documents/Machinery RFQs",
+          "folder_id": "1sPTiD9Gr760_gDH6phw4oACzeoqLBlt7"
+        },
+        {
+          "id": "1eMJghDhxDFFgkb38uodoS6_YMUyI0zNR",
+          "name": "ASTRA_RFQ_MACH_004_Flexo_Printer.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T23:51:02.158Z",
+          "size": "4870",
+          "folder": "13 - RFQ Documents/Machinery RFQs",
+          "folder_id": "1sPTiD9Gr760_gDH6phw4oACzeoqLBlt7"
+        },
+        {
+          "id": "16jiw4v1f-QMh9m8PqVVJ0YpKZ4gdLnlL",
+          "name": "ASTRA_RFQ_MACH_003_Heat_Sealer.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T23:50:24.630Z",
+          "size": "4849",
+          "folder": "13 - RFQ Documents/Machinery RFQs",
+          "folder_id": "1sPTiD9Gr760_gDH6phw4oACzeoqLBlt7"
+        },
+        {
+          "id": "1EfiCbNGMjpGgGo3PIK0jzvN5m_S8eYuT",
+          "name": "ASTRA_RFQ_MACH_002_Pouch_Maker.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T23:49:43.938Z",
+          "size": "4869",
+          "folder": "13 - RFQ Documents/Machinery RFQs",
+          "folder_id": "1sPTiD9Gr760_gDH6phw4oACzeoqLBlt7"
+        },
+        {
+          "id": "1xFxWDZfc294_9YRW2AsJv35i59Fs2qcI",
+          "name": "ASTRA_RFQ_MACH_001_Roll_Slitter.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-14T23:48:58.126Z",
+          "size": "5005",
+          "folder": "13 - RFQ Documents/Machinery RFQs",
+          "folder_id": "1sPTiD9Gr760_gDH6phw4oACzeoqLBlt7"
+        },
+        {
+          "id": "1gjlL_9xIsxM4kGGNCKWUV_jWPrKYYSa8",
+          "name": "ASTRA_TDS_MACH_010_QC_Equipment.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-16T05:46:27.599Z",
+          "size": "263105",
+          "folder": "13 - RFQ Documents/TDS Templates",
+          "folder_id": "1by3OmM888gQ8FYaJT3aha6H_8wbS2KM8"
+        },
+        {
+          "id": "1b_pFEJhtdm9AI2GOECSPLgiclz5tMQqF",
+          "name": "ASTRA_TDS_MACH_009_Indicator_Printer.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-16T05:43:34.326Z",
+          "size": "263841",
+          "folder": "13 - RFQ Documents/TDS Templates",
+          "folder_id": "1by3OmM888gQ8FYaJT3aha6H_8wbS2KM8"
+        },
+        {
+          "id": "1I8KTApAj2OV_qv1sAYfKjVATdiM6NPEM",
+          "name": "ASTRA_TDS_MACH_008_Tape_Slitter.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-16T05:41:56.718Z",
+          "size": "234766",
+          "folder": "13 - RFQ Documents/TDS Templates",
+          "folder_id": "1by3OmM888gQ8FYaJT3aha6H_8wbS2KM8"
+        },
+        {
+          "id": "1jvkvcYAajyzFlgsbr5FHeuNnp3jUA7dn",
+          "name": "ASTRA_TDS_MACH_007_Sheet_Cutter.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-16T05:12:03.696Z",
+          "size": "262706",
+          "folder": "13 - RFQ Documents/TDS Templates",
+          "folder_id": "1by3OmM888gQ8FYaJT3aha6H_8wbS2KM8"
+        },
+        {
+          "id": "1QXH4SK86vljqbQ4pCApVh3bMlIpE2pXj",
+          "name": "ASTRA_TDS_MACH_006_Reel_Maker.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-16T01:50:33.975Z",
+          "size": "264538",
+          "folder": "13 - RFQ Documents/TDS Templates",
+          "folder_id": "1by3OmM888gQ8FYaJT3aha6H_8wbS2KM8"
+        },
+        {
+          "id": "1xGshEEFNNTPQqVqlOXIvRtcN2MEFaiqb",
+          "name": "ASTRA_TDS_MACH_005_Vision_System.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-15T10:16:12.750Z",
+          "size": "263154",
+          "folder": "13 - RFQ Documents/TDS Templates",
+          "folder_id": "1by3OmM888gQ8FYaJT3aha6H_8wbS2KM8"
+        },
+        {
+          "id": "1GYA-O4hieFVP3vfZzi6_BW9wrSI8qyf2",
+          "name": "ASTRA_TDS_MACH_004_Flexo_Printer.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-15T05:13:01.735Z",
+          "size": "264823",
+          "folder": "13 - RFQ Documents/TDS Templates",
+          "folder_id": "1by3OmM888gQ8FYaJT3aha6H_8wbS2KM8"
+        },
+        {
+          "id": "1OLKFjWINhG26GriAj2_cIh1ZecgDWCw-",
+          "name": "ASTRA_TDS_MACH_003_Heat_Sealer.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-15T03:56:05.910Z",
+          "size": "263808",
+          "folder": "13 - RFQ Documents/TDS Templates",
+          "folder_id": "1by3OmM888gQ8FYaJT3aha6H_8wbS2KM8"
+        },
+        {
+          "id": "1iUOtFVRfBxpQ-uwDtTURRY72zGUkcENe",
+          "name": "ASTRA_TDS_MACH_002_Pouch_Maker.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-15T01:33:53.209Z",
+          "size": "264639",
+          "folder": "13 - RFQ Documents/TDS Templates",
+          "folder_id": "1by3OmM888gQ8FYaJT3aha6H_8wbS2KM8"
+        },
+        {
+          "id": "1q0ycVRPdD-X49IIyOyXiDfKnazlsFulv",
+          "name": "ASTRA_TDS_MACH_001_Roll_Slitter.pdf",
+          "mimeType": "application/pdf",
+          "modifiedTime": "2026-03-15T00:22:06.687Z",
+          "size": "265240",
+          "folder": "13 - RFQ Documents/TDS Templates",
+          "folder_id": "1by3OmM888gQ8FYaJT3aha6H_8wbS2KM8"
+        },
+        {
+          "id": "1ZYcMw_6UAhjugfckfH3EEWK0s5_N7siS",
+          "name": "machinery_supplier_master_list.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-03-14T23:46:13.781Z",
+          "size": "2589",
+          "folder": "13 - RFQ Documents",
+          "folder_id": "1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8"
+        },
         {
           "id": "1Wy0VTjyXfC4-KZc1DXrEiTmufct3r4s4",
           "name": "ASTRA_QC_Equipment_Top14_Candidates.pdf",

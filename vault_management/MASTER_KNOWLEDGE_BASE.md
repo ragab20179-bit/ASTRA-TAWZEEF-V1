@@ -4,8 +4,8 @@
 Auto-generated and updated daily. When creating any new document, **always consult
 this file first** to check for previous versions and maintain continuity.
 
-**Last Updated:** 2026-03-16T05:03:40.271235Z
-**Total Files Tracked:** 126
+**Last Updated:** 2026-03-17T05:02:37.038226Z
+**Total Files Tracked:** 156
 
 ---
 
@@ -34,11 +34,11 @@ this file first** to check for previous versions and maintain continuity.
 | 06 - Source Data Files | `1BCVx3ohbqyjVXtSNiNeN5yk-RRs6Gb-s` | 3 |
 | 07 - Technical References | `1vSZnhAkZsi0rnU6LzIOPq6DWTROzdMlg` | 7 |
 | 08 - Financial Models (v1.1) | `1B2yTsCfDc7wmBrdpK0m-SIViO8DlbHhe` | 12 |
-| 09 - Governance and Compliance | `1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ` | 11 |
+| 09 - Governance and Compliance | `1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ` | 18 |
 | 10 - Pipeline Scripts | `1oWFsV_z9NHU3_l5OTx_lzEcAcMCdPxCj` | 11 |
 | 11 - Full Illustrated Study | `1XeI22OemBdjQnyvzdDifMsUgpQlZAucs` | 11 |
 | 12 - Company Profile | `1nJzyls7YWWCs71VjwL-PhnS6iqlsvrLD` | 4 |
-| 13 - RFQ Documents | `1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8` | 40 |
+| 13 - RFQ Documents | `1WsFD0lIvAReRiQ5KQpENESEqK2v7cXZ8` | 63 |
 | Master Data Dossier | `1uWU6DeAj6yNM8zLs_P5caI0t2_ZdN8pS` | 1 |
 
 ---
@@ -142,6 +142,11 @@ this file first** to check for previous versions and maintain continuity.
 
 | File Name | Last Modified | Type | File ID |
 |---|---|---|---|
+| ASTRA_HR_Plan_Full_Details_v2.pdf | 2026-03-16T06:35:42.190Z | `pdf` | `12ENscITbTzHEwhgybZxKDYJ0X6sAb5sN` |
+| ASTRA_HR_Plan_Integrated_v5.pdf | 2026-03-16T06:55:23.638Z | `pdf` | `116hhIvZkaOX5P9Ax0W22KLT-f4fUZBo0` |
+| ASTRA_HR_Plan_and_Cost_Estimates.pdf | 2026-03-16T06:18:11.334Z | `pdf` | `17ikG8u79CatKMw4zYZDCZdQ0o3FBR1xY` |
+| ASTRA_Project_Status_Report.pdf | 2026-03-16T09:07:25.919Z | `pdf` | `1BSoLgm1TGXoyh-pt52rGWJ-vraNVdJqm` |
+| MASTER_KNOWLEDGE_BASE.md | 2026-03-16T05:03:41.287Z | `markdown` | `1Py1bTw_UXjBpljHsZF24vVtCf87TEJYw` |
 | MASTER_KNOWLEDGE_BASE.md | 2026-03-15T05:01:36.498Z | `markdown` | `1Vl3_pKpNvk3f6CHGNoN86YUSpavtzujZ` |
 | MASTER_KNOWLEDGE_BASE.md | 2026-03-14T17:36:43.774Z | `markdown` | `1fk8yakFsIftwVKQ1rUGvDYQo4NTxM59U` |
 | MASTER_KNOWLEDGE_BASE.md | 2026-03-14T17:36:02.368Z | `markdown` | `1OtSrsOlwSzNi545uAZ62ASWrxJvZMNxd` |
@@ -150,9 +155,11 @@ this file first** to check for previous versions and maintain continuity.
 | pricing_governance_protocol.md | 2026-02-23T10:23:49.007Z | `markdown` | `1kUek02AI8TDXUT7eXR7bSPrfifds2RDu` |
 | production_loss_model.md | 2026-02-23T10:23:22.867Z | `markdown` | `1eC-o75QYPVzK1mMjflc9uLxFbAvQ_zl_` |
 | risk_register_v1.md | 2026-02-23T10:24:08.411Z | `markdown` | `1_31F3SsQx-QyJuDjMppgAmIrIk0w2Mny` |
+| session_documentation_log_2026-03-16.md | 2026-03-16T05:50:45.513Z | `markdown` | `1jNXzmETcpPrPX95dDTz7Dx84dYoOg6r9` |
 | vault_diff_report_2026-03-14.md | 2026-03-14T17:36:45.576Z | `markdown` | `1edPD814hnX5TAlNE4yCWwfjB0cvrwplK` |
 | vault_diff_report_2026-03-14.md | 2026-03-14T17:36:09.082Z | `markdown` | `1ywaQjGjmTJ5KIwZ_OITz5Zl3jy4FcUIX` |
 | vault_diff_report_2026-03-15.md | 2026-03-15T05:01:38.259Z | `markdown` | `1EjIDBHLZKCNbO7TSPhKfrHjdSXYAbaTu` |
+| vault_diff_report_2026-03-16.md | 2026-03-16T05:03:43.143Z | `markdown` | `13yp9mrMZPrkmmumeoamZcVxWlplpd2Rw` |
 
 ### 10 - Pipeline Scripts
 
@@ -233,12 +240,35 @@ this file first** to check for previous versions and maintain continuity.
 | ASTRA_RFQ_012_SunChemical_Indicator_Inks.pdf | 2026-03-14T13:25:55.280Z | `pdf` | `1_aiJJTV_MyXeLzqKVc6MKuJbVcy648ZI` |
 | ASTRA_RFQ_012_SunChemical_Inks_v2.pdf | 2026-03-14T19:38:41.948Z | `pdf` | `1GM6YAvllX_RuMFcXuJWqmCLYOkqCkKYy` |
 | ASTRA_RFQ_012_SunChemical_v2.pdf | 2026-03-14T14:42:45.629Z | `pdf` | `1xQRU3B-6cXOErxuZQ3q-lMYp5bwu298f` |
+| ASTRA_RFQ_Follow_Up_Log.md | 2026-03-16T09:03:21.892Z | `markdown` | `1U67REVMXBI1NzvaFx9rVKCl3eE74Gzwa` |
+| ASTRA_RFQ_Follow_Up_Log.pdf | 2026-03-16T09:07:40.475Z | `pdf` | `11XHYBLK28tuYyvCnH6YD5Loi93vLx7UT` |
+| ASTRA_RFQ_MACH_001_Roll_Slitter.pdf | 2026-03-14T23:48:58.126Z | `pdf` | `1xFxWDZfc294_9YRW2AsJv35i59Fs2qcI` |
+| ASTRA_RFQ_MACH_002_Pouch_Maker.pdf | 2026-03-14T23:49:43.938Z | `pdf` | `1EfiCbNGMjpGgGo3PIK0jzvN5m_S8eYuT` |
+| ASTRA_RFQ_MACH_003_Heat_Sealer.pdf | 2026-03-14T23:50:24.630Z | `pdf` | `16jiw4v1f-QMh9m8PqVVJ0YpKZ4gdLnlL` |
+| ASTRA_RFQ_MACH_004_Flexo_Printer.pdf | 2026-03-14T23:51:02.158Z | `pdf` | `1eMJghDhxDFFgkb38uodoS6_YMUyI0zNR` |
+| ASTRA_RFQ_MACH_005_Vision_System.pdf | 2026-03-14T23:51:38.882Z | `pdf` | `1vRsfUXPfeQJWSzO3JlSLhapGfi_s8N9w` |
+| ASTRA_RFQ_MACH_006_Reel_Maker.pdf | 2026-03-14T23:52:18.739Z | `pdf` | `1--Vwzlj0BIC8aJM6EPX4IiQFuJR0t_lu` |
+| ASTRA_RFQ_MACH_007_Sheet_Cutter.pdf | 2026-03-14T23:52:53.995Z | `pdf` | `1BO5eCTuTQeL6OlgUsFmIi0wOMOlfIEGc` |
+| ASTRA_RFQ_MACH_008_Tape_Slitter.pdf | 2026-03-14T23:53:34.595Z | `pdf` | `1EFGgzruNr1XplfODE8G94l7Ccd4L0xWk` |
+| ASTRA_RFQ_MACH_009_Indicator_Printer.pdf | 2026-03-14T23:54:16.899Z | `pdf` | `1t0-xc2GLSW9JzAwKYMVWTxrUlXrHh82t` |
+| ASTRA_RFQ_MACH_010_QC_Equipment.pdf | 2026-03-14T23:54:59.507Z | `pdf` | `1uEZ-cGbFx2XpdL_U8PoF4RAaSSLVx_kq` |
 | ASTRA_Reel_Machine_Top14_Candidates.pdf | 2026-03-14T22:44:37.711Z | `pdf` | `1i9hUS8aRPFCmAeu_tdOoOKxyDbETQIEd` |
 | ASTRA_Roll_Machine_Top10_Candidates.pdf | 2026-03-14T21:44:20.027Z | `pdf` | `1zaCblEU02O5UDFnzpVkMEci-WvvpwaDz` |
 | ASTRA_Roll_Machine_Top14_Candidates_v2.pdf | 2026-03-14T22:01:05.147Z | `pdf` | `1fZensTPhxKy4dt8HWk1VDPhMZJ19GG-2` |
 | ASTRA_Sheet_Cutter_Top14_Candidates.pdf | 2026-03-14T22:57:20.117Z | `pdf` | `1HPUKp9CJj7OuU_AMMBARe_uTBMTNzkbM` |
+| ASTRA_TDS_MACH_001_Roll_Slitter.pdf | 2026-03-15T00:22:06.687Z | `pdf` | `1q0ycVRPdD-X49IIyOyXiDfKnazlsFulv` |
+| ASTRA_TDS_MACH_002_Pouch_Maker.pdf | 2026-03-15T01:33:53.209Z | `pdf` | `1iUOtFVRfBxpQ-uwDtTURRY72zGUkcENe` |
+| ASTRA_TDS_MACH_003_Heat_Sealer.pdf | 2026-03-15T03:56:05.910Z | `pdf` | `1OLKFjWINhG26GriAj2_cIh1ZecgDWCw-` |
+| ASTRA_TDS_MACH_004_Flexo_Printer.pdf | 2026-03-15T05:13:01.735Z | `pdf` | `1GYA-O4hieFVP3vfZzi6_BW9wrSI8qyf2` |
+| ASTRA_TDS_MACH_005_Vision_System.pdf | 2026-03-15T10:16:12.750Z | `pdf` | `1xGshEEFNNTPQqVqlOXIvRtcN2MEFaiqb` |
+| ASTRA_TDS_MACH_006_Reel_Maker.pdf | 2026-03-16T01:50:33.975Z | `pdf` | `1QXH4SK86vljqbQ4pCApVh3bMlIpE2pXj` |
+| ASTRA_TDS_MACH_007_Sheet_Cutter.pdf | 2026-03-16T05:12:03.696Z | `pdf` | `1jvkvcYAajyzFlgsbr5FHeuNnp3jUA7dn` |
+| ASTRA_TDS_MACH_008_Tape_Slitter.pdf | 2026-03-16T05:41:56.718Z | `pdf` | `1I8KTApAj2OV_qv1sAYfKjVATdiM6NPEM` |
+| ASTRA_TDS_MACH_009_Indicator_Printer.pdf | 2026-03-16T05:43:34.326Z | `pdf` | `1b_pFEJhtdm9AI2GOECSPLgiclz5tMQqF` |
+| ASTRA_TDS_MACH_010_QC_Equipment.pdf | 2026-03-16T05:46:27.599Z | `pdf` | `1gjlL_9xIsxM4kGGNCKWUV_jWPrKYYSa8` |
 | ASTRA_Tape_Slitter_Top14_Candidates.pdf | 2026-03-14T22:59:03.426Z | `pdf` | `1gyCuG5Tx5IrWIBb6sN5US5zLjEo29jCO` |
 | External_Communications_Log.md | 2026-03-14T20:19:36.553Z | `markdown` | `1vQ2TNlWl_pn3AdqhWjFg3QVB8wXAljkU` |
+| machinery_supplier_master_list.md | 2026-03-14T23:46:13.781Z | `markdown` | `1ZYcMw_6UAhjugfckfH3EEWK0s5_N7siS` |
 
 ### Master Data Dossier
 
