@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-17T05:02:37.038226Z",
+  "generated_at": "2026-03-18T05:05:21.589083Z",
   "vault_root_id": "1sJilvwjRUiX7v2bbLAIDEZnd-qy5_QxY",
-  "total_files": 156,
+  "total_files": 158,
   "folders": {
     "00 - Artwork": {
       "folder_id": "1aO0z4P21kBaG1u1eTMuq7Kv7qsiXsJht",
@@ -491,8 +491,26 @@
     },
     "09 - Governance and Compliance": {
       "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ",
-      "total_files": 18,
+      "total_files": 20,
       "files": [
+        {
+          "id": "1puz7UZSltcNW_nCV8SJAgfQWLWqBQRzg",
+          "name": "vault_diff_report_2026-03-17.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-03-17T05:02:40.099Z",
+          "size": "3050",
+          "folder": "09 - Governance and Compliance",
+          "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ"
+        },
+        {
+          "id": "10zRckHtI-utHFwaX1_JwN6P2KrBuFxTv",
+          "name": "MASTER_KNOWLEDGE_BASE.md",
+          "mimeType": "text/markdown",
+          "modifiedTime": "2026-03-17T05:02:38.155Z",
+          "size": "21077",
+          "folder": "09 - Governance and Compliance",
+          "folder_id": "1YSOGyb_9BEUDopKRbCrMkTjkwxD6S_YZ"
+        },
         {
           "id": "1BSoLgm1TGXoyh-pt52rGWJ-vraNVdJqm",
           "name": "ASTRA_Project_Status_Report.pdf",
